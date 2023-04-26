@@ -1,0 +1,87 @@
+{
+  "a11y": {
+    "skipContent": "Saltar al contenido"
+  },
+  "seo": {
+    "image": {
+      "url": "https://jsantanders.dev/images/preview.png",
+      "alt": "Banner para el sitio jsantanders.dev"
+    },
+    "rss": {
+      "en": "Feed RSS para hablantes de inglés",
+      "es": "Feed RSS para hablantes de español"
+    }
+  },
+  "nav": {
+    "menu": "Menú",
+    "home": "Inicio",
+    "blog": "Blog",
+    "about": "Sobre mí",
+    "language": "Cambiar idioma",
+    "theme": "Cambiar tema"
+  },
+  "footer": {
+    "license": "El contenido del autor está bajo licencia",
+    "copyright": "Creative Commons 4.0",
+    "rss": {
+      "name": "rss",
+      "href": "/es.feed.xml"
+    }
+  },
+  "home": {
+    "welcome": "¡Hola! 👋, Soy Jesús Santander",
+    "about": {
+      "1": "Soy un desarrollador y entusiasta de las matemáticas centrado en React, Node y Rust. Actualmente trabajo como ingeniero de software en Laika, donde construyo sistemas escalables y distribuidos que manejan datos y flujos de trabajo complejos.",
+      "2": "En este espacio, planeo compartir algunas de mis reflexiones e ideas personales sobre temas relacionados con la ingeniería de sistemas complejos y estadísticas.",
+      "3": "Soy un defensor del software de código abierto y disfruto contribuyendo a la comunidad a través de diversos proyectos."
+    },
+    "community": "Mi contribución a la comunidad",
+    "seo": {
+      "title": "Jesús Santander - dev.",
+      "description": "Desarrollador React, Node, Rust y Azure, entusiasta de las matemáticas."
+    }
+  },
+  "blog": {
+    "title": "Todas las entradas del blog",
+    "none": "No se encontraron entradas en el blog",
+    "read": " min de lectura",
+    "anchor": "Enlace a este encabezado",
+    "published": "Publicado el",
+    "modified": "Modificado el",
+    "copy": "Copiar",
+    "copy-success": "Copiado",
+    "copy-error": "Error",
+    "seo": {
+      "title": "Blog - Jesús Santander",
+      "description": "Todas las entradas en el blog que resumen todo sobre mi aventura como desarrollador."
+    }
+  },
+  "about": {
+    "title": "Ingeniero de Software y entusiasta de las Matemáticas.",
+    "1": "Soy un Ingeniero de Software Fullstack de Venezuela 🇻🇪 que disfruta bloguear acerca de mis experiencias con el objetivo de ayudar a otros y a mi futuro yo. Actualmente estoy cursando una Maestría en Matemáticas Aplicadas en la Universidad de Carabobo. A lo largo de mi carrera, he adquirido valiosa experiencia en el desarrollo de sistemas distribuidos de alta carga, cómputo en la nube, interfaces de usuario reactivas, así como en la implementación de diversos enfoques de aprendizaje automático en entornos prácticos.",
+    "2": "Tengo habilidades matemáticas fundamentales en teoría de probabilidad, teoría de procesos aleatorios, análisis de series temporales, aprendizaje automático, aprendizaje profundo y optimización. Mi investigación actual se centra en la aplicación de algoritmos de aprendizaje automático y aprendizaje profundo al análisis de series temporales.",
+    "3": "También tengo un conocimiento profundo y comprensión de los siguientes lenguajes: C#, TypeScript y actualmente estoy aprendiendo Rust ❤️.",
+    "seo": {
+      "title": "Acerca de - Jesús Santander",
+      "description": "Mi perfil de desarrollador."
+    }
+  },
+  "404": {
+    "title": "Lo siento 🚧, esta página no puede ser encontrada",
+    "subtitle": "Lo siento si la página que estás buscando no existe. Puede haber caducado, o puede haber un error tipográfico. Tal vez puedas encontrar lo que buscas desde mi página de inicio.",
+    "button": "Volver a la página de inicio",
+    "seo": {
+      "title": "404 - Jesús Santander",
+      "description": "Desarrollador certificado en React, Node, Rust y Azure, entusiasta de las matemáticas."
+    }
+  },
+  "500": {
+    "title": "¡Wow 😱, lo has roto todo!",
+    "subtitle": "No sé lo que has hecho, pero acabas de destruir mi sitio web... Por favor, inténtalo de nuevo en unos minutos",
+    "button": "Volver a la página de inicio",
+    "seo": {
+      "title": "500 - Jesús Santander",
+      "description": "Desarrollador certificado en React, Node, Rust y Azure, entusiasta de las matemáticas."
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "folders": [
+    {
+      "path": "blogs",
+      "name": "Blogs"
+    },
+    {
+      "path": "src",
+      "name": "App"
+    },
+
+    {
+      "path": "public",
+      "name": "Public"
+    },
+    {
+      "path": ".",
+      "name": "Project Root"
+    }
+  ],
+  "settings": {
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    },
+    "typescript.tsdk": "Project Root/node_modules/typescript/lib",
+    "typescript.tsserver.maxTsServerMemory": 6144,
+    "eslint.validate": ["javascript", "typescript", "javascriptreact", "typescriptreact"],
+    "eslint.options": {
+      "extensions": [".js", ".jsx", ".ts", ".tsx"]
+    },
+    "editor.tabSize": 2,
+    "files.exclude": {
+      "**/build": true,
+      "**/node_modules": true,
+      "**/static": true,
+      "**/src": true,
+      "**/internal": true,
+      "**/content": true
+    },
+    "todo-tree.tree.showCountsInTree": true,
+    "cSpell.words": ["Boop", "clsx", "frontmatter"],
+    "vue.features.codeActions.enable": false
+  },
+  "extensions": {
+    "recommendations": [
+      "dbaeumer.vscode-eslint",
+      "eamodio.gitlens",
+      "esbenp.prettier-vscode",
+      "waderyan.gitblame",
+      "gruntfuggly.todo-tree",
+      "natqe.reload",
+      "streetsidesoftware.code-spell-checker"
+    ]
+  }
+}

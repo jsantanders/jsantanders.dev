@@ -1,0 +1,87 @@
+{
+  "a11y": {
+    "skipContent": "Skip to content"
+  },
+  "seo": {
+    "image": {
+      "url": "https://jsantanders.dev/images/preview.png",
+      "alt": "Banner for site jsantanders.dev"
+    },
+    "rss": {
+      "en": "RSS feed for english speaker",
+      "es": "RSS feed for spanish speaker"
+    }
+  },
+  "nav": {
+    "menu": "Menu",
+    "home": "Home",
+    "blog": "Blog",
+    "about": "About",
+    "language": "Change language",
+    "theme": "Change theme"
+  },
+  "footer": {
+    "license": "All author content is licensed under",
+    "copyright": "Creative Commons 4.0",
+    "rss": {
+      "name": "rss",
+      "href": "/en.feed.xml"
+    }
+  },
+  "home": {
+    "welcome": "Hi there 👋, I'm Jesus Santander",
+    "about": {
+      "1": "I'm a dev and math enthusiast focusing on React, Node, and Rust. Currently, I work as a software engineer at Laika, where I build scalable and distributed systems that handle complex data and workflows.",
+      "2": "In this space, I plan to share some of my personal reflections and insights on topics related to engineering complex systems and statistics. ",
+      "3": "I'm an advocate of open-source software and enjoy contributing to the community through various projects."
+    },
+    "community": "My contribution to the community",
+    "seo": {
+      "title": "Jesus Santander – dev.",
+      "description": "React, Node, Rust, math enthusiast and Azure certified developer."
+    }
+  },
+  "blog": {
+    "title": "All blog posts",
+    "none": "No blog posts found",
+    "read": " min read",
+    "anchor": "Link to this heading",
+    "published": "Published on",
+    "modified": "Modified on",
+    "copy": "Copy",
+    "copy-success": "Copied",
+    "copy-error": "Error",
+    "seo": {
+      "title": "Blog – Jesus Santander",
+      "description": "All blog posts that sum up everything about my adventure as a developer."
+    }
+  },
+  "about": {
+    "title": "A Software Engineer, and Math enthusiast.",
+    "1": "A Fullstack software engineer from Venezuela 🇻🇪 who enjoys to blog about my experiences with the aim to help others and my future self. I’m currently pursuing a Msc. in applied mathematics at the University of Carabobo. Throughout my career, I’ve gained valuable experience in developing distributive high-load systems, cloud computing, reactive UIs, as well as implementing various machine learning approaches in practical settings.",
+    "2": "I have fundamental math skills in probability theory, random process theory, time series analysis, machine learning, deep learning and optimization. My current research focuses on the application of machine learning and deep learning algorithms to time series analysis.",
+    "3": "I also have in-depth knowledge and understanding of the following languages: C#, TypeScript, and currently learning Rust ❤️.",
+    "seo": {
+      "title": "About – Jesus Santander",
+      "description": "My developer profile."
+    }
+  },
+  "404": {
+    "title": "Sorry 🚧, this page can't be found",
+    "subtitle": "I'm sorry if the page you're looking for does not exist. It may have expired, or there could be a typo. Maybe you can find what you want from my homepage.",
+    "button": "Go Back Home",
+    "seo": {
+      "title": "404 – Jesus Santander",
+      "description": "React, Node, Rust, math enthusiast and Azure certified developer."
+    }
+  },
+  "500": {
+    "title": "Wow 😱, you broke everything",
+    "subtitle": "I don't know what you did but you've just destroyed my website... Please try again in a few minutes or just return to my homepage.",
+    "button": "Go Back Home",
+    "seo": {
+      "title": "500 – Jesus Santander",
+      "description": "React, Node, Rust, math enthusiast and Azure certified developer."
+    }
+  }
+}
