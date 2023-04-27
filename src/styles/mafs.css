@@ -1,0 +1,19 @@
+@import "mafs/core.css";
+
+body:not(.dark) {
+  * {
+    --mafs-bg: white !important;
+    --mafs-fg: black !important;
+  }
+}
+
+body.dark {
+  * {
+    --mafs-bg: #14191e !important;
+    --mafs-fg: white !important;
+  }
+}
+
+.MafsView {
+  @apply inline-block w-full rounded-xl border border-solid border-gray-200 p-2 dark:border-gray-800 md:p-4;
+}

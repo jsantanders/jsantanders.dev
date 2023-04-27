@@ -40,12 +40,6 @@ class MyDocument extends Document<DocumentProps & CustomProps> {
           <link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16" />
           <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" sizes="180x180" />
           <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#14191e" />
-          <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/katex@0.16.6/dist/katex.min.css"
-            integrity="sha384-mXD7x5S50Ko38scHSnD4egvoExgMPbrseZorkbE49evAfv9nNcbrXJ8LLNsDgh9d"
-            crossOrigin="anonymous"
-          />
           <meta name="theme-color" content="#14191e" />
           <meta name="color-scheme" content="dark light" />
           <meta httpEquiv="Content-Security-Policy" content={createCSP(nonce)} />

@@ -6,6 +6,7 @@ import { getMDXComponent } from "mdx-bundler/client";
 import type { IReadTimeResults } from "reading-time";
 
 import { Container } from "@/components/Container";
+import { Box } from "@/ui/Box";
 import { Code } from "@/ui/Code";
 import { Division } from "@/ui/Division";
 import { Heading } from "@/ui/Heading";
@@ -53,6 +54,7 @@ const MDXComponents = {
   code: Code as unknown as React.FC, // fixed type on mdx-bundler
   pre: Preformatted as React.FC, // fixed type on mdx-bundler
   div: Division as React.FC, // fixed type on mdx-bundler
+  Box,
 };
 
 /**

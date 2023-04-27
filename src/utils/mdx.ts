@@ -66,7 +66,12 @@ export const bundleBlogPost = async (slug: string, locale?: string): Promise<MDX
   const remarkPlugins = [remarkPrism, remarkMath];
   const rehypePlugins = [rehypePrism, imageMetadata, rehypeKatex];
   return await bundleMDX({
-    source: getBlogBySlug(slug, locale),
+    file: path.join(
+      process.cwd(),
+      "blogs",
+      slug,
+      `index${locale !== "en" ? `.${locale}` : ""}.mdx`
+    ),
     // eslint-disable-next-line require-jsdoc
     mdxOptions(options) {
       options.remarkPlugins = [...(options.remarkPlugins ?? []), ...remarkPlugins] as never;
@@ -83,5 +88,7 @@ export const bundleBlogPost = async (slug: string, locale?: string): Promise<MDX
 
       return options;
     },
+    globals: { Mafs: "Mafs" },
+    cwd: path.join(process.cwd(), "blogs", slug),
   });
 };

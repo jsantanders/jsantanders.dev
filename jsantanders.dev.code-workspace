@@ -40,7 +40,7 @@
       "**/content": true
     },
     "todo-tree.tree.showCountsInTree": true,
-    "cSpell.words": ["Boop", "clsx", "frontmatter"],
+    "cSpell.words": ["Boop", "clsx", "frontmatter", "Katex", "Mafs", "mapbox", "rehype"],
     "vue.features.codeActions.enable": false
   },
   "extensions": {

@@ -1,7 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import "./katex.css";
 @import "./prism.css";
+@import "./mafs.css";
 
 @font-face {
   font-family: "WorkSans";

@@ -10,8 +10,9 @@ object-src 'none';
 form-action 'none';
 frame-ancestors 'none';
 img-src 'self';
+font-src 'self';
 manifest-src 'self';
-'unsafe-inline';
+style-src 'self' 'unsafe-inline';
 connect-src 'self' ${isProd ? "https://vitals.vercel-insights.com" : ""};
 `;
 
