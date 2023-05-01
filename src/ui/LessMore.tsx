@@ -4,7 +4,7 @@
  */
 export const LessMore: React.FC = () => (
   <div className="flex flex-row items-center text-xs" style={{ color: "#9ca3af" }}>
-    <span className="mr-1">Less</span>
+    <span className="mr-1 text-gray-600 dark:text-gray-400">Less</span>
     <svg width="62" height="10">
       <rect width="10" height="10" x="0" y="0" rx="2" ry="2" data-level="0" />
       <rect width="10" height="10" x="13" y="0" rx="2" ry="2" data-level="1" />
@@ -12,6 +12,6 @@ export const LessMore: React.FC = () => (
       <rect width="10" height="10" x="39" y="0" rx="2" ry="2" data-level="3" />
       <rect width="10" height="10" x="52" y="0" rx="2" ry="2" data-level="4" />
     </svg>
-    <span className="ml-1">More</span>
+    <span className="ml-1 text-gray-600 dark:text-gray-400">More</span>
   </div>
 );
