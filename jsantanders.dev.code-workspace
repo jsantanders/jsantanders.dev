@@ -40,7 +40,18 @@
       "**/content": true
     },
     "todo-tree.tree.showCountsInTree": true,
-    "cSpell.words": ["Boop", "clsx", "frontmatter", "Katex", "Mafs", "mapbox", "rehype"],
+    "cSpell.words": [
+      "Boop",
+      "clsx",
+      "cmpr",
+      "firestore",
+      "frontmatter",
+      "Katex",
+      "Kysely",
+      "Mafs",
+      "mapbox",
+      "rehype"
+    ],
     "vue.features.codeActions.enable": false
   },
   "extensions": {

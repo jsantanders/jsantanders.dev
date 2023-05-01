@@ -39,6 +39,11 @@
     "seo": {
       "title": "Jesus Santander – dev.",
       "description": "React, Node, Rust, math enthusiast and Azure certified developer."
+    },
+    "social": {
+      "linkedin": "Follow me on LinkedIn",
+      "github": "Follow me on GitHub",
+      "twitter": "Follow me on Twitter"
     }
   },
   "blog": {
@@ -54,6 +59,15 @@
     "seo": {
       "title": "Blog – Jesus Santander",
       "description": "All blog posts that sum up everything about my adventure as a developer."
+    },
+    "tag": "Search by topic:",
+    "views": "views",
+    "rating": {
+      "title": "Rate this post",
+      "submit": "Submit",
+      "thanks": "Thanks for your feedback!",
+      "error": "Something went wrong, please try again later.",
+      "votes": "votes"
     }
   },
   "about": {

@@ -6,6 +6,8 @@ import { useRouter } from "next/router";
 import { Analytics } from "@vercel/analytics/react";
 import { I18nProvider } from "next-localization";
 
+import { AnalyticsProvider } from "@/components/AnalyticsContext";
+
 import "focus-visible";
 
 import "@/styles/index.css";
@@ -37,10 +39,10 @@ const App = ({ Component, pageProps }: AppProps): JSX.Element => {
 
   return (
     <I18nProvider lngDict={lngDict} locale={router?.locale as string}>
-      <>
+      <AnalyticsProvider>
         <Component previousPathname={previousPathname} {...rest} />
         <Analytics />
-      </>
+      </AnalyticsProvider>
     </I18nProvider>
   );
 };

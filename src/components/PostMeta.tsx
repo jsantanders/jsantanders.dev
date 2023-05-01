@@ -3,12 +3,13 @@ import { useRouter } from "next/router";
 import { useI18n } from "next-localization";
 import type { IReadTimeResults } from "reading-time";
 
-import formatDate from "@/utils/date";
+import formatDate from "@/lib/date";
 
 type BlogRowProps = {
   tags: string[];
   publishedAt: string;
   readingTime: IReadTimeResults;
+  views?: number;
 };
 
 /**
@@ -16,7 +17,7 @@ type BlogRowProps = {
  * @param {BlogRowProps} props The component props
  * @returns {React.ReactElement} The component
  */
-export const BlogRow: React.FC<BlogRowProps> = ({ tags, publishedAt, readingTime }) => {
+export const PostMeta: React.FC<BlogRowProps> = ({ tags, publishedAt, readingTime, views }) => {
   const router = useRouter();
   const i18n = useI18n();
 
@@ -41,6 +42,14 @@ export const BlogRow: React.FC<BlogRowProps> = ({ tags, publishedAt, readingTime
           {Math.ceil(readingTime.minutes).toFixed(0)}
           {i18n.t("blog.read")}
         </p>
+        {views !== undefined && views > 0 && (
+          <>
+            <span className="text-gray-500">·</span>
+            <p className="p-1 text-xs text-gray-500">
+              {views.toLocaleString()} {i18n.t("blog.views")}
+            </p>
+          </>
+        )}
       </div>
     </div>
   );

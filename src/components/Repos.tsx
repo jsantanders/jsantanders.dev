@@ -61,7 +61,7 @@ export const Repos: React.FC = () => {
               <div className="mb-2 flex flex-row items-center">
                 <Repo width={16} height={16} aria-hidden className="mr-2 text-gray-400" />
                 <a
-                  className="rounded px-1 text-sm font-medium text-blue-400 hover:underline focus:outline-none focus:ring-2"
+                  className="rounded px-1 text-sm font-medium text-blue-600 hover:underline focus:outline-none focus:ring-2 dark:text-blue-400"
                   rel="noopener noreferrer"
                   target="_blank"
                   href={repo.url}
@@ -80,7 +80,7 @@ export const Repos: React.FC = () => {
                 {repo.description}
               </p>
               <div className="flex flex-row items-center">
-                <span className="mr-4 flex flex-row items-center text-xs text-gray-400">
+                <span className="mr-4 flex flex-row items-center text-xs text-gray-600 dark:text-gray-400">
                   <Circle
                     width={12}
                     height={12}
@@ -91,13 +91,13 @@ export const Repos: React.FC = () => {
                   {repo.primaryLanguage.name}
                 </span>
                 {repo.stargazerCount > 0 && (
-                  <span className="flex flex-row items-center text-xs text-gray-400">
+                  <span className="flex flex-row items-center text-xs text-gray-600 dark:text-gray-400">
                     <Stars width={16} height={16} aria-hidden className="mr-1" />
                     {repo.stargazerCount}
                   </span>
                 )}
                 {repo.forkCount > 0 && (
-                  <span className="ml-4 flex flex-row items-center text-xs text-gray-400">
+                  <span className="ml-4 flex flex-row items-center text-xs text-gray-600 dark:text-gray-400">
                     <Forks width={16} height={16} aria-hidden className="mr-1" />
                     {repo.forkCount}
                   </span>

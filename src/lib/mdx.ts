@@ -9,8 +9,8 @@ import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 import remarkPrism from "remark-prism";
 
-import type { Frontmatter, Information } from "@/components/BlogPost";
-import imageMetadata from "@/utils/image-metadata-plugin";
+import type { Frontmatter, Information } from "@/components/Post";
+import imageMetadata from "@/lib/image-metadata-plugin";
 
 type MDXBundler = ReturnType<typeof bundleMDX>;
 

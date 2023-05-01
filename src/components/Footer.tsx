@@ -20,7 +20,7 @@ const FooterLink: React.FC<React.PropsWithChildren<FooterLinkProps>> = ({
   if (external) {
     return (
       <a
-        className="rounded p-1 text-gray-400 focus:outline-none focus:ring-2"
+        className="rounded p-1 text-gray-600 underline focus:outline-none focus:ring-2 dark:text-gray-400"
         target="_blank"
         rel="noopener noreferrer"
         href={href}
@@ -32,7 +32,9 @@ const FooterLink: React.FC<React.PropsWithChildren<FooterLinkProps>> = ({
 
   return (
     <NextLink href={href}>
-      <span className="rounded p-1 text-gray-400 focus:outline-none focus:ring-2">{children}</span>
+      <span className="rounded p-1 text-gray-600 underline focus:outline-none focus:ring-2 dark:text-gray-400">
+        {children}
+      </span>
     </NextLink>
   );
 };
@@ -49,9 +51,7 @@ export const Footer: React.FC = () => {
       <hr className="border-1 mb-7 w-full border-gray-200 dark:border-gray-800" />
       <ul className="items-center gap-6 text-sm sm:flex sm:justify-center md:flex md:justify-between">
         <li className="hidden md:flex">
-          <FooterLink href={i18n.t("footer.rss.href")} external>
-            {i18n.t("footer.rss.name")}
-          </FooterLink>
+          <FooterLink href={i18n.t("footer.rss.href")}>{i18n.t("footer.rss.name")}</FooterLink>
         </li>
         <li>
           &copy; {new Date().getFullYear()} {i18n.t("footer.license")}

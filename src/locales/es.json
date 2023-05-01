@@ -39,6 +39,11 @@
     "seo": {
       "title": "Jesús Santander - dev.",
       "description": "Desarrollador React, Node, Rust y Azure, entusiasta de las matemáticas."
+    },
+    "social": {
+      "linkedin": "Sígueme en LinkedIn",
+      "github": "Sígueme en GitHub",
+      "twitter": "Sígueme en Twitter"
     }
   },
   "blog": {
@@ -54,6 +59,15 @@
     "seo": {
       "title": "Blog - Jesús Santander",
       "description": "Todas las entradas en el blog que resumen todo sobre mi aventura como desarrollador."
+    },
+    "tag": "Buscar por etiqueta:",
+    "views": "vistas",
+    "rating": {
+      "title": "¿Te ha gustado este artículo?",
+      "submit": "Enviar",
+      "thanks": "Gracias por tu voto",
+      "error": "Error al enviar el voto",
+      "votes": "votos"
     }
   },
   "about": {

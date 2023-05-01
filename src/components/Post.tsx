@@ -1,13 +1,17 @@
-import { useMemo } from "react";
+import { useContext, useMemo } from "react";
 
 import { useRouter } from "next/router";
 
 import { getMDXComponent } from "mdx-bundler/client";
+import { Tweet } from "react-tweet";
 import type { IReadTimeResults } from "reading-time";
 
 import { Container } from "@/components/Container";
-import { Box } from "@/ui/Box";
+import { usePostViewsQuery } from "@/hooks/use-post-views-query";
+import { useRegisterPostViewMutation } from "@/hooks/use-register-post-view-mutation";
+import { Callout } from "@/ui/Callout";
 import { Code } from "@/ui/Code";
+import { ConsCard } from "@/ui/ConsCard";
 import { Division } from "@/ui/Division";
 import { Heading } from "@/ui/Heading";
 import { Image } from "@/ui/Image";
@@ -15,9 +19,13 @@ import { List } from "@/ui/List";
 import { ListItem } from "@/ui/ListItem";
 import { Paragraph } from "@/ui/Paragraph";
 import { Preformatted } from "@/ui/Preformatted";
+import { ProsCard } from "@/ui/ProsCard";
 import { TextLink } from "@/ui/TextLink";
+import { TweetCmp } from "@/ui/TweetComponents";
 
-import { BlogRow } from "./BlogRow";
+import { AnalyticsContext } from "./AnalyticsContext";
+import { PostMeta } from "./PostMeta";
+import { PostRating } from "./PostRating";
 
 export type Information = {
   slug: string;
@@ -32,10 +40,11 @@ export type Frontmatter = {
   tags: string[];
 };
 
-export type Blog = {
+export type PostProps = {
   code: string;
   frontmatter: Frontmatter;
   readingTime: IReadTimeResults;
+  slug: string;
 };
 
 const MDXComponents = {
@@ -54,7 +63,10 @@ const MDXComponents = {
   code: Code as unknown as React.FC, // fixed type on mdx-bundler
   pre: Preformatted as React.FC, // fixed type on mdx-bundler
   div: Division as React.FC, // fixed type on mdx-bundler
-  Box,
+  Tweet: (props: React.ComponentProps<typeof Tweet>) => <Tweet {...props} components={TweetCmp} />,
+  Callout,
+  ProsCard,
+  ConsCard,
 };
 
 /**
@@ -62,9 +74,18 @@ const MDXComponents = {
  * @param {Blog} props The component props
  * @returns {React.ReactElement} The component
  */
-export const BlogPost: React.FC<Blog> = ({ code, frontmatter, readingTime }) => {
+export const Post: React.FC<PostProps> = ({ code, frontmatter, readingTime, slug }) => {
   const Component = useMemo(() => getMDXComponent(code), [code]);
   const router = useRouter();
+
+  const { userId } = useContext(AnalyticsContext);
+
+  const { data } = usePostViewsQuery({ slug, userId });
+  useRegisterPostViewMutation({
+    slug,
+    userId,
+    trackView: data?.userViewed !== undefined && !data?.userViewed,
+  });
 
   const seo = {
     type: "article",
@@ -77,12 +98,14 @@ export const BlogPost: React.FC<Blog> = ({ code, frontmatter, readingTime }) => 
     <Container seo={seo as unknown as { [key: string]: string }}>
       <article className="w-full max-w-3xl">
         <h1 className="mb-6 text-5xl font-bold">{frontmatter.title}</h1>
-        <BlogRow
+        <PostMeta
           tags={frontmatter.tags}
           publishedAt={frontmatter.publishedAt}
           readingTime={readingTime}
+          views={data?.postViews}
         />
         <Component components={MDXComponents} />
+        <PostRating slug={slug} />
       </article>
     </Container>
   );

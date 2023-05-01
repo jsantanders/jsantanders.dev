@@ -3,14 +3,12 @@ import { forwardRef, PropsWithChildren } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-import { SkipNavContent, SkipNavLink } from "@reach/skip-nav";
 import clsx from "clsx";
 import { useI18n } from "next-localization";
 
 import { Footer } from "@/components/Footer";
 import { Nav } from "@/components/Nav";
-
-import "@reach/skip-nav/styles.css";
+import { SkipNavContent, SkipNavLink } from "@/ui/SkipNav";
 
 type ContainerProps = React.PropsWithChildren<{
   seo?: { [key: string]: string | string[] };

@@ -1,7 +1,7 @@
 import matter from "gray-matter";
 import readingTime from "reading-time";
 
-import formatDate from "@/utils/date";
+import formatDate from "@/lib/date";
 
 /**
  * Generate HTML for blog image

@@ -55,18 +55,28 @@ const Blog: React.FC = () => {
         </div>
         <div className="lg:pl-20">
           <ul>
-            <SocialLink href={"https://twitter.com/jsantanders"} icon={twitter}>
-              Follow on Twitter
+            <SocialLink
+              href={"https://twitter.com/jsantanders"}
+              icon={twitter}
+              ariaLabel={i18n.t("home.social.twitter")}
+            >
+              {i18n.t("home.social.twitter")}
             </SocialLink>
-            <SocialLink href={"https://github.com/jsantanders"} icon={github} className="mt-4">
-              Follow on GitHub
+            <SocialLink
+              href={"https://github.com/jsantanders"}
+              icon={github}
+              className="mt-4"
+              ariaLabel={i18n.t("home.social.github")}
+            >
+              {i18n.t("home.social.twitter")}
             </SocialLink>
             <SocialLink
               href={"https://linkedin.com/in/jsantanders"}
               icon={linkedin}
               className="mt-4"
+              ariaLabel={i18n.t("home.social.linkedin")}
             >
-              Follow on LinkedIn
+              {i18n.t("home.social.linkedin")}
             </SocialLink>
           </ul>
         </div>

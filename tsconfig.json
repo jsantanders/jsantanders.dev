@@ -24,7 +24,7 @@
     "noFallthroughCasesInSwitch": true,
     "allowUnusedLabels": false,
     "checkJs": true,
-    "target": "es5",
+    "target": "es2017",
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"]

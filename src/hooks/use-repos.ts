@@ -1,6 +1,6 @@
 import useSWR from "swr";
 
-import { fetcher } from "@/utils/fetcher";
+import { fetcher } from "@/lib/fetcher";
 
 type UseRepos = {
   data?: ReposData;

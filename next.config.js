@@ -42,6 +42,13 @@ module.exports = {
     locales: ["en", "es"],
     defaultLocale: "en",
   },
+  transpilePackages: ["react-tweet"],
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "pbs.twimg.com" },
+      { protocol: "https", hostname: "abs.twimg.com" },
+    ],
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,

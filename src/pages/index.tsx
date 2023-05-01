@@ -18,24 +18,24 @@ const Home: React.FC = () => {
 
   return (
     <Container seo={i18n.t("home.seo") as unknown as { [key: string]: string }}>
-      <h1 className="my-8 text-center text-3xl font-bold sm:text-5xl">{i18n.t("home.welcome")}</h1>
-      <div className="mb-6 mt-6 flex gap-6">
+      <h1 className="my-8 text-center text-4xl font-bold sm:text-5xl">{i18n.t("home.welcome")}</h1>
+      <ul className="mb-6 mt-6 flex gap-6">
         <SocialLink
           href={"https://twitter.com/jsantanders"}
-          aria-label="Follow on Twitter"
+          ariaLabel={i18n.t("home.social.twitter")}
           icon={twitter}
         />
         <SocialLink
           href={"https://github.com/jsantanders"}
-          aria-label="Follow on GitHub"
+          ariaLabel={i18n.t("home.social.github")}
           icon={github}
         />
         <SocialLink
           href={"https://linkedin.com/in/jsantanders"}
-          aria-label="Follow on LinkedIn"
+          ariaLabel={i18n.t("home.social.linkedin")}
           icon={linkedin}
         />
-      </div>
+      </ul>
       <div className="relative my-8 flex w-full justify-center p-3 md:w-min">
         <div className="rounded-lg bg-primary px-4 py-8" style={{ width: "700px" }}>
           <p className="mb-4">{i18n.t("home.about.1")}</p>

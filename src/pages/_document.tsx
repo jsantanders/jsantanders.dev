@@ -2,8 +2,8 @@
 import type { DocumentContext, DocumentInitialProps, DocumentProps } from "next/document";
 import Document, { Head, Html, Main, NextScript } from "next/document";
 
-import { createCSP } from "@/utils/csp";
-import { generateRandomString } from "@/utils/random";
+import { createCSP } from "@/lib/csp";
+import { generateRandomString } from "@/lib/random";
 
 type CustomProps = {
   nonce: string;

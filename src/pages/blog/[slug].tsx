@@ -3,16 +3,16 @@ import matter from "gray-matter";
 import type { GetStaticPaths, GetStaticPathsResult, GetStaticProps } from "next";
 import readingTime from "reading-time";
 
-import { Blog as BlogPostProps, BlogPost } from "@/components/BlogPost";
-import { bundleBlogPost, getBlogBySlug, getBlogSlugs } from "@/utils/mdx";
+import { Post, PostProps } from "@/components/Post";
+import { bundleBlogPost, getBlogBySlug, getBlogSlugs } from "@/lib/mdx";
 
 /**
  * Renders the blog post page
- * @param {BlogPostProps} props the blog post props
+ * @param {PostProps} props the blog post props
  * @returns {React.ReactElement} React component
  */
-const Blog: React.FC<BlogPostProps> = (props) => {
-  return <BlogPost {...props} />;
+const Blog: React.FC<PostProps> = (props) => {
+  return <Post {...props} />;
 };
 
 /** Next.js function to get the static props
@@ -30,6 +30,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
         code,
         frontmatter,
         readingTime: readingTime(matter.content),
+        slug: params.slug,
         lngDict: language.default,
       },
     };
