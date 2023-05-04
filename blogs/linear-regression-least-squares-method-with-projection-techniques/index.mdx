@@ -8,8 +8,47 @@ tags:
   - linear-regression
 ---
 
-Formally, a projection is a linear transformation $P$ from a vector space $V$ to itself such that $P^2 = P$.
-In other words, a projection is an idempotent linear transformation.
-The image of a projection is called a projection, and the kernel of a projection is called a projection.
-In this blog post, we will explore the application of projection techniques in linear regression,
-specifically the least squares method.
+## Linear regression model
+
+Linear regression is a widely-used technique for modeling the relationship between a response variable
+and one or more predictor variables. In its most general form, a regression model assumes that
+the response $Y$ can be expressed as:
+
+$$
+Y = f(X_1, X_2, \cdots, X_n) + \epsilon
+$$
+
+where $\epsilon$ is the additive error term, $f$ is some unknown function and $X_1,X_2, \cdots X_n$ are
+the predictors. Estimating $f$ can be quite challenging, specially in cases of multiple predictors
+and limited data. This is because the function $f$ could take on any form, and it may be difficult to
+identify the specific shape of the function that best describes the data.
+
+This is where linear regression comes in. By assuming that the relationship between the predictors and
+the response is linear, we can greatly simplify the modeling process. Instead of estimating the entire function $f$,
+we only need to estimate the unknown parameters in the linear regression equation:
+
+$$
+Y = \beta_0 + \beta_1 X_1  + \beta_2 X_2 + \cdots + \beta_n X_n + \epsilon
+$$
+
+which is a much simpler task. Here $\beta_0, \beta_1, \beta_2, \beta_n$ are unknown parameters,
+$\beta_0$ is also called the intercept or bias term. Note that the predictors themselves do not have to be linear.
+For example, we can have a model of the form:
+
+$$
+Y = \beta_0 + \beta_1 log(X_1) + \beta_2 X_2^2 + \beta_3 X_3 X_1 + \epsilon
+$$
+
+which is still linear. Meanwhile:
+
+$$
+Y = \beta_0 + \beta_1 \beta_2 X_1 + \beta_2 X_2 + \beta_3 X_3 + \epsilon
+$$
+
+is not. Although the name implies a straight line, linear regression models can actually be quite
+flexible and can handle complex datasets. To capture non-linear relationships between predictors and the response variable,
+quadratic or interaction terms can be included in the model. Additionally, nonlinear predictors can be transformed
+to a linear form through suitable transformations, such as logarithmic transformation, which can linearize
+exponential relationships.
+
+### Matrix representation
