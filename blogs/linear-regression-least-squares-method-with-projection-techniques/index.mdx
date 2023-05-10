@@ -1,7 +1,7 @@
 ---
 title: Linear Regression - Least Squares Method with Orthogonal Projection
 description: This blog post delves into the application of projection techniques in linear regression, specifically the least squares method
-isPublished: false
+isPublished: true
 publishedAt: "2023-04-24"
 tags:
   - statistics
@@ -51,4 +51,49 @@ quadratic or interaction terms can be included in the model. Additionally, nonli
 to a linear form through suitable transformations, such as logarithmic transformation, which can linearize
 exponential relationships.
 
+In practice almost all relationships could be represented or reduced to a linear form. This is why linear regression
+is so widespread and popular. It is a simple yet powerful technique.
+
 ### Matrix representation
+
+To make it easier to work with, lets present our model of a response $Y$ and $n$ predictors $X_1, X_2, \cdots, X_n$
+in a tabular form:
+
+$$
+y_1     \quad x_{11} \quad x_{12} \quad \cdots \quad x_{1n} \\
+y_2     \quad x_{21} \quad x_{22} \quad \cdots \quad x_{2n} \\
+\vdots   \\
+y_m     \quad x_{m1} \quad x_{m2} \quad \cdots \quad x_{mn}
+$$
+
+where $m$ is the number of observations or cases in the dataset. Given the actual data values, we may write the model as:
+
+$$
+y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \cdots + \beta_n x_{in} + \epsilon_i
+$$
+
+We can write this more conveniently in matrix form as:
+
+$$
+y = X \beta + \epsilon
+$$
+
+where $y = (y_1, y_2, \cdots, y_m)^T$ is the response vector, $\epsilon = (\epsilon_1, \epsilon_2, \cdots, \epsilon_m)^T$
+is the error vector, $\beta = (\beta_0, \beta_1, \cdots, \beta_n)^T$ is the parameter vector, and:
+
+$$
+X = \begin{bmatrix}
+1 & x_{11} & x_{12} & \cdots & x_{1n} \\
+1 & x_{21} & x_{22} & \cdots & x_{2n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+1 & x_{m1} & x_{m2} & \cdots & x_{mn}
+\end{bmatrix}
+$$
+
+is the design matrix. Note that the first column of $X$ is all ones. This is to account for the intercept term $\beta_0$.
+
+## Estimating the parameters
+
+Our goal is to estimate the parameters $\beta$ such that the model fits the data as well as possible.
+Geometrically speaking it means that we want to find the vector $\beta$ such that the product
+$X\beta$ is as close as possible to $y$.
