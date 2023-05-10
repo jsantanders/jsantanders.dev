@@ -50,7 +50,11 @@
       "Kysely",
       "Mafs",
       "mapbox",
-      "rehype"
+      "prestart",
+      "preunlighthouse",
+      "rehype",
+      "typecheck",
+      "unlighthouse"
     ],
     "vue.features.codeActions.enable": false
   },
