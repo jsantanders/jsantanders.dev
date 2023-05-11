@@ -68,6 +68,9 @@
       "thanks": "Thanks for your feedback!",
       "error": "Something went wrong, please try again later.",
       "votes": "votes"
+    },
+    "toc": {
+      "title": "Table of contents"
     }
   },
   "about": {

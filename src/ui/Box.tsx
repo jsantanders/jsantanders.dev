@@ -7,7 +7,7 @@ import { PropsWithChildren } from "react";
  */
 export function Box(props: PropsWithChildren) {
   return (
-    <span className="inline-block w-full rounded-xl border border-solid border-gray-200 p-2 dark:border-gray-800 md:p-4">
+    <span className="inline-block w-full rounded-xl border border-solid border-primary p-2 dark:border-primary md:p-4">
       {props.children}
     </span>
   );

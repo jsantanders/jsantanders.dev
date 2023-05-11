@@ -3,8 +3,9 @@ import matter from "gray-matter";
 import type { GetStaticPaths, GetStaticPathsResult, GetStaticProps } from "next";
 import readingTime from "reading-time";
 
+import { Container } from "@/components/Container";
 import { Post, PostProps } from "@/components/Post";
-import { bundleBlogPost, getBlogBySlug, getBlogSlugs } from "@/lib/mdx";
+import { bundleBlogPost, getBlogBySlug, getBlogSlugs, getTableOfContents } from "@/lib/mdx";
 
 /**
  * Renders the blog post page
@@ -12,7 +13,17 @@ import { bundleBlogPost, getBlogBySlug, getBlogSlugs } from "@/lib/mdx";
  * @returns {React.ReactElement} React component
  */
 const Blog: React.FC<PostProps> = (props) => {
-  return <Post {...props} />;
+  const seo = {
+    type: "article",
+    imageAlt: props.frontmatter.title,
+    ...props.frontmatter,
+  };
+
+  return (
+    <Container seo={seo as unknown as { [key: string]: string }}>
+      <Post {...props} />
+    </Container>
+  );
 };
 
 /** Next.js function to get the static props
@@ -32,6 +43,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
         readingTime: readingTime(matter.content),
         slug: params.slug,
         lngDict: language.default,
+        tableOfContents: getTableOfContents(code),
       },
     };
   }
