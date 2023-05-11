@@ -1,16 +1,20 @@
 import rehypePrism from "@mapbox/rehype-prism";
+import rehypeToc, { Toc } from "@stefanprobst/rehype-extract-toc";
+import rehypeTocExport from "@stefanprobst/rehype-extract-toc/mdx";
 import fs from "fs";
 import { readdir } from "fs/promises";
 import matter from "gray-matter";
 import { bundleMDX } from "mdx-bundler";
+import { getMDXExport } from "mdx-bundler/client";
 import path from "path";
 import readingTime from "reading-time";
 import rehypeKatex from "rehype-katex";
+import rehypeSlug from "rehype-slug";
 import remarkMath from "remark-math";
 import remarkPrism from "remark-prism";
 
 import type { Frontmatter, Information } from "@/components/Post";
-import imageMetadata from "@/lib/image-metadata-plugin";
+import rehypeImageMetadata from "@/lib/rehype-image-metadata";
 
 type MDXBundler = ReturnType<typeof bundleMDX>;
 
@@ -60,11 +64,18 @@ export const getBlogsInformation = async (locale?: string): Promise<Information[
  * Generate blog post bundle from slug
  * @param {string} slug - Slug of the blog
  * @param {string} locale - Locale of the blog
- * @returns {Promise<string>} Blog post bundle
+ * @returns {Promise<MDXBundler>} Blog post bundle
  */
 export const bundleBlogPost = async (slug: string, locale?: string): Promise<MDXBundler> => {
   const remarkPlugins = [remarkPrism, remarkMath];
-  const rehypePlugins = [rehypePrism, imageMetadata, rehypeKatex];
+  const rehypePlugins = [
+    rehypePrism,
+    rehypeImageMetadata,
+    rehypeKatex,
+    rehypeSlug,
+    rehypeToc,
+    rehypeTocExport,
+  ];
   return await bundleMDX({
     file: path.join(
       process.cwd(),
@@ -91,4 +102,14 @@ export const bundleBlogPost = async (slug: string, locale?: string): Promise<MDX
     globals: { Mafs: "Mafs" },
     cwd: path.join(process.cwd(), "blogs", slug),
   });
+};
+
+/**
+ * Gets the table of contents of a blog post
+ * @param {string} code - blog raw code
+ * @returns {Toc} Table of contents
+ **/
+export const getTableOfContents = (code: string): Toc => {
+  const mdxExport = getMDXExport(code);
+  return mdxExport.tableOfContents;
 };

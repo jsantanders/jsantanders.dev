@@ -17,7 +17,7 @@ export const PostLink: React.FC<BlogLinkProps> = ({ children, href }) => {
     <NextLink href={href}>
       <div
         aria-label=""
-        className="mb-8 w-full max-w-xl rounded-md border border-solid border-gray-200 p-4 focus:outline-none focus:ring-2 dark:border-gray-800"
+        className="mb-8 w-full max-w-xl rounded-md border border-solid border-primary p-4 focus:outline-none focus:ring-2 dark:border-primary"
       >
         {children}
       </div>

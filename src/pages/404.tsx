@@ -19,7 +19,7 @@ const Custom404: React.FC = () => {
         <h1 className="my-8 text-3xl font-bold sm:text-5xl">{i18n.t("404.title")}</h1>
         <p className="mb-8">{i18n.t("404.subtitle")}</p>
         <NextLink href="/">
-          <span className="m-auto inline-flex rounded-md border border-solid border-gray-200 p-4 text-gray-400 dark:border-gray-800">
+          <span className="m-auto inline-flex rounded-md border border-solid border-primary p-4 text-gray-400 dark:border-primary">
             <span className="mr-1" aria-hidden>
               <Arrow width={16} />
             </span>

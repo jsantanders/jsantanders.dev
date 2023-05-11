@@ -51,7 +51,7 @@
     --color-fg-primary: #111827;
     --color-text-primary: #111827;
     --color-text-secondary: #6b7280;
-    --color-border-primary: #e5e7eb;
+    --color-border-primary: #D0D7DE;
     --color-graph-L: #cccccc;
     --color-graph-L0: #ebedf0;
     --color-graph-L1: #9be9a8;
@@ -64,13 +64,13 @@
   }
 
   .dark {
-    --color-bg-primary: #14191e;
+    --color-bg-primary: #0D1117
     --color-bg-secondary: #1f2429;
     --color-bg-tertiary: #2b3034;
     --color-fg-primary: #ededed;
     --color-text-primary: #ededed;
     --color-text-secondary: #9ca3af;
-    --color-border-primary: #1f2937;
+    --color-border-primary: #21262D;
     --color-graph-L: #464d53;
     --color-graph-L0: #1f2429;
     --color-graph-L1: #003820;
@@ -85,13 +85,13 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg-primary: #14191e;
+    --color-bg-primary: #0D1117;
     --color-bg-secondary: #1f2429;
     --color-bg-tertiary: #2b3034;
     --color-fg-primary: #ededed;
     --color-text-primary: #ededed;
     --color-text-secondary: #9ca3af;
-    --color-border-primary: #1f2937;
+    --color-border-primary: #21262D;
     --color-graph-L: #464d53;
     --color-graph-L0: #1f2429;
     --color-graph-L1: #003820;
@@ -110,7 +110,7 @@
     --color-fg-primary: #111827;
     --color-text-primary: #111827;
     --color-text-secondary: #6b7280;
-    --color-border-primary: #e5e7eb;
+    --color-border-primary: #D0D7DE;
     --color-graph-L: #cccccc;
     --color-graph-L0: #ebedf0;
     --color-graph-L1: #9be9a8;

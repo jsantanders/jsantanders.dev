@@ -27,7 +27,7 @@ export const Pagination: React.FC<PaginationProps> = ({
             disabled={currentPage === 1}
             onClick={() => onPageChange(currentPage - 1)}
             type="button"
-            className="ml-0 block rounded-l-lg border border-gray-400 bg-white px-3 py-2 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            className="ml-0 block rounded-l-lg border border-primary bg-white px-3 py-2 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-primary dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
           >
             <span className="sr-only">Previous</span>
             <svg
@@ -63,7 +63,7 @@ export const Pagination: React.FC<PaginationProps> = ({
             disabled={currentPage === pagesCount}
             type="button"
             onClick={() => onPageChange(currentPage + 1)}
-            className="block rounded-r-lg border border-gray-400 bg-white px-3 py-2 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+            className="block rounded-r-lg border border-primary bg-white px-3 py-2 leading-tight text-gray-500 hover:bg-gray-100 hover:text-gray-700 dark:border-primary dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
           >
             <span className="sr-only">Next</span>
             <svg
@@ -88,7 +88,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 
 const styles = {
   unselected:
-    "px-3 py-2 leading-tight text-gray-500 bg-white border border-gray-400 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white",
+    "px-3 py-2 leading-tight text-gray-500 bg-white border border-primary hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-primary dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white",
   selected:
-    "z-10 px-3 py-2 leading-tight text-gray-600 border border-gray-400 bg-gray-50 hover:bg-gray-100 hover:text-gray-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white",
+    "z-10 px-3 py-2 leading-tight text-gray-600 border border-primary bg-gray-50 hover:bg-gray-100 hover:text-gray-700 dark:border-primary dark:bg-gray-700 dark:text-white",
 };

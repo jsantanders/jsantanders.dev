@@ -37,7 +37,7 @@ export const Graph: React.FC = () => {
   };
 
   return (
-    <div className="mt-16 w-full rounded-md border border-solid border-gray-200 py-2 dark:border-gray-800 md:w-min">
+    <div className="mt-16 w-full rounded-md border border-solid border-primary py-2 dark:border-primary md:w-min">
       <div className="relative mx-3 flex flex-col items-end overflow-hidden md:items-center">
         <svg
           width="722"
