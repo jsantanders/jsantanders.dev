@@ -54,13 +54,14 @@ function renderNodes(nodes: Toc) {
  */
 const TOCLink: React.FC<{ node: TocEntry }> = ({ node }) => {
   const fontSizes: Record<number, string> = { 2: "sm", 3: "xs", 4: "xs" };
+  const padding: Record<number, string> = { 2: "pl-0", 3: "pl-2", 4: "pl-4" };
   const id = node.id || generateId(6);
   const [highlighted, setHighlighted] = useHighlighted(id);
   return (
     <NextLink
       href={`#${id}`}
-      className={`block text-${
-        fontSizes[node.depth]
+      className={`block text-${fontSizes[node.depth]} ${
+        padding[node.depth]
       } py-1 hover:text-blue-600 dark:hover:text-blue-400 ${
         highlighted && "text-blue-600 dark:text-blue-400"
       }`}
