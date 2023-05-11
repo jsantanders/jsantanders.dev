@@ -123,10 +123,6 @@
     "ts-node": "^10.2.1",
     "typescript": "^4.8.2"
   },
-  "engines": {
-    "node": "16.x",
-    "npm": "8.x"
-  },
   "eslintConfig": {
     "extends": [
       "react-app",
