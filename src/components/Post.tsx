@@ -1,12 +1,10 @@
 import { useContext, useMemo } from "react";
 
-import { useRouter } from "next/router";
-
+import { Toc } from "@stefanprobst/rehype-extract-toc";
 import { getMDXComponent } from "mdx-bundler/client";
 import { Tweet } from "react-tweet";
 import type { IReadTimeResults } from "reading-time";
 
-import { Container } from "@/components/Container";
 import { usePostViewsQuery } from "@/hooks/use-post-views-query";
 import { useRegisterPostViewMutation } from "@/hooks/use-register-post-view-mutation";
 import { Callout } from "@/ui/Callout";
@@ -26,6 +24,7 @@ import { TweetCmp } from "@/ui/TweetComponents";
 import { AnalyticsContext } from "./AnalyticsContext";
 import { PostMeta } from "./PostMeta";
 import { PostRating } from "./PostRating";
+import { TableOfContents } from "./PostTableOfContent";
 
 export type Information = {
   slug: string;
@@ -44,6 +43,7 @@ export type PostProps = {
   code: string;
   frontmatter: Frontmatter;
   readingTime: IReadTimeResults;
+  tableOfContents: Toc;
   slug: string;
 };
 
@@ -74,9 +74,14 @@ const MDXComponents = {
  * @param {Blog} props The component props
  * @returns {React.ReactElement} The component
  */
-export const Post: React.FC<PostProps> = ({ code, frontmatter, readingTime, slug }) => {
+export const Post: React.FC<PostProps> = ({
+  code,
+  frontmatter,
+  readingTime,
+  slug,
+  tableOfContents,
+}) => {
   const Component = useMemo(() => getMDXComponent(code), [code]);
-  const router = useRouter();
 
   const { userId } = useContext(AnalyticsContext);
 
@@ -87,16 +92,9 @@ export const Post: React.FC<PostProps> = ({ code, frontmatter, readingTime, slug
     trackView: data?.userViewed !== undefined && !data?.userViewed,
   });
 
-  const seo = {
-    type: "article",
-    image: `https://jsantanders.dev/api${router.asPath}`,
-    imageAlt: frontmatter.title,
-    ...frontmatter,
-  };
-
   return (
-    <Container seo={seo as unknown as { [key: string]: string }}>
-      <article className="w-full max-w-3xl">
+    <div className="flex flex-row">
+      <article className="w-full md:mr-16 md:max-w-[75%]">
         <h1 className="mb-6 text-5xl font-bold">{frontmatter.title}</h1>
         <PostMeta
           tags={frontmatter.tags}
@@ -107,6 +105,9 @@ export const Post: React.FC<PostProps> = ({ code, frontmatter, readingTime, slug
         <Component components={MDXComponents} />
         <PostRating slug={slug} />
       </article>
-    </Container>
+      <aside className="sticky top-[250px] hidden h-1/4 max-w-[25%] space-y-10 pt-1.5 md:block">
+        <TableOfContents toc={tableOfContents} />
+      </aside>
+    </div>
   );
 };

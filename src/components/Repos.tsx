@@ -10,7 +10,7 @@ import Stars from "@/icons/stars.svg";
  */
 const LoadingRepo: React.FC = () => (
   <li className="mb-4 w-full animate-pulse md:w-1/2 md:px-2">
-    <div className="flex flex-col rounded-md border border-solid border-gray-200 p-4 dark:border-gray-800">
+    <div className="flex flex-col rounded-md border border-solid border-primary p-4 dark:border-primary">
       <div
         className="mb-2 flex flex-row items-center"
         style={{ paddingTop: "2px", paddingBottom: "2px" }}
@@ -57,7 +57,7 @@ export const Repos: React.FC = () => {
       {!isLoading &&
         data?.repos?.viewer?.pinnedItems?.nodes?.map((repo) => (
           <li key={repo.id} className="mb-4 w-full md:w-1/2 md:px-2">
-            <div className="flex flex-col rounded-md border border-solid border-gray-200 p-4 dark:border-gray-800">
+            <div className="flex flex-col rounded-md border border-solid border-primary p-4 dark:border-primary">
               <div className="mb-2 flex flex-row items-center">
                 <Repo width={16} height={16} aria-hidden className="mr-2 text-gray-400" />
                 <a

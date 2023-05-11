@@ -20,10 +20,7 @@ const Blog: React.FC = () => {
   const i18n = useI18n();
 
   return (
-    <Container
-      className="mt-16 sm:mt-32"
-      seo={i18n.t("about.seo") as unknown as { [key: string]: string }}
-    >
+    <Container seo={i18n.t("about.seo") as unknown as { [key: string]: string }}>
       <div className="my-8 grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
         <div className="lg:pl-20">
           <div className="max-w-xs px-2.5 lg:max-w-none">

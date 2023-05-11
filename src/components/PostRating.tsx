@@ -73,7 +73,7 @@ export const PostRating: React.FC<RatingProps> = ({ slug }) => {
             type="button"
             disabled={isLoading}
             onClick={() => mutate(rating)}
-            className="rounded-lg border border-gray-300 px-4 py-1.5 text-center text-lg font-semibold hover:bg-secondary hover:text-primary focus:outline-none focus-visible:bg-secondary focus-visible:text-primary focus-visible:ring-2 active:bg-tertiary dark:border-gray-600 md:mr-4"
+            className="rounded-lg border border-primary px-4 py-1.5 text-center text-lg font-semibold hover:bg-secondary hover:text-primary focus:outline-none focus-visible:bg-secondary focus-visible:text-primary focus-visible:ring-2 active:bg-tertiary dark:border-primary md:mr-4"
           >
             {isLoading ? (
               <Spinner className="inline h-8 w-8 animate-spin fill-gray-600 text-center text-gray-200 dark:fill-gray-300 dark:text-gray-600" />

@@ -68,6 +68,9 @@
       "thanks": "Gracias por tu voto",
       "error": "Error al enviar el voto",
       "votes": "votos"
+    },
+    "toc": {
+      "title": "Índice de contenidos"
     }
   },
   "about": {

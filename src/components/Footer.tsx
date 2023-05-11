@@ -48,7 +48,7 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="mx-auto mt-16 w-full px-4 pb-5 md:px-0">
-      <hr className="border-1 mb-7 w-full border-gray-200 dark:border-gray-800" />
+      <hr className="border-1 mb-7 w-full border-primary dark:border-primary" />
       <ul className="items-center gap-6 text-sm sm:flex sm:justify-center md:flex md:justify-between">
         <li className="hidden md:flex">
           <FooterLink href={i18n.t("footer.rss.href")}>{i18n.t("footer.rss.name")}</FooterLink>
