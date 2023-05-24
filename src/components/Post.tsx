@@ -1,6 +1,7 @@
 import { useContext, useMemo } from "react";
 
 import { Toc } from "@stefanprobst/rehype-extract-toc";
+import clsx from "clsx";
 import { getMDXComponent } from "mdx-bundler/client";
 import { Tweet } from "react-tweet";
 import type { IReadTimeResults } from "reading-time";
@@ -92,9 +93,11 @@ export const Post: React.FC<PostProps> = ({
     trackView: data?.userViewed !== undefined && !data?.userViewed,
   });
 
+  const styles = tableOfContents.length > 0 ? "md:max-w-[70%]" : "md:max-w-3xl";
+
   return (
     <div className="flex flex-row">
-      <article className="w-full md:mr-16 md:max-w-[75%]">
+      <article className={clsx("w-full md:mr-16 ", styles)}>
         <h1 className="mb-6 text-5xl font-bold">{frontmatter.title}</h1>
         <PostMeta
           tags={frontmatter.tags}
@@ -105,9 +108,11 @@ export const Post: React.FC<PostProps> = ({
         <Component components={MDXComponents} />
         <PostRating slug={slug} />
       </article>
-      <aside className="sticky top-[250px] hidden h-1/4 max-w-[25%] space-y-10 pt-1.5 md:block">
-        <TableOfContents toc={tableOfContents} />
-      </aside>
+      {tableOfContents.length > 0 && (
+        <aside className="sticky top-8 mt-32 hidden h-1/4 max-w-[30%] space-y-10 pt-1.5 md:block">
+          <TableOfContents toc={tableOfContents} />
+        </aside>
+      )}
     </div>
   );
 };
