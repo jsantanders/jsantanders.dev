@@ -19,6 +19,10 @@
     }
   ],
   "settings": {
+    "editor.rulers": [
+      { "column": 80, "color": "#0000" },
+      { "column": 0, "color": "#0000" } // with alpha-channel 0 = transparent
+    ],
     "editor.formatOnPaste": true,
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
@@ -56,7 +60,8 @@
       "typecheck",
       "unlighthouse"
     ],
-    "vue.features.codeActions.enable": false
+    "rewrap.wrappingColumn": 80,
+    "rewrap.autoWrap.enabled": true
   },
   "extensions": {
     "recommendations": [

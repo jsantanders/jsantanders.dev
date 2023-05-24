@@ -1,9 +1,28 @@
 @import "katex/dist/katex.min.css";
 
-@media only screen and (max-width: 600px) {
-  .katex-display > .katex {
-    max-width: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
+.katex-display {
+  overflow: auto hidden;
+}
+
+.katex-display > .katex {
+  white-space: normal;
+}
+/* Add space between broken lines: */
+.katex-display > .base {
+  margin: 0.25em 0;
+}
+/* Compensate by reducing space around display math */
+.katex-display {
+  margin: 0.5em 0;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.katex-display::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.katex-display {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

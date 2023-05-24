@@ -46,6 +46,10 @@ module.exports = {
       maxHeight: {
         "3/4": "75vh",
       },
+      fontSize: {
+        md: "0.95rem",
+        "2md": "calc(1.1825rem)",
+      },
     },
   },
   variants: {

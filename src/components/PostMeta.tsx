@@ -27,8 +27,8 @@ export const PostMeta: React.FC<BlogRowProps> = ({ tags, publishedAt, readingTim
     <div className="flex flex-col justify-between md:flex-row md:items-center">
       <div className="flex flex-row">
         {tags.map((tag) => (
-          <p key={tag} className="p-1 text-sm text-gray-500 dark:text-gray-500">
-            <span className="text-gray-400 dark:text-gray-600">#</span>
+          <p key={tag} className="p-1 text-sm text-gray-500 dark:text-gray-400">
+            <span className="text-gray-300 dark:text-gray-600">#</span>
             {tag}
           </p>
         ))}

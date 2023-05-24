@@ -20,8 +20,8 @@ export const TableOfContents: React.FC<{ toc: Toc }> = ({ toc }) => {
   }
 
   return (
-    <nav className={"toc"}>
-      <h5 className="mb-6 mt-8 translate-y-1 text-xl font-bold md:translate-y-h5">
+    <nav>
+      <h5 className="mb-6 mt-8 translate-y-1 text-lg font-bold uppercase md:translate-y-h5">
         {i18n.t("blog.toc.title")}
       </h5>
       {renderNodes(toc)}
@@ -53,8 +53,8 @@ function renderNodes(nodes: Toc) {
  * @returns {JSX.Element} - The rendered component.
  */
 const TOCLink: React.FC<{ node: TocEntry }> = ({ node }) => {
-  const fontSizes: Record<number, string> = { 2: "sm", 3: "xs", 4: "xs" };
-  const padding: Record<number, string> = { 2: "pl-0", 3: "pl-2", 4: "pl-4" };
+  const fontSizes: Record<number, string> = { 2: "md", 3: "sm", 4: "xs" };
+  const padding: Record<number, string> = { 2: "pl-0", 3: "pl-3", 4: "pl-6" };
   const id = node.id || generateId(6);
   const [highlighted, setHighlighted] = useHighlighted(id);
   return (
