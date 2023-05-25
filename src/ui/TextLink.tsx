@@ -14,7 +14,8 @@ export const TextLink: React.FC<React.PropsWithChildren<TextLinkProps>> = ({
   children,
   ...props
 }) => {
-  const classes = "text-blue-400 rounded hover:underline focus:outline-none focus:ring-2";
+  const classes =
+    "text-blue-600 dark:text-blue-400 rounded hover:underline focus:outline-none focus:ring-2";
 
   if (href?.match(/^#/)) {
     return (

@@ -4,5 +4,5 @@
  * @returns {React.ReactElement} React component
  */
 export const Paragraph: React.FC<React.HTMLAttributes<HTMLParagraphElement>> = (props) => {
-  return <p className="my-5 text-2md leading-relaxed" {...props} />;
+  return <p className="my-5 leading-relaxed lg:text-2md" {...props} />;
 };
