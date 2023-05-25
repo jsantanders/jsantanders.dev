@@ -4,6 +4,7 @@ import { useI18n } from "next-localization";
 import type { IReadTimeResults } from "reading-time";
 
 import formatDate from "@/lib/date";
+import { slugify } from "@/lib/slugify";
 
 type BlogRowProps = {
   tags: string[];
@@ -29,7 +30,7 @@ export const PostMeta: React.FC<BlogRowProps> = ({ tags, publishedAt, readingTim
         {tags.map((tag) => (
           <p key={tag} className="p-1 text-sm text-gray-500 dark:text-gray-400">
             <span className="text-gray-300 dark:text-gray-600">#</span>
-            {tag}
+            {slugify(tag)}
           </p>
         ))}
       </div>

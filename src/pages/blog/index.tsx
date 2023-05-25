@@ -15,16 +15,16 @@ import { getBlogsInformation } from "@/lib/mdx";
  * @param {Information[]} blogs - Blogs information
  * @returns {React.ReactElement} React component
  */
-const Blogs: React.FC<{ blogs: Information[]; tags: string[] }> = ({ blogs, tags }) => {
+const Blogs: React.FC<{ blogs: Information[]; categories: string[] }> = ({ blogs, categories }) => {
   const i18n = useI18n();
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<string[]>([]);
 
   const filteredBlogs = blogs.filter((blog) => {
-    if (selectedTags.length === 0) {
+    if (selectedCategory.length === 0) {
       return true;
     }
-    return blog.tags.some((tag) => selectedTags.includes(tag));
+    return selectedCategory.includes(blog.category);
   });
   const pageSize = Number(process.env.NEXT_PUBLIC_PAGE_SIZE) || 3;
   const from = (currentPage - 1) * pageSize;
@@ -41,14 +41,14 @@ const Blogs: React.FC<{ blogs: Information[]; tags: string[] }> = ({ blogs, tags
       <p className="mb-4 mt-4 text-md text-gray-600 dark:text-gray-400">{i18n.t("blog.tag")}</p>
 
       <ul className="mb-6 flex max-w-xl flex-wrap items-center justify-center">
-        {tags.map((tag) => (
-          <li key={tag}>
+        {categories.map((category) => (
+          <li key={category}>
             <Tag
-              name={tag}
-              isActive={selectedTags.includes(tag)}
+              name={category}
+              isActive={selectedCategory.includes(category)}
               onClick={() =>
-                setSelectedTags((prev) =>
-                  prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
+                setSelectedCategory((prev) =>
+                  prev.includes(category) ? prev.filter((t) => t !== category) : [...prev, category]
                 )
               }
             />
@@ -80,13 +80,13 @@ const Blogs: React.FC<{ blogs: Information[]; tags: string[] }> = ({ blogs, tags
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const language = await import(`@/locales/${locale}.json`);
   const blogs = await getBlogsInformation(locale);
-  const tags = [...new Set(blogs.flatMap((blog) => blog.tags))];
+  const categories = [...new Set(blogs.flatMap((blog) => blog.category))];
 
   return {
     props: {
       lngDict: language.default,
       blogs,
-      tags,
+      categories,
     },
   };
 };

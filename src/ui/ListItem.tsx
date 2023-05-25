@@ -22,11 +22,11 @@ export const ListItem: React.FC<ListItemProps> = ({ children, ...props }) => {
   return (
     <li ref={listRef} className="flex flex-row items-baseline" {...props}>
       {type === "ul" && (
-        <span className="min-w-40 translate-y-1 transform pr-3 text-orange" aria-hidden>
+        <span className="min-w-40 translate-y-1 transform text-orange md:pr-3" aria-hidden>
           <ListArrow width={18} height={18} />
         </span>
       )}
-      <span className="lg:text-2md">{children}</span>
+      <span className="text-md font-medium leading-relaxed lg:text-2md">{children}</span>
     </li>
   );
 };

@@ -37,6 +37,7 @@ export type Frontmatter = {
   description: string;
   isPublished: boolean;
   publishedAt: string;
+  category: string;
   tags: string[];
 };
 
@@ -94,8 +95,18 @@ export const Post: React.FC<PostProps> = ({
   });
 
   return (
-    <div className="flex w-full flex-row justify-between">
-      <article className={clsx("w-full lg:mr-16", tableOfContents.length > 0 && "lg:max-w-[70%]")}>
+    <div
+      className={clsx(
+        "flex w-full flex-row",
+        tableOfContents.length > 0 ? "justify-between" : "justify-center"
+      )}
+    >
+      <article
+        className={clsx(
+          "w-full lg:mr-16",
+          tableOfContents.length > 0 ? "lg:max-w-[70%]" : "max-w-3xl"
+        )}
+      >
         <h1 className="mb-6 text-5xl font-bold">{frontmatter.title}</h1>
         <PostMeta
           tags={frontmatter.tags}

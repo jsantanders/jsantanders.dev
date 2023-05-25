@@ -250,41 +250,5 @@ footer ul > li {
   content: counters(counts, ".") ". ";
   min-width: 40px;
 
-  @apply inline-block pr-3 font-medium text-orange;
-}
-
-code,
-pre {
-  font-family: inherit;
-}
-
-code::-webkit-scrollbar {
-  display: none;
-}
-
-pre[class*="language-"]::before {
-  content: attr(data-language);
-
-  @apply absolute right-4 top-1 text-sm font-bold uppercase text-orange md:text-base;
-}
-
-pre[class*="language-"],
-code[class*="language-"] {
-  font-family: Menlo, Monaco, Consolas, "Andale Mono", "Ubuntu Mono", "Courier New", monospace;
-  color: var(--color-code-primary);
-  text-shadow: none;
-  word-spacing: normal;
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
-  tab-size: 4;
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
-
-  @apply whitespace-pre break-normal text-left text-sm;
-}
-
-.token.comment {
-  color: var(--color-code-comment);
+  @apply inline-block md:pr-3 font-medium text-orange;
 }

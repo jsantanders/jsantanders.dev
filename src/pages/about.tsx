@@ -36,7 +36,7 @@ const Blog: React.FC = () => {
           <h1 className="text-4xl font-bold tracking-tight text-gray-800 dark:text-gray-100 sm:text-5xl">
             {i18n.t("about.title")}
           </h1>
-          <div className="mt-6 space-y-7 text-base text-gray-600 dark:text-gray-400">
+          <div className="mt-6 space-y-7 text-base text-primary">
             <p>{i18n.t("about.1")}</p>
             <p>{i18n.t("about.2")}</p>
             <p>{i18n.t("about.3")}</p>

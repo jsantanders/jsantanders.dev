@@ -61,12 +61,14 @@ export const Heading: React.FC<HeadingProps> = ({ level, children, ...props }) =
   }
 
   return (
-    <Component className={`group relative break-words ${size} mb-6 mt-8 font-bold`} {...props}>
+    <Component
+      className={`group relative scroll-my-20 break-words ${size} mb-6 mt-8 font-bold`}
+      {...props}
+    >
       {children}
       <a
         id={id}
         href={`#${id}`}
-        style={{ scrollMarginTop: "142px" }}
         className={`align-text-middle inline-block transform md:absolute md:left-0 md:-translate-x-8 ${translate} ml-2 rounded opacity-0 hover:opacity-70 focus:opacity-70 focus:outline-none focus:ring-2 group-hover:opacity-70 group-focus:opacity-70 md:ml-0`}
       >
         <Link width={24} />
