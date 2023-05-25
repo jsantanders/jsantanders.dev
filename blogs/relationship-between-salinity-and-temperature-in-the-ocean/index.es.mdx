@@ -27,7 +27,9 @@ En su forma más general, un modelo de regresión asume que la respuesta $Y$ pue
 ser expresada como una función de las variables predictoras $X_1, X_2, \cdots,
 X_n$ más un término de error $\epsilon$:
 
-$$ Y = f(X_1, X_2, \cdots, X_n) + \epsilon $$
+$$
+Y = f(X_1, X_2, \cdots, X_n) + \epsilon
+$$
 
 En esta forma, estimar $f$ puede ser bastante desafiante, incluso asumiendo que
 es una función suave y continua. Existen infinitas funciones posibles que se
@@ -38,7 +40,9 @@ medida el proceso de modelado. En lugar de estimar la función completa $f`, sol
 necesitamos estimar los parámetros desconocidos en la ecuación de regresión
 lineal:
 
-$$ Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_n X_n + \epsilon $$
+$$
+Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_n X_n + \epsilon
+$$
 
 Aquí, $\beta_0, \beta_1, \beta_2, \beta_n$ son parámetros desconocidos (también
 llamados término de intercepción o sesgo). Observa que las variables predictoras
@@ -51,7 +55,9 @@ $$
 
 que aún es lineal. Mientras tanto:
 
-$$ Y = \beta_0 + \beta_1 \beta_2 X_1 + \beta_2 X_2 + \beta_3 X_3 + \epsilon $$
+$$
+Y = \beta_0 + \beta_1 \beta_2 X_1 + \beta_2 X_2 + \beta_3 X_3 + \epsilon
+$$
 
 no lo es. Aunque el nombre implica una línea recta, los modelos de regresión
 lineal pueden ser bastante flexibles y pueden manejar conjuntos de datos
@@ -87,7 +93,9 @@ $$
 
 Podemos escribir esto de forma más conveniente en forma de matriz:
 
-$$ y = X \beta + \epsilon $$
+$$
+y = X \beta + \epsilon
+$$
 
 donde $y = (y_1, y_2, \cdots, y_m)^T$ es el vector de respuesta, $\epsilon =
 (\epsilon_1, \epsilon_2, \cdots, \epsilon_m)^T$ es el vector de error, $\beta =
@@ -124,12 +132,16 @@ La estimación de $\beta$ puede abordarse tanto desde una perspectiva geométric
 como no geométrica. Definimos la mejor estimación de $\beta$ como aquella que
 minimiza la suma de los residuos al cuadrado:
 
-$$ \sum{\epsilon_i^2} = \epsilon^T \epsilon = (y - X \beta)^T (y - X \beta) $$
+$$
+\sum{\epsilon_i^2} = \epsilon^T \epsilon = (y - X \beta)^T (y - X \beta)
+$$
 
 Para encontrar esta estimación óptima, diferenciamos la expresión con respecto a
 $\beta$ y establecemos el resultado en cero, obteniendo las ecuaciones normales:
 
-$$ X^T X \hat{\beta} = X^T y $$
+$$
+X^T X \hat{\beta} = X^T y
+$$
 
 Curiosamente, también podemos derivar el mismo resultado utilizando un enfoque
 geométrico:

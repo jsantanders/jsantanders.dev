@@ -21,7 +21,7 @@ export const TableOfContents: React.FC<{ toc: Toc }> = ({ toc }) => {
 
   return (
     <nav>
-      <h5 className="mb-6 mt-8 translate-y-1 text-lg font-bold uppercase md:translate-y-h5">
+      <h5 className="mb-4 mt-8 translate-y-1 text-md font-bold uppercase md:translate-y-h5">
         {i18n.t("blog.toc.title")}
       </h5>
       {renderNodes(toc)}
@@ -32,15 +32,18 @@ export const TableOfContents: React.FC<{ toc: Toc }> = ({ toc }) => {
 /**
  * Renders the nodes recursively.
  * @param {Array} nodes - The nodes to render.
+ * @param {string} chapter - The chapter.
  * @returns {JSX.Element} - The rendered nodes.
  */
-function renderNodes(nodes: Toc) {
+function renderNodes(nodes: Toc, chapter = "") {
   return (
     <ul>
-      {nodes.map((node) => (
+      {nodes.map((node, idx) => (
         <li key={node.id}>
-          <TOCLink node={node} />
-          {node.children?.length && node.children?.length > 0 && renderNodes(node.children)}
+          <TOCLink node={node} ch={`${chapter}${idx + 1}.`} />
+          {node.children?.length &&
+            node.children?.length > 0 &&
+            renderNodes(node.children, `${chapter}${idx + 1}.`)}
         </li>
       ))}
     </ul>
@@ -52,9 +55,9 @@ function renderNodes(nodes: Toc) {
  * @param {Object} node - The node to render.
  * @returns {JSX.Element} - The rendered component.
  */
-const TOCLink: React.FC<{ node: TocEntry }> = ({ node }) => {
+const TOCLink: React.FC<{ node: TocEntry; ch: string }> = ({ node, ch }) => {
   const fontSizes: Record<number, string> = { 2: "md", 3: "sm", 4: "xs" };
-  const padding: Record<number, string> = { 2: "pl-0", 3: "pl-3", 4: "pl-6" };
+  const padding: Record<number, string> = { 2: "pl-0", 3: "pl-7", 4: "pl-10" };
   const id = node.id || generateId(6);
   const [highlighted, setHighlighted] = useHighlighted(id);
   return (
@@ -62,8 +65,8 @@ const TOCLink: React.FC<{ node: TocEntry }> = ({ node }) => {
       href={`#${id}`}
       className={`block text-${fontSizes[node.depth]} ${
         padding[node.depth]
-      } py-1 hover:text-blue-600 dark:hover:text-blue-400 ${
-        highlighted && "text-blue-600 dark:text-blue-400"
+      } border-l border-primary py-1 pl-3 hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 ${
+        highlighted && "border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400"
       }`}
       onClick={(e) => {
         e.preventDefault();
@@ -71,7 +74,7 @@ const TOCLink: React.FC<{ node: TocEntry }> = ({ node }) => {
         document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
       }}
     >
-      {node.value}
+      {ch} {node.value}
     </NextLink>
   );
 };

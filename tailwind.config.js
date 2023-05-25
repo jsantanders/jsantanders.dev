@@ -47,6 +47,7 @@ module.exports = {
         "3/4": "75vh",
       },
       fontSize: {
+        "2xs": "0.125rem",
         md: "0.95rem",
         "2md": "calc(1.1825rem)",
       },

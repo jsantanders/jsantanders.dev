@@ -38,7 +38,7 @@ const Blogs: React.FC<{ blogs: Information[]; tags: string[] }> = ({ blogs, tags
         <p className="mb-4 text-2xl text-gray-600 dark:text-gray-400">{i18n.t("blog.none")}</p>
       )}
 
-      <p className="text-md mb-4 mt-4 text-gray-600 dark:text-gray-400">{i18n.t("blog.tag")}</p>
+      <p className="mb-4 mt-4 text-md text-gray-600 dark:text-gray-400">{i18n.t("blog.tag")}</p>
 
       <ul className="mb-6 flex max-w-xl flex-wrap items-center justify-center">
         {tags.map((tag) => (
