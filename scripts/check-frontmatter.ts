@@ -12,6 +12,7 @@ const schema = Joi.object({
     then: Joi.string().required().isoDate(),
   }),
   tags: Joi.array().items(Joi.string()).required(),
+  category: Joi.string().required(),
 });
 
 blogs.forEach(async (blog) => {

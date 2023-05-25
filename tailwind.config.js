@@ -25,6 +25,12 @@ module.exports = {
       borderColor: {
         primary: "var(--color-border-primary)",
       },
+      ringColor: {
+        primary: "var(--color-border-primary)",
+      },
+      divideColor: {
+        primary: "var(--color-border-primary)",
+      },
       zIndex: {
         "-10": "-10",
         "-20": "-20",
@@ -47,8 +53,9 @@ module.exports = {
         "3/4": "75vh",
       },
       fontSize: {
-        "2xs": "0.125rem",
-        md: "0.95rem",
+        "2xs": "calc(0.125rem)",
+        "2sm": "calc(0.95rem)",
+        md: "calc(1.125rem)",
         "2md": "calc(1.1825rem)",
       },
     },

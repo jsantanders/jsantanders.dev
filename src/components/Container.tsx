@@ -19,7 +19,7 @@ const OuterContainer = forwardRef<HTMLDivElement, PropsWithChildren<ContainerPro
   function OuterContainer(props, ref) {
     const { className, children, ...rest } = props;
     return (
-      <div ref={ref} className={clsx("sm:px-8", className)} {...rest}>
+      <div ref={ref} className={clsx(className)} {...rest}>
         <div className="mx-auto max-w-7xl lg:px-8">{children}</div>
       </div>
     );
@@ -30,11 +30,7 @@ const InnerContainer = forwardRef<HTMLDivElement, PropsWithChildren<ContainerPro
   function InnerContainer(props, ref) {
     const { className, children, ...rest } = props;
     return (
-      <div
-        ref={ref}
-        className={clsx("border-bg-red relative px-4 sm:px-8 lg:px-12", className)}
-        {...rest}
-      >
+      <div ref={ref} className={clsx("border-bg-red relative lg:px-12", className)} {...rest}>
         <div className="mx-auto max-w-2xl lg:max-w-6xl">{children}</div>
       </div>
     );
