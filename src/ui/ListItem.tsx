@@ -26,7 +26,7 @@ export const ListItem: React.FC<ListItemProps> = ({ children, ...props }) => {
           <ListArrow width={18} height={18} />
         </span>
       )}
-      <span className="text-md font-medium leading-relaxed lg:text-2md">{children}</span>
+      <span className="text-md leading-relaxed lg:text-2md">{children}</span>
     </li>
   );
 };
