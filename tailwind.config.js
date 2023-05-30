@@ -55,7 +55,7 @@ module.exports = {
       fontSize: {
         "2xs": "calc(0.125rem)",
         "2sm": "calc(0.95rem)",
-        md: "calc(1.125rem)",
+        md: "calc(1.105rem)",
         "2md": "calc(1.1825rem)",
       },
     },
