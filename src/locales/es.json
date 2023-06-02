@@ -32,7 +32,7 @@
     "welcome": "¡Hola! 👋, Soy Jesús Santander",
     "about": {
       "1": "Soy un desarrollador y entusiasta de las matemáticas centrado en React, Node y Rust. Actualmente trabajo como ingeniero de software en Laika, donde construyo sistemas escalables y distribuidos que manejan datos y flujos de trabajo complejos.",
-      "2": "En este espacio, planeo compartir algunas de mis reflexiones e ideas personales sobre temas relacionados con la ingeniería de sistemas complejos y estadísticas.",
+      "2": "En este espacio, planeo compartir algunas de mis reflexiones e ideas como desarrollador. Espero que puedas encontrar algo útil aquí.",
       "3": "Soy un defensor del software de código abierto y disfruto contribuyendo a la comunidad a través de diversos proyectos."
     },
     "community": "Mi contribución a la comunidad",
@@ -75,8 +75,8 @@
   },
   "about": {
     "title": "Ingeniero de Software y entusiasta de las Matemáticas.",
-    "1": "Soy un Ingeniero de Software Fullstack de Venezuela 🇻🇪 que disfruta bloguear acerca de mis experiencias con el objetivo de ayudar a otros y a mi futuro yo. Actualmente estoy cursando una Maestría en Matemáticas Aplicadas en la Universidad de Carabobo. A lo largo de mi carrera, he adquirido valiosa experiencia en el desarrollo de sistemas distribuidos de alta carga, cómputo en la nube, interfaces de usuario reactivas, así como en la implementación de diversos enfoques de aprendizaje automático en entornos prácticos.",
-    "2": "Tengo habilidades matemáticas fundamentales en teoría de probabilidad, teoría de procesos aleatorios, análisis de series temporales, aprendizaje automático, aprendizaje profundo y optimización. Mi investigación actual se centra en la aplicación de algoritmos de aprendizaje automático y aprendizaje profundo al análisis de series temporales.",
+    "1": "Soy un Ingeniero de Software Fullstack de Venezuela 🇻🇪 que disfruta bloguear acerca de mis experiencias con el objetivo de ayudar a otros y a mi futuro yo. Actualmente estoy cursando una Maestría en Matemáticas Aplicadas en la Universidad de Carabobo. A lo largo de mi carrera, he adquirido valiosa experiencia en el desarrollo de sistemas distribuidos de alta carga, cómputo en la nube, aplicaciones web, así como en la implementación de diversos enfoques de aprendizaje automático en entornos prácticos.",
+    "2": "Tengo habilidades matemáticas fundamentales en teoría de probabilidad, teoría de procesos aleatorios y estadística.",
     "3": "También tengo un conocimiento profundo y comprensión de los siguientes lenguajes: C#, TypeScript y actualmente estoy aprendiendo Rust ❤️.",
     "seo": {
       "title": "Acerca de - Jesús Santander",
