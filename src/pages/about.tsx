@@ -65,7 +65,7 @@ const Blog: React.FC = () => {
               className="mt-4"
               ariaLabel={i18n.t("home.social.github")}
             >
-              {i18n.t("home.social.twitter")}
+              {i18n.t("home.social.github")}
             </SocialLink>
             <SocialLink
               href={"https://linkedin.com/in/jsantanders"}
