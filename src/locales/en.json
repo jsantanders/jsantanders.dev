@@ -31,7 +31,7 @@
   "home": {
     "welcome": "Hi there 👋, I'm Jesus Santander",
     "about": {
-      "1": "I'm a dev and math enthusiast, focused on React, Node, .NET and Rust. Passionate about distributed systems. Currently, I work as a software engineer at Laika, where I build scalable microservices that handle complex data and workflows.",
+      "1": "I'm a software engineer with a passion for creating scalable distributed systems. I work with Node.js, .NET, Go, Rust and React. Currently, I'm at Laika, building microservices to manage complex data and workflows.",
       "2": "In this space, I plan to share some of my personal reflections and experiences as a developer. Hopefully you'll find something useful here. ",
       "3": "I'm an advocate of open-source software and enjoy contributing to the community through various projects."
     },
@@ -77,7 +77,7 @@
     "title": "A Software Engineer, and Math enthusiast.",
     "1": "A Fullstack software engineer from Venezuela 🇻🇪 who enjoys to blog about my experiences with the aim to help others and my future self. I’m currently pursuing a Msc. in applied mathematics at the University of Carabobo. Throughout my career, I’ve gained valuable experience in developing distributed high-load systems, cloud computing, and web applications.",
     "2": "I have fundamental math skills in probability theory, random process, and statistics.",
-    "3": "I also have in-depth knowledge and understanding of the following languages: C#, TypeScript, and currently learning Rust ❤️.",
+    "3": "I also have in-depth knowledge and understanding of the following languages:",
     "seo": {
       "title": "About – Jesus Santander",
       "description": "My developer profile."
