@@ -59,7 +59,9 @@ const MDXComponents = {
   p: Paragraph,
   ul: (props: React.HTMLAttributes<HTMLUListElement>) => <List type="ul" {...props} />,
   ol: (props: React.HTMLAttributes<HTMLOListElement>) => <List type="ol" {...props} />,
-  li: ListItem,
+  li: (props: React.HTMLAttributes<HTMLLIElement>) => (
+    <ListItem className={"text-md leading-relaxed lg:text-2md"} {...props} />
+  ),
   img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => <Image {...props} />,
   a: TextLink as React.FC, // fixed type on mdx-bundler
   code: Code as unknown as React.FC, // fixed type on mdx-bundler

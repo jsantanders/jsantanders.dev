@@ -1,3 +1,5 @@
+import { PropsWithChildren } from "react";
+
 export type ListProps = {
   type: "ol" | "ul";
 };
@@ -7,7 +9,7 @@ export type ListProps = {
  * @param {ListProps} props component props
  * @returns {React.ReactElement} React component
  */
-export const List: React.FC<ListProps> = ({ type, ...props }) => {
+export const List: React.FC<PropsWithChildren<ListProps>> = ({ type, ...props }) => {
   let classes;
   const Component = type as React.ElementType;
 

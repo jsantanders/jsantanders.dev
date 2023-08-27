@@ -13,6 +13,7 @@ export type ListItemProps = React.PropsWithChildren<React.HTMLAttributes<HTMLLIE
  */
 export const ListItem: React.FC<ListItemProps> = ({ children, ...props }) => {
   const listRef = useRef<any>();
+  const { className, ...rest } = props;
   const [type, setType] = useState<string>("");
 
   useEffect(() => {
@@ -20,13 +21,13 @@ export const ListItem: React.FC<ListItemProps> = ({ children, ...props }) => {
   }, [listRef]);
 
   return (
-    <li ref={listRef} className="flex flex-row items-baseline" {...props}>
+    <li ref={listRef} className="flex flex-row items-baseline" {...rest}>
       {type === "ul" && (
         <span className="min-w-40 translate-y-1 transform text-orange md:pr-3" aria-hidden>
           <ListArrow width={18} height={18} />
         </span>
       )}
-      <span className="text-md leading-relaxed lg:text-2md">{children}</span>
+      <span className={className}>{children}</span>
     </li>
   );
 };

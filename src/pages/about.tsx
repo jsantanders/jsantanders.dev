@@ -11,6 +11,9 @@ import linkedin from "@/icons/linkedin.svg";
 import twitter from "@/icons/twitter.svg";
 import AzDevCert from "@/images/certifications/microsoft-certified-azure-developer-associate.png";
 import portraitImage from "@/images/portrait.jpg";
+import { List } from "@/ui/List";
+import { ListItem } from "@/ui/ListItem";
+import { TextLink } from "@/ui/TextLink";
 
 /**
  * Renders the about page
@@ -41,9 +44,25 @@ const Blog: React.FC = () => {
             <p>{i18n.t("about.2")}</p>
             <p>{i18n.t("about.3")}</p>
           </div>
+          <div>
+            <List type="ul">
+              <ListItem>
+                <TextLink href={"https://www.typescriptlang.org/"}>TypeScript.</TextLink>
+              </ListItem>
+              <ListItem>
+                <TextLink href={"https://learn.microsoft.com/en-us/dotnet/csharp/"}>C#.</TextLink>
+              </ListItem>
+              <ListItem>
+                <TextLink href={"https://go.dev/"}>Go.</TextLink>
+              </ListItem>
+              <ListItem>
+                <TextLink href={"https://www.rust-lang.org/"}>Rust.</TextLink>
+              </ListItem>
+            </List>
+          </div>
           <div className="mt-6 space-y-7">
             <NextLink
-              href="https://www.credly.com/badges/f1806c26-da8b-4393-81ea-9335465876e0"
+              href="https://www.credly.com/badges/f1806c26-da8b-4393-81e~~a-9335465876e0"
               target="_blank"
             >
               <Image src={AzDevCert} alt="" width={128} />
