@@ -50,9 +50,9 @@ export const Container: React.FC<ContainerProps> = forwardRef<
   const i18n = useI18n();
 
   const meta: { [key: string]: string } = {
-    type: "website",
-    image: i18n.t("seo.image.url"),
-    imageAlt: i18n.t("seo.image.alt"),
+    type: router.asPath.includes("blog/") ? "article" : "website",
+    image: `https://jsantanders.dev/api${router.asPath}`,
+    imageAlt: seo.title?.toString() || "",
     ...seo,
   };
 
