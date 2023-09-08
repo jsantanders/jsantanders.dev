@@ -51,12 +51,12 @@ export const Container: React.FC<ContainerProps> = forwardRef<
 
   const meta: { [key: string]: string } = {
     type: router.asPath.includes("blog/") ? "article" : "website",
-    image: `https://jsantanders.dev/api${router.asPath}`,
+    image: `https://jsantanders.dev/api/${router.locale}${router.asPath}`,
     imageAlt: seo.title?.toString() || "",
     ...seo,
   };
 
-  const isEN = router?.locale === "en";
+  const isEN = router.locale === "en";
   const isArticle = meta.type === "article";
   const path = isEN ? router.asPath : `/es${router.asPath}`;
 

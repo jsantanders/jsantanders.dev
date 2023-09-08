@@ -7,11 +7,20 @@ export default async (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<NextApiResponse | void> => {
-  const { slug } = req.query || {};
+  const { slug, locale = "en" } = req.query || {};
 
-  if (slug) {
+  if (slug && typeof slug === "string") {
+    const slugWithoutLocale = slug.replace(`/${locale}`, "");
     const response = await fetch(
-      `https://raw.githubusercontent.com/jsantanders/jsantanders.dev/main/blogs/${slug}/index.mdx`
+      `https://api.github.com/repos/jsantanders/jsantanders.dev/contents/blogs/${slugWithoutLocale}/index${
+        locale === "en" ? "" : ".es"
+      }.mdx`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+          Accept: "application/vnd.github.raw",
+        },
+      }
     );
 
     if (!response.ok) {
@@ -19,7 +28,7 @@ export default async (
     }
 
     const blog = await response.text();
-    const html = generateBlogImageHTML(blog);
+    const html = generateBlogImageHTML(blog, locale as string);
     const file = await screenshot(html);
     res.setHeader("Content-Type", "image/png");
     res.setHeader(

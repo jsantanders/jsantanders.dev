@@ -8,9 +8,9 @@ import formatDate from "@/lib/date";
  * @param {string} blog  - Blog content
  * @returns {string} HTML for blog image
  */
-export const generateBlogImageHTML = (blog: string): string => {
+export const generateBlogImageHTML = (blog: string, locale: string): string => {
   const { data, content } = matter(blog.trim());
-  const isEN = data.locale === "en";
+  const isEN = locale === "en";
   const date = isEN
     ? `Published on ${formatDate("en", new Date(data.publishedAt))}`
     : `Publicado el ${formatDate("es", new Date(data.publishedAt))}`;
