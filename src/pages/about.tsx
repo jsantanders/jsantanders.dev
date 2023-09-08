@@ -59,22 +59,6 @@ const Blog: React.FC = () => {
               </ListItem>
             </List>
           </div>
-          <div>
-            <List type="ul">
-              <ListItem>
-                <TextLink href={"https://www.typescriptlang.org/"}>TypeScript.</TextLink>
-              </ListItem>
-              <ListItem>
-                <TextLink href={"https://learn.microsoft.com/en-us/dotnet/csharp/"}>C#.</TextLink>
-              </ListItem>
-              <ListItem>
-                <TextLink href={"https://go.dev/"}>Go.</TextLink>
-              </ListItem>
-              <ListItem>
-                <TextLink href={"https://www.rust-lang.org/"}>Rust.</TextLink>
-              </ListItem>
-            </List>
-          </div>
           <div className="mt-6 space-y-7">
             <NextLink
               href="https://www.credly.com/badges/f1806c26-da8b-4393-81e~~a-9335465876e0"
