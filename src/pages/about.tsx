@@ -42,7 +42,6 @@ const Blog: React.FC = () => {
           <div className="mt-6 space-y-7 text-base text-primary">
             <p>{i18n.t("about.1")}</p>
             <p>{i18n.t("about.2")}</p>
-            <p>{i18n.t("about.3")}</p>
           </div>
           <div>
             <List type="ul">
