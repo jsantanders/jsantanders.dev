@@ -1,4 +1,4 @@
-import chrome from "chrome-aws-lambda";
+import chrome from "@sparticuz/chromium";
 import puppeteer from "puppeteer-core";
 
 const screenshot = async (html: string): Promise<string | void | Buffer> => {
