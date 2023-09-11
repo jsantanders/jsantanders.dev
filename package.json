@@ -56,7 +56,6 @@
     "@react-spring/web": "^9.7.2",
     "@stefanprobst/rehype-extract-toc": "^2.2.0",
     "@vercel/analytics": "^1.0.0",
-    "chrome-aws-lambda": "^10.1.0",
     "clsx": "^1.2.1",
     "esbuild": "^0.17.18",
     "focus-visible": "^5.2.0",
