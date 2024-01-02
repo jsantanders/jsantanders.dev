@@ -40,7 +40,9 @@ const Blog: React.FC = () => {
             {i18n.t("about.title")}
           </h1>
           <div className="mt-6 space-y-7 text-base text-primary">
-            <p>{i18n.t("about.1")}</p>
+            <p>
+              {i18n.t("about.1")} {<TextLink href="https://cv.jsantanders.dev">CV</TextLink>}
+            </p>
             <p>{i18n.t("about.2")}</p>
           </div>
           <div>
