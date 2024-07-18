@@ -28,7 +28,10 @@ export const Navbar = ({ locales }: NavbarProps) => {
   const classes = isNavVisible ? "navbar" : "navbar navbar-hidden";
 
   return (
-    <nav ref={navRef} className={`sticky top-0 z-10 my-4 bg-background py-2 ${classes}`}>
+    <nav
+      ref={navRef}
+      className={`sticky top-0 z-10 my-4 bg-background py-2 backdrop-blur-sm ${classes}`}
+    >
       <div className="mx-auto flex w-full items-center justify-between">
         <Fragment>
           <MobileNav locales={locales} className="pointer-events-auto md:hidden" />

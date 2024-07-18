@@ -110,7 +110,12 @@ export default async function Post({
           <Component components={MDXComponents} />
           <PostRating slug={slug} locales={postRatingLocales} />
         </article>
-        <PostTableOfContents toc={tableOfContents} locales={tableOfContentsLocale} />
+        {
+          //TODO: Not conviced yet about adding a TOC
+          //<aside className="fixed hidden min-[1420px]:left-3/4 min-[1420px]:block min-[2000px]:left-[68%]">
+          //<PostTableOfContents toc={tableOfContents} locales={tableOfContentsLocale} />
+          //</aside>
+        }
       </div>
     </HydrationBoundary>
   );

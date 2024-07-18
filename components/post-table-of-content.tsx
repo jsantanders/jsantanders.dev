@@ -15,23 +15,17 @@ type PostTableOfContentProps = {
 };
 
 export const PostTableOfContents: React.FC<PostTableOfContentProps> = ({ toc, locales }) => {
-  const [portalElement, setPortalElement] = useState<Element | null>(null);
-  useEffect(() => {
-    setPortalElement(document.getElementById("sidebar-content"));
-  }, []);
-
-  if (!toc?.length || portalElement == null) {
+  if (!toc?.length) {
     return null;
   }
 
-  return createPortal(
+  return (
     <nav>
-      <h5 className="md:translate-y-h5 mb-4 mt-8 translate-y-1 text-base font-bold uppercase">
+      <h5 className="md:translate-y-h5 mb-4 translate-y-1 text-base font-bold uppercase">
         {locales.title}
       </h5>
       {renderNodes(toc)}
-    </nav>,
-    portalElement
+    </nav>
   );
 };
 
