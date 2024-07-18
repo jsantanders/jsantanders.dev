@@ -1,0 +1,34 @@
+---
+title: "Una forma elegante de comprobar si una referencia es nula"
+description: "Comprobar si una referencia es nula en algunas ocasiones puede dar problemas, pero hay una forma más elegante y segura de hacerlo."
+isPublished: true
+tags:
+  - csharp
+  - dotnet
+  - tricks
+---
+
+La forma clásica de comprobar que un objeto no es nulo es la siguiente:
+
+```csharp
+if (thing != null)
+```
+
+Pero ¿Qué ocurriría si alguien sobrecarga el operador `!=`? Ya no tendríamos
+certeza si la referencia es un objeto. Pero, podemos usar la siguiente forma y
+ya no importaría si el operador ha sido sobrecargado:
+
+```csharp
+if (thing is object)
+```
+
+También podemos usarlo para verificar si una referencia es nula
+
+```csharp
+if (thing is null)
+```
+
+Hay desarrolladores que pueden argumentar que de esta forma (primer caso) se
+está ofuscando la intención de comprobar si la variable tiene una instancia no
+nula. Pero yo creo que lo suficientemente idiomático una vez que te acostumbras
+y acostumbras a tus colegas a usarlo. ¿Tú que opinas?

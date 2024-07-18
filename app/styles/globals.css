@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./katex.css";
+@import "./prism.css";
+@import "./mafs.css";
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+
+    /* code highlight */
+    --text-color: #111b27;
+    --code-background: #e3eaf2;
+    --selection-background: #8da1b9;
+    --comment-color: #3c526d;
+    --punctuation-color: #111b27;
+    --tag-color: #006d6d;
+    --attribute-color: #755f00;
+    --variable-color: #005a8e;
+    --string-color: #116b00;
+    --builtin-color: #af00af;
+    --function-color: #7c00aa;
+    --keyword-color: #a04900;
+    --deleted-color: #c22f2e;
+    --line-highlight-from: #8da1b92f;
+    --line-highlight-to: #8da1b925;
+    --line-number-border: #d97706;
+    --line-number-background: #d0dae77a;
+    --line-inserted-color: #a7f3d0;
+    --line-deleted-color: #fecaca;
+    --linkable-line-color: #3c526d1f;
+    --line-number-color: #3c526dda;
+    --diff-highligh-inserted-color: #c22f2e1f;
+    --diff-highligh-inserted-color: #116b001f;
+    --highlight-bg-color: #d6dee8;
+  }
+
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+
+    /* code highlight */
+    --text-color: #e3eaf2;
+    --code-background: #111b27;
+    --selection-background: #3c526d;
+    --comment-color: #8da1b9;
+    --punctuation-color: #e3eaf2;
+    --tag-color: #66cccc;
+    --attribute-color: #e6d37a;
+    --variable-color: #6cb8e6;
+    --string-color: #91d076;
+    --builtin-color: #f4adf4;
+    --function-color: #c699e3;
+    --keyword-color: #e9ae7e;
+    --deleted-color: #cd6660;
+    --line-highlight-from: #3c526d5f;
+    --line-highlight-to: #3c526d55;
+    --line-number-border: #fbbf24;
+    --line-number-background: #0b121b7a;
+    --linkable-line-color: #8da1b918;
+    --line-number-color: #8da1b9da;
+    --line-inserted-color: #064e3b;
+    --line-deleted-color: #7f1d1d;
+    --diff-highligh-deleted-color: #cd66601f;
+    --diff-highligh-inserted-color: #cd66601f;
+    --highlight-bg-color: #1f2937;
+  }
+}
+
+@layer utilities {
+  .overflow-transparent {
+    overflow: auto;
+    scrollbar-color: transparent transparent;
+    &::-webkit-scrollbar-track,
+    &::-webkit-scrollbar-thumb {
+      visibility: hidden;
+    }
+
+    &:hover {
+      scrollbar-color: initial;
+      &::-webkit-scrollbar-track,
+      &::-webkit-scrollbar-thumb {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+    -webkit-transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    -webkit-transform: translateY(0px);
+  }
+}
+
+@-webkit-keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+    -webkit-transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    -webkit-transform: translateY(0px);
+  }
+}
+
+.navbar {
+  transition: transform 300ms ease;
+  -o-transition: transform 300ms ease;
+  transition: -webkit-transform 300ms ease;
+  -webkit-transition: -webkit-transform 300ms ease;
+}
+
+.navbar-hidden {
+  transform: translate3d(0, calc(78px * -1), 0);
+  -webkit-transform: translate3d(0, calc(78px * -1), 0);
+}
+
+@media (min-width: 768px) {
+  .navbar-hidden {
+    transform: translate3d(0, calc(110px * -1), 0);
+    -webkit-transform: translate3d(0, calc(110px * -1), 0);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}

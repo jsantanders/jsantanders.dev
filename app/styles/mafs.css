@@ -1,0 +1,10 @@
+@import "mafs/core.css";
+
+* {
+  --mafs-bg: var(--color-background) !important;
+  --mafs-fg: var(--color-foreground) !important;
+}
+
+.MafsView {
+  @apply inline-block w-full rounded-xl border border-solid border-muted-foreground p-2 md:p-4;
+}
