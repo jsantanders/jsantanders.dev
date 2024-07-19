@@ -1,11 +1,20 @@
 "use client";
 
+import { getQueryClient } from "@/app/[locale]/providers";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Star } from "lucide-react";
-import React, { CSSProperties, useState, useEffect, useCallback, useContext } from "react";
-import { getBlogPostStatistics, rateBlogPost } from "./blog-post-card/fetch-post-statistics";
+import React, {
+  type CSSProperties,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { AnalyticsContext } from "./analytics-context";
-import { getQueryClient } from "@/app/[locale]/providers";
+import {
+  getBlogPostStatistics,
+  rateBlogPost,
+} from "./blog-post-card/fetch-post-statistics";
 
 interface RatingSymbolProps {
   index: number;
@@ -14,7 +23,10 @@ interface RatingSymbolProps {
   percent: number;
   readonly?: boolean;
   onClick?: (index: number, event: React.MouseEvent | React.TouchEvent) => void;
-  onMouseMove?: (index: number, event: React.MouseEvent | React.TouchEvent) => void;
+  onMouseMove?: (
+    index: number,
+    event: React.MouseEvent | React.TouchEvent,
+  ) => void;
   onTouchEnd?: (index: number, event: React.TouchEvent) => void;
 }
 
@@ -49,7 +61,10 @@ export const PostRating: React.FC<PostRatingProps> = ({ slug, locales }) => {
 
   const { mutate: ratePost } = useMutation({
     mutationFn: (rating: number) => rateBlogPost(slug, userId, rating),
-    onSuccess: () => getQueryClient().invalidateQueries({ queryKey: ["posts-statistics", slug] }),
+    onSuccess: () =>
+      getQueryClient().invalidateQueries({
+        queryKey: ["posts-statistics", slug],
+      }),
   });
 
   if (data === undefined) return <></>;
@@ -67,7 +82,9 @@ export const PostRating: React.FC<PostRatingProps> = ({ slug, locales }) => {
       />
       {data.userHasRated && (
         <div className="py-2">
-          <span className="text-2xl font-bold">{data.rating.average.toFixed(1)}</span>
+          <span className="text-2xl font-bold">
+            {data.rating.average.toFixed(1)}
+          </span>
           <span className="text-md font-bold"> / 5.0 </span>
           <span className="text-md font-bold">
             ({data.rating.total} {locales.votes})
@@ -121,7 +138,8 @@ const Rating: React.FC<RatingProps> = ({
       const fraction = Math.ceil((percentage % 1) * fractions) / fractions;
       const precision = 10 ** 3;
       let calculatedValue =
-        symbolIndex + (Math.floor(percentage) + Math.floor(fraction * precision) / precision);
+        symbolIndex +
+        (Math.floor(percentage) + Math.floor(fraction * precision) / precision);
       calculatedValue =
         calculatedValue > 0
           ? calculatedValue > totalSymbols
@@ -130,14 +148,14 @@ const Rating: React.FC<RatingProps> = ({
           : 1 / fractions;
       return calculatedValue;
     },
-    [calculateHoverPercentage, fractions]
+    [calculateHoverPercentage, fractions],
   );
   const symbolClick = useCallback(
     (symbolIndex: number, event: React.MouseEvent | React.TouchEvent) => {
       const calculatedValue = calculateDisplayValue(symbolIndex, event);
       onClick?.(calculatedValue, event);
     },
-    [calculateDisplayValue, onClick]
+    [calculateDisplayValue, onClick],
   );
 
   const symbolEnd = useCallback(
@@ -146,7 +164,7 @@ const Rating: React.FC<RatingProps> = ({
       event.preventDefault();
       onMouseLeave();
     },
-    [onMouseLeave, symbolClick]
+    [onMouseLeave, symbolClick],
   );
 
   const symbolMouseMove = useCallback(
@@ -155,7 +173,7 @@ const Rating: React.FC<RatingProps> = ({
       setDisplayValue(calculatedValue);
       onHover?.(calculatedValue);
     },
-    [calculateDisplayValue, onHover]
+    [calculateDisplayValue, onHover],
   );
 
   const symbolNodes = [];
@@ -164,7 +182,7 @@ const Rating: React.FC<RatingProps> = ({
   const fullSymbols = Math.floor(renderedValue);
 
   for (let i = 0; i < totalSymbols; i++) {
-    let percent;
+    let percent: number;
     // Calculate each symbol's fullness percentage
     if (i - fullSymbols < 0) {
       percent = 100;
@@ -179,8 +197,12 @@ const Rating: React.FC<RatingProps> = ({
         key={i}
         index={i}
         readonly={readonly}
-        inactiveIcon={<Star fill="#9ca3af" className="h-10 w-10 text-gray-400" />}
-        activeIcon={<Star fill="#eab308" className="h-10 w-10 text-yellow-500" />}
+        inactiveIcon={
+          <Star fill="#9ca3af" className="h-10 w-10 text-gray-400" />
+        }
+        activeIcon={
+          <Star fill="#eab308" className="h-10 w-10 text-yellow-500" />
+        }
         percent={percent}
         {...(!readonly && {
           onClick: symbolClick,
@@ -188,7 +210,7 @@ const Rating: React.FC<RatingProps> = ({
           onTouchMove: symbolMouseMove,
           onTouchEnd: symbolEnd,
         })}
-      />
+      />,
     );
   }
 
@@ -221,7 +243,9 @@ const RatingSymbol: React.FC<RatingSymbolProps> = ({
 
   const backgroundNode = _iconNode(inactiveIcon);
   const showbgIcon = percent < 100;
-  const bgIconContainerStyle: CSSProperties = showbgIcon ? {} : { visibility: "hidden" };
+  const bgIconContainerStyle: CSSProperties = showbgIcon
+    ? {}
+    : { visibility: "hidden" };
   const iconNode = _iconNode(activeIcon);
   const iconContainerStyle: CSSProperties = {
     display: "inline-block",
@@ -250,7 +274,7 @@ const RatingSymbol: React.FC<RatingSymbolProps> = ({
 
   function handleKeyDown(e: React.KeyboardEvent) {
     if (e.key === "Enter" && onClick) {
-      onClick(index, e as any);
+      onClick(index, e);
     }
   }
 
@@ -282,7 +306,9 @@ const RatingSymbol: React.FC<RatingSymbolProps> = ({
 };
 
 // Return the corresponding React node for an icon.
-function _iconNode(icon: RatingSymbolProps["inactiveIcon"] | RatingSymbolProps["activeIcon"]) {
+function _iconNode(
+  icon: RatingSymbolProps["inactiveIcon"] | RatingSymbolProps["activeIcon"],
+) {
   // If it is already a React Element just return it.
   if (React.isValidElement(icon)) {
     return icon;

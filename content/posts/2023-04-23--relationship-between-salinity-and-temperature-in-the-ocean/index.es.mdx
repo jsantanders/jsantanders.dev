@@ -1,6 +1,6 @@
 ---
 title: Regresión lineal en R, explorando un conjunto de datos del mundo real
-description: Utilizando este conjunto de datos exploraremos conceptos y técnicas de regresión lineal.
+summary: Utilizando este conjunto de datos exploraremos conceptos y técnicas de regresión lineal.
 isPublished: true
 tags:
   - linear-regression
@@ -214,7 +214,7 @@ correlation_matrix <- cor(data)
 corrplot(correlation_matrix, method = "circle")
 ```
 
-![Matriz de correlación](/images/blogs/corr-matrix.jpg)
+![Matriz de correlación](./corr-matrix.jpg)
 
 Centremos nuestra atención en las variables que muestran una correlación más
 fuerte: `T_degC` y `STheta`. Dado que tenemos la flexibilidad para dar forma a
@@ -232,7 +232,7 @@ plot(data$T_degC, data$STheta,
  main = "Temperature vs Potential Density (Sigma Theta)")
 ```
 
-![variable plot](/images/blogs/degc-vs-stheta.jpg)
+![variable plot](./degc-vs-stheta.jpg)
 
 ## Buscando valores atípicos
 
@@ -255,7 +255,7 @@ significativamente alejados de la mediana. Si estás interesado en explorar
 técnicas más precisas para la detección de valores atípicos, puedes consultar
 este útil recurso [aquí](https://statsandr.com/blog/outliers-detection-in-r/)
 
-![variable plot](/images/blogs/boxplot-degc-stheta.png)
+![variable plot](./boxplot-degc-stheta.png)
 
 ## Creando el modelo
 
@@ -355,7 +355,7 @@ points(testing_data$T_degC, predictions, col = "red")
 Los puntos rojos son los valores predichos y los puntos azules son los valores
 reales. Podemos ver que los valores predichos están cerca de los valores reales.
 
-![variable plot](/images/blogs/actual-vs-predicted.png)
+![variable plot](./actual-vs-predicted.png)
 
 ## Referencias
 
