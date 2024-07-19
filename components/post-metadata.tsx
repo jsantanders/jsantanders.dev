@@ -1,6 +1,6 @@
 "use client";
 
-import { IReadTimeResults } from "reading-time";
+import type { IReadTimeResults } from "reading-time";
 import { Views } from "./blog-post-card/views";
 import { slugify } from "@/lib/utils";
 
@@ -34,7 +34,8 @@ export const PostMetadata: React.FC<PostMetadata> = ({
         ))}
       </div>
       <div className="flex flex-row gap-x-1 text-sm">
-        {readingTime.minutes.toFixed(0)} {locales.read} • <time>{publishedAt} </time> •{" "}
+        {readingTime.minutes.toFixed(0)} {locales.read} •{" "}
+        <time>{publishedAt} </time> •{" "}
         <Views slug={slug} label={locales.views} />
       </div>
     </div>

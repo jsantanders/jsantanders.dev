@@ -18,7 +18,11 @@ import { bundleBlogPost, getPostsSlugs, getTableOfContents } from "@/lib/mdx";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { getMDXComponent } from "mdx-bundler/client";
 import { getBlogPostStatistics } from "@/components/blog-post-card/fetch-post-statistics";
-import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
+import {
+  dehydrate,
+  HydrationBoundary,
+  QueryClient,
+} from "@tanstack/react-query";
 import { PostMetadata } from "@/components/post-metadata";
 import readingTime from "reading-time";
 import { PostRating } from "@/components/post-rating";
@@ -29,7 +33,7 @@ export async function generateStaticParams() {
     locales.map(async (locale) => {
       const slugs = await getPostsSlugs();
       return slugs.map((slug) => ({ locale, slug }));
-    })
+    }),
   );
 }
 
@@ -60,17 +64,35 @@ export default async function Post({
   };
 
   const MDXComponents = {
-    h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => <Heading level="h1" {...props} />,
-    h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => <Heading level="h2" {...props} />,
-    h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => <Heading level="h3" {...props} />,
-    h4: (props: React.HTMLAttributes<HTMLHeadingElement>) => <Heading level="h4" {...props} />,
-    h5: (props: React.HTMLAttributes<HTMLHeadingElement>) => <Heading level="h5" {...props} />,
-    h6: (props: React.HTMLAttributes<HTMLHeadingElement>) => <Heading level="h6" {...props} />,
+    h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+      <Heading level="h1" {...props} />
+    ),
+    h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+      <Heading level="h2" {...props} />
+    ),
+    h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+      <Heading level="h3" {...props} />
+    ),
+    h4: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+      <Heading level="h4" {...props} />
+    ),
+    h5: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+      <Heading level="h5" {...props} />
+    ),
+    h6: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
+      <Heading level="h6" {...props} />
+    ),
     p: Paragraph,
-    ul: (props: React.HTMLAttributes<HTMLUListElement>) => <List type="ul" {...props} />,
-    ol: (props: React.HTMLAttributes<HTMLOListElement>) => <List type="ol" {...props} />,
+    ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
+      <List type="ul" {...props} />
+    ),
+    ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
+      <List type="ol" {...props} />
+    ),
     li: (props: React.HTMLAttributes<HTMLLIElement>) => <ListItem {...props} />,
-    img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => <RoundedImage {...props} />,
+    img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
+      <RoundedImage {...props} />
+    ),
     a: TextLink as React.FC,
     code: Code as unknown as React.FC,
     pre: (props: React.HTMLAttributes<HTMLPreElement>) => (
