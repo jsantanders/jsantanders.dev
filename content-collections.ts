@@ -16,7 +16,6 @@ import rehypeCitation from "rehype-citation";
 import { compileMDX } from "@content-collections/mdx";
 import withoutBody from "./lib/without-body";
 import searchIndex from "./lib/search-index";
-import { getSlugAndDateFromDir } from "./lib/utils";
 
 const exec = promisify(syncExec);
 const POST_DIRECTORY = "content/posts";
@@ -38,6 +37,24 @@ function extractLocale(filePath: string) {
   }
   return "en"; // Default to English if not found
 }
+
+const getSlugAndDateFromDir = (dir: string) => {
+  const isDate = (dt: string) => String(new Date(dt)) !== "Invalid Date";
+
+  const dateAndSlug = dir.split("--");
+  if (dateAndSlug.length < 2) {
+    throw Error(
+      `invalid post folder format ${dir}. it should be yyyy-mm-dd--title-of-the-post`,
+    );
+  }
+  if (dateAndSlug[0] === undefined || !isDate(dateAndSlug[0])) {
+    throw Error("invalid date. it should be yyyy-mm-dd");
+  }
+  if (dateAndSlug[1] === undefined) {
+    throw Error("invalid or empty post title");
+  }
+  return { date: dateAndSlug[0], slug: dateAndSlug[1] };
+};
 
 async function lastModificationDate(filePath: string) {
   const { stdout } = await exec(
