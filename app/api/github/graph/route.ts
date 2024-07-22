@@ -22,14 +22,14 @@ const query = `{
   }
 }`;
 
-export const GET = async (_: NextApiRequest): Promise<Response> => {
-  const response = await fetch("https://api.github.com/graphql", {
-    method: "POST",
-    headers: {
-      Authorization: `bearer ${process.env.GITHUB_TOKEN}`,
-    },
-    body: JSON.stringify({ query }),
-  }).then((r) => r.json());
-  console.log(response);
-  return Response.json({ graph: response.data });
+export const GET = async (): Promise<Response> => {
+	const response = await fetch("https://api.github.com/graphql", {
+		method: "POST",
+		headers: {
+			Authorization: `bearer ${process.env.GITHUB_TOKEN}`,
+		},
+		body: JSON.stringify({ query }),
+	}).then((r) => r.json());
+	console.log(response);
+	return Response.json({ graph: response.data });
 };

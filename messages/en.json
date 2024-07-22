@@ -1,107 +1,107 @@
 {
-  "a11y": {
-    "skipContent": "Skip to content"
-  },
-  "seo": {
-    "image": {
-      "url": "https://jsantanders.dev/images/preview.png",
-      "alt": "Banner for site jsantanders.dev"
-    },
-    "rss": {
-      "en": "RSS feed for english speaker",
-      "es": "RSS feed for spanish speaker"
-    }
-  },
-  "nav": {
-    "menu": "Menu",
-    "home": "Home",
-    "blog": "Posts",
-    "about": "About",
-    "language": "Change language",
-    "theme": "Change theme",
-    "navigation": "Navigation"
-  },
-  "footer": {
-    "license": "Author's content is licensed under",
-    "copyright": "Creative Commons 4.0"
-  },
-  "home": {
-    "title": "Software Engineer at",
-    "welcome": "Hi 👋, my name is Jesus",
-    "about": "I'm a software engineer who likes to work with scalable and distributed systems. In this space, I plan to share some of my personal reflections and experiences as a developer. Hopefully you'll find something useful here.",
-    "community": "My contribution to the community",
-    "seo": {
-      "title": "Hi there! - Jesus Santander",
-      "description": "React, Node, Rust, math enthusiast and Azure certified developer."
-    },
-    "recentPosts": "Recent Posts",
-    "readMore": "Read more",
-    "social": {
-      "linkedin": "Follow me on LinkedIn",
-      "github": "Follow me on GitHub",
-      "twitter": "Follow me on Twitter"
-    }
-  },
-  "blog": {
-    "title": "All blog posts",
-    "none": "No blog posts found",
-    "read": " min read",
-    "anchor": "Link to this heading",
-    "published": "Published on",
-    "modified": "Modified on",
-    "copy": "Copy",
-    "copy-success": "Copied",
-    "copy-error": "Error",
-    "seo": {
-      "title": "Blog – Jesus Santander",
-      "description": "All blog posts that sum up everything about my adventure as a developer."
-    },
-    "tag": "Search by topic:",
-    "views": "views",
-    "rating": {
-      "title": "Rate this post",
-      "submit": "Submit",
-      "thanks": "Thanks for your feedback!",
-      "error": "Something went wrong, please try again later.",
-      "votes": "votes"
-    },
-    "toc": {
-      "title": "Table of contents"
-    }
-  },
-  "about": {
-    "title": "About me",
-    "description_1": "I'm a software engineer from Venezuela 🇻🇪. I enjoy building distributed systems and creating things with <rust>Rust</rust> and <go>Go</go>.",
-    "description_2": "Currently, I'm pursuing a Master's in Applied Mathematics at the University of Carabobo, diving into fascinating topics like statistics, probability theory, and stochastic processes.",
-    "description_3": "You can check more about my profesional profile here: <resume>resume</resume>",
-    "seo": {
-      "title": "About – Jesus Santander",
-      "description": "My developer profile."
-    },
-    "mon": "Mon",
-    "wed": "Wed",
-    "fri": "Fri",
-    "more": "More",
-    "less": "Less",
-    "codeFrec": "Github contributions",
-    "featuredRepos": "Featured repositories"
-  },
-  "404": {
-    "title": "Sorry 🚧, this page can't be found",
-    "subtitle": "I'm sorry if the page you're looking for does not exist. It may have expired, or there could be a typo. Maybe you can find what you want from my homepage.",
-    "button": "Go Back Home",
-    "seo": {
-      "title": "404 – Jesus Santander",
-      "description": "React, Node, Rust, math enthusiast and Azure certified developer."
-    }
-  },
-  "500": {
-    "title": "Wow 😱, you broke everything",
-    "subtitle": "I don't know what you did but you've just destroyed my website... Please try again in a few minutes or just return to my homepage.",
-    "button": "Go Back Home",
-    "seo": {
-      "title": "500 – Jesus Santander",
-      "description": "React, Node, Rust, math enthusiast and Azure certified developer."
-    }
-  }
+	"a11y": {
+		"skipContent": "Skip to content"
+	},
+	"seo": {
+		"image": {
+			"url": "https://jsantanders.dev/images/preview.png",
+			"alt": "Banner for site jsantanders.dev"
+		},
+		"rss": {
+			"en": "RSS feed for english speaker",
+			"es": "RSS feed for spanish speaker"
+		}
+	},
+	"nav": {
+		"menu": "Menu",
+		"home": "Home",
+		"blog": "Posts",
+		"about": "About",
+		"language": "Change language",
+		"theme": "Change theme",
+		"navigation": "Navigation"
+	},
+	"footer": {
+		"license": "Author's content is licensed under",
+		"copyright": "Creative Commons 4.0"
+	},
+	"home": {
+		"title": "Software Engineer at",
+		"welcome": "Hi 👋, my name is Jesus",
+		"about": "I'm a software engineer who likes to work with scalable and distributed systems. In this space, I plan to share some of my personal reflections and experiences as a developer. Hopefully you'll find something useful here.",
+		"community": "My contribution to the community",
+		"seo": {
+			"title": "Hi there! - Jesus Santander",
+			"description": "React, Node, Rust, math enthusiast and Azure certified developer."
+		},
+		"recentPosts": "Recent Posts",
+		"readMore": "Read more",
+		"social": {
+			"linkedin": "Follow me on LinkedIn",
+			"github": "Follow me on GitHub",
+			"twitter": "Follow me on Twitter"
+		}
+	},
+	"blog": {
+		"title": "All blog posts",
+		"none": "No blog posts found",
+		"read": " min read",
+		"anchor": "Link to this heading",
+		"published": "Published on",
+		"modified": "Modified on",
+		"copy": "Copy",
+		"copy-success": "Copied",
+		"copy-error": "Error",
+		"seo": {
+			"title": "Blog – Jesus Santander",
+			"description": "All blog posts that sum up everything about my adventure as a developer."
+		},
+		"tag": "Search by topic:",
+		"views": "views",
+		"rating": {
+			"title": "Rate this post",
+			"submit": "Submit",
+			"thanks": "Thanks for your feedback!",
+			"error": "Something went wrong, please try again later.",
+			"votes": "votes"
+		},
+		"toc": {
+			"title": "Table of contents"
+		}
+	},
+	"about": {
+		"title": "About me",
+		"description_1": "I'm a software engineer from Venezuela 🇻🇪. I enjoy building distributed systems and creating things with <rust>Rust</rust> and <go>Go</go>.",
+		"description_2": "Currently, I'm pursuing a Master's in Applied Mathematics at the University of Carabobo, diving into fascinating topics like statistics, probability theory, and stochastic processes.",
+		"description_3": "You can check more about my profesional profile here: <resume>resume</resume>",
+		"seo": {
+			"title": "About – Jesus Santander",
+			"description": "My developer profile."
+		},
+		"mon": "Mon",
+		"wed": "Wed",
+		"fri": "Fri",
+		"more": "More",
+		"less": "Less",
+		"codeFrec": "Github contributions",
+		"featuredRepos": "Featured repositories"
+	},
+	"404": {
+		"title": "Sorry 🚧, this page can't be found",
+		"subtitle": "I'm sorry if the page you're looking for does not exist. It may have expired, or there could be a typo. Maybe you can find what you want from my homepage.",
+		"button": "Go Back Home",
+		"seo": {
+			"title": "404 – Jesus Santander",
+			"description": "React, Node, Rust, math enthusiast and Azure certified developer."
+		}
+	},
+	"500": {
+		"title": "Wow 😱, you broke everything",
+		"subtitle": "I don't know what you did but you've just destroyed my website... Please try again in a few minutes or just return to my homepage.",
+		"button": "Go Back Home",
+		"seo": {
+			"title": "500 – Jesus Santander",
+			"description": "React, Node, Rust, math enthusiast and Azure certified developer."
+		}
+	}
 }

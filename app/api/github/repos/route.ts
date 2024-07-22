@@ -26,13 +26,13 @@ const query = `{
 }`;
 
 export const GET = async (_: NextApiRequest): Promise<Response> => {
-  const response = await fetch("https://api.github.com/graphql", {
-    method: "POST",
-    headers: {
-      Authorization: `bearer ${process.env.GITHUB_TOKEN}`,
-    },
-    body: JSON.stringify({ query }),
-  }).then((r) => r.json());
+	const response = await fetch("https://api.github.com/graphql", {
+		method: "POST",
+		headers: {
+			Authorization: `bearer ${process.env.GITHUB_TOKEN}`,
+		},
+		body: JSON.stringify({ query }),
+	}).then((r) => r.json());
 
-  return Response.json({ repos: response.data });
+	return Response.json({ repos: response.data });
 };
