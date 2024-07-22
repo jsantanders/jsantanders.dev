@@ -5,7 +5,6 @@ import { PostMetadata } from "@/components/post-metadata";
 import { PostRating } from "@/components/post-rating";
 import { PostTableOfContents } from "@/components/post-table-of-content";
 import { locales } from "@/config";
-import { getMDXExport } from "@/lib/get-mdx-exports";
 import { getTableOfContents } from "@/lib/mdx";
 import {
 	HydrationBoundary,

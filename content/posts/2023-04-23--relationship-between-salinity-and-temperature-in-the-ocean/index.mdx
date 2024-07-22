@@ -78,9 +78,9 @@ To make it easier to work with, lets present our model of a response $Y$ and $n$
 predictors $X_1, X_2, \cdots, X_n$ in a tabular form:
 
 $$
-y_1     \quad x_{11} \quad x_{12} \quad \cdots \quad x_{1n} \\
-y_2     \quad x_{21} \quad x_{22} \quad \cdots \quad x_{2n} \\
-\vdots   \\
+y_1     \quad x_{11} \quad x_{12} \quad \cdots \quad x_{1n}
+y_2     \quad x_{21} \quad x_{22} \quad \cdots \quad x_{2n}
+\vdots
 y_m     \quad x_{m1} \quad x_{m2} \quad \cdots \quad x_{mn}
 $$
 
@@ -103,9 +103,9 @@ where $y = (y_1, y_2, \cdots, y_m)^T$ is the response vector, $\epsilon =
 (\beta_0, \beta_1, \cdots, \beta_n)^T$ is the parameter vector, and:
 
 $$
-X = \begin{bmatrix} 1 & x_{11} & x_{12} & \cdots & x_{1n} \\
-1 & x_{21} & x_{22} & \cdots & x_{2n} \\
-\vdots & \vdots & \vdots & \ddots & \vdots \\
+X = \begin{bmatrix} 1 & x_{11} & x_{12} & \cdots & x_{1n}
+1 & x_{21} & x_{22} & \cdots & x_{2n}
+\vdots & \vdots & \vdots & \ddots & \vdots
 1 & x_{m1} & x_{m2} & \cdots & x_{mn} \end{bmatrix}
 $$
 
@@ -147,8 +147,8 @@ $$
 Interestingly, we can also derive the same result using a geometric approach:
 
 $$
-\begin{align} \hat{\beta}   &= (X^T X)^{-1} X^T y \\
-X \hat{\beta} &= X (X^T X)^{-1} X^T y \\
+\begin{align} \hat{\beta}   &= (X^T X)^{-1} X^T y
+X \hat{\beta} &= X (X^T X)^{-1} X^T y
 \hat{y}       &= H y \end{align}
 $$
 

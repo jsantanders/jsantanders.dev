@@ -29,18 +29,17 @@
 		"title": "Software Engineer at",
 		"welcome": "Hi 👋, my name is Jesus",
 		"about": "I'm a software engineer who likes to work with scalable and distributed systems. In this space, I plan to share some of my personal reflections and experiences as a developer. Hopefully you'll find something useful here.",
-		"community": "My contribution to the community",
 		"seo": {
-			"title": "Hi there! - Jesus Santander",
-			"description": "React, Node, Rust, math enthusiast and Azure certified developer."
+			"title": "Home – Jesus Santander",
+			"description": "Developer"
+		},
+		"social": {
+			"twitter": "Twitter",
+			"github": "Github",
+			"linkedin": "LinkedIn"
 		},
 		"recentPosts": "Recent Posts",
-		"readMore": "Read more",
-		"social": {
-			"linkedin": "Follow me on LinkedIn",
-			"github": "Follow me on GitHub",
-			"twitter": "Follow me on Twitter"
-		}
+		"readMore": "Read more"
 	},
 	"blog": {
 		"title": "All blog posts",
@@ -54,9 +53,8 @@
 		"copy-error": "Error",
 		"seo": {
 			"title": "Blog – Jesus Santander",
-			"description": "All blog posts that sum up everything about my adventure as a developer."
+			"description": "All blog posts"
 		},
-		"tag": "Search by topic:",
 		"views": "views",
 		"rating": {
 			"title": "Rate this post",
@@ -76,7 +74,7 @@
 		"description_3": "You can check more about my profesional profile here: <resume>resume</resume>",
 		"seo": {
 			"title": "About – Jesus Santander",
-			"description": "My developer profile."
+			"description": "Developer"
 		},
 		"mon": "Mon",
 		"wed": "Wed",
@@ -88,20 +86,20 @@
 	},
 	"404": {
 		"title": "Sorry 🚧, this page can't be found",
-		"subtitle": "I'm sorry if the page you're looking for does not exist. It may have expired, or there could be a typo. Maybe you can find what you want from my homepage.",
+		"subtitle": "I'm sorry if the page you're looking for does not exist. It may have expired, there could be a typo, or I haven't write yet the post on the requested language.",
 		"button": "Go Back Home",
 		"seo": {
 			"title": "404 – Jesus Santander",
-			"description": "React, Node, Rust, math enthusiast and Azure certified developer."
+			"description": "Developer"
 		}
 	},
 	"500": {
-		"title": "Wow 😱, you broke everything",
-		"subtitle": "I don't know what you did but you've just destroyed my website... Please try again in a few minutes or just return to my homepage.",
+		"title": "Oh, the site just broke",
+		"subtitle": "Please try again in a few minutes or just return to the homepage.",
 		"button": "Go Back Home",
 		"seo": {
 			"title": "500 – Jesus Santander",
-			"description": "React, Node, Rust, math enthusiast and Azure certified developer."
+			"description": "Developer"
 		}
 	}
 }

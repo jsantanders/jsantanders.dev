@@ -1,11 +1,11 @@
 "use client";
 
-import { type Dispatch, type SetStateAction, useState } from "react";
+import { useState } from "react";
 
 export const usePersistedState = (
 	key: string,
 	initialValue: string,
-): [string, Dispatch<SetStateAction<string>>] => {
+): [string, (value: string) => void] => {
 	const [state, setState] = useState<string>(() => {
 		// Initialize the state
 		try {

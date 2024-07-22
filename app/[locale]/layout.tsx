@@ -1,7 +1,7 @@
 import { Layout } from "@/components/layout";
 import { ThemeProvider } from "@/components/theme-provider";
 import { locales } from "@/config";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { unstable_setRequestLocale } from "next-intl/server";
 import { Work_Sans } from "next/font/google";
 import "../styles/globals.css";
@@ -47,6 +47,9 @@ export default async function LocaleLayout({
 	);
 }
 
-export const metadata: Metadata = {
-	viewport: "width=device-width, initial-scale=1, shrink-to-fit=no",
+export const viewport: Viewport = {
+	width: "device-width",
+	initialScale: 1,
+	maximumScale: 1,
+	userScalable: false,
 };

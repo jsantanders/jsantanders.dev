@@ -1,6 +1,3 @@
-import type { ReposData } from "@/types";
-import type { NextApiRequest, NextApiResponse } from "next";
-
 const query = `{
   viewer {
     pinnedItems(first: 6) {
@@ -25,7 +22,7 @@ const query = `{
   }
 }`;
 
-export const GET = async (_: NextApiRequest): Promise<Response> => {
+export const GET = async (): Promise<Response> => {
 	const response = await fetch("https://api.github.com/graphql", {
 		method: "POST",
 		headers: {

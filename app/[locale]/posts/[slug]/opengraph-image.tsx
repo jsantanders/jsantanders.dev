@@ -52,7 +52,7 @@ export default async function Image({ params }: Props) {
 								"text-6xl": post.title.length >= 40,
 							})}
 							style={{
-								fontFamily: '"Raleway"',
+								fontFamily: '"WorkSans"',
 							}}
 						>
 							{post.title}
@@ -64,7 +64,7 @@ export default async function Image({ params }: Props) {
 						<div
 							tw="flex text-4xl font-bold"
 							style={{
-								fontFamily: '"Raleway"',
+								fontFamily: '"WorkSans"',
 							}}
 						>
 							<span tw="text-stone-50">jsantanders</span>

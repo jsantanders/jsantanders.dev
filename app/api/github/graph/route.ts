@@ -1,6 +1,3 @@
-import type { GraphData } from "@/types";
-import type { NextApiRequest, NextApiResponse } from "next";
-
 const query = `{
   viewer {
     contributionsCollection {
