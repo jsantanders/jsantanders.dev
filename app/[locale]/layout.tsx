@@ -5,6 +5,7 @@ import { Work_Sans, Space_Mono } from "next/font/google";
 import "../styles/globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import Providers from "./providers";
+import { Metadata } from "next";
 
 const workSans = Work_Sans({
   subsets: ["latin"],
@@ -25,7 +26,11 @@ export default async function LocaleLayout({
   unstable_setRequestLocale(locale);
 
   return (
-    <html suppressHydrationWarning lang={locale} className={`${workSans.className} antialiased`}>
+    <html
+      suppressHydrationWarning
+      lang={locale}
+      className={`${workSans.className} antialiased`}
+    >
       <body>
         <ThemeProvider
           attribute="class"
@@ -41,3 +46,7 @@ export default async function LocaleLayout({
     </html>
   );
 }
+
+export const metadata: Metadata = {
+  viewport: "width=device-width, initial-scale=1, shrink-to-fit=no",
+};

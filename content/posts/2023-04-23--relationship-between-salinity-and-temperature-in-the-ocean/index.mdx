@@ -8,17 +8,22 @@ tags:
   - oceanography
 ---
 
+import Graph from "./components/graph"
+
 In this article we will explore the fundamental concepts of linear regression
 using a real-world dataset. We will use the [Bottle
 Database](https://calcofi.org/data/oceanographic-data/bottle-database/) that
 contains a collection of oceanographic data, including temperature, salinity,
-potential density and others.
+potential density and others. [@Nash1950]
 
 This article does not aim to be a comprehensive introduction to linear
 regression, but rather a practical guide to get you started with the technique
 in real-world problems. It's important to note that although more advanced
 techniques may exist for certain variable relationships, we will focus on
-handpicking variables that are most suitable for linear regression. <cite>[Albert Einstein][1]</cite>
+handpicking variables that are most suitable for linear regression.
+
+
+<Graph />
 
 ## Review of Linear Regression
 
@@ -355,7 +360,3 @@ values. We can see that the predicted values are close to the actual values.
 ![variable plot](./actual-vs-predicted.png)
 
 ## References
-
-[1]: Faraway, Julian J. Linear Models with Python. CRC Press, 2021.
-2. Heumann, Christian, and Micheal Schomaker Shalabh. Introduction to statistics
-   and data analysis. Springer, 2016.

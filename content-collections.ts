@@ -1,14 +1,17 @@
 import { exec as syncExec } from "node:child_process";
 import path from "node:path";
 import { promisify } from "node:util";
+import fsp from "node:fs/promises";
 import readingTime from "reading-time";
 import staticImages, { staticCoverImage } from "./lib/static-images";
 import resolveImageBlurDataURL from "./lib/image-blur-data-url";
 import { defineCollection, defineConfig } from "@content-collections/core";
 import rehypeKatex from "rehype-katex";
+import rehypePresetMinify from "rehype-preset-minify";
 import remarkMath from "remark-math";
 import rehypePrism from "rehype-prism-plus";
-import rehypeToc, { Toc } from "@stefanprobst/rehype-extract-toc";
+import remarkConvertInlineFootnotes from "./lib/remark-convert-inline-footnote";
+import rehypeToc from "@stefanprobst/rehype-extract-toc";
 import rehypeTocExport from "@stefanprobst/rehype-extract-toc/mdx";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
@@ -16,6 +19,7 @@ import rehypeCitation from "rehype-citation";
 import { compileMDX } from "@content-collections/mdx";
 import withoutBody from "./lib/without-body";
 import searchIndex from "./lib/search-index";
+import { sha256 } from "./lib/utils";
 
 const exec = promisify(syncExec);
 const POST_DIRECTORY = "content/posts";
@@ -23,7 +27,7 @@ type ImageParams = { image: string; directory: string };
 
 function calculateReadingTime(content: string) {
   const contentWithoutSvg = content.replace(/<svg+.+?(?=<\/svg>)<\/svg>/gs, "");
-  return readingTime(contentWithoutSvg).text;
+  return readingTime(contentWithoutSvg).minutes.toFixed(0);
 }
 
 function extractLocale(filePath: string) {
@@ -66,6 +70,14 @@ async function lastModificationDate(filePath: string) {
   return new Date().toISOString();
 }
 
+async function doesFileExist(path: string) {
+  try {
+    return (await fsp.stat(path)).isFile();
+  } catch (e) {
+    return false;
+  }
+}
+
 async function collectImageInformation({ image, directory }: ImageParams) {
   const url = await staticCoverImage(
     POST_DIRECTORY,
@@ -93,6 +105,10 @@ const posts = defineCollection({
     tags: z.array(z.string()),
   }),
   transform: async (post, ctx) => {
+    const locale = extractLocale(post._meta.filePath);
+    const dir = path.join(process.cwd(), POST_DIRECTORY, post._meta.directory);
+    const hasReferences = await doesFileExist(path.join(dir, "references.bib"));
+
     const mdx = await compileMDX(ctx, post, {
       files: (appender) => {
         const directory = path.join(
@@ -104,21 +120,21 @@ const posts = defineCollection({
       },
       rehypePlugins: [
         rehypeKatex,
+        [
+          rehypeCitation,
+          {
+            path: dir,
+            bibliography: hasReferences
+              ? path.join(dir, "references.bib")
+              : undefined,
+            linkCitations: true,
+            csl: "https://raw.githubusercontent.com/citation-style-language/styles/master/acm-sig-proceedings.csl",
+          },
+        ],
         rehypePrism,
         rehypeSlug,
         rehypeToc,
         rehypeTocExport,
-        [
-          rehypeCitation,
-          {
-            path: path.join(
-              process.cwd(),
-              "content",
-              "posts",
-              post._meta.directory,
-            ),
-          },
-        ],
         [
           staticImages,
           {
@@ -127,8 +143,9 @@ const posts = defineCollection({
             sourceRoot: POST_DIRECTORY,
           },
         ],
+        rehypePresetMinify,
       ],
-      remarkPlugins: [remarkGfm, remarkMath],
+      remarkPlugins: [remarkMath, remarkConvertInlineFootnotes, remarkGfm],
     });
 
     const lastModification = await ctx.cache(
@@ -136,9 +153,8 @@ const posts = defineCollection({
       lastModificationDate,
     );
 
-    const slug = getSlugAndDateFromDir(post._meta.directory).slug;
-    const locale = extractLocale(post._meta.filePath);
-
+    const { slug, date } = getSlugAndDateFromDir(post._meta.directory);
+    const id = await sha256(`/${locale}/posts/${slug}`);
     return {
       ...post,
       content: {
@@ -148,6 +164,9 @@ const posts = defineCollection({
       readingTime: calculateReadingTime(post.content),
       lastModification,
       locale,
+      date,
+      slug,
+      id,
       url: `/posts/${slug}`,
     };
   },

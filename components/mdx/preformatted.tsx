@@ -31,10 +31,12 @@ export const Preformatted: React.FC<PreformattedProps> = ({
 
   const copyToClipboard = async () => {
     if (navigator.clipboard && childrenRef?.current?.textContent) {
-      return navigator.clipboard.writeText(childrenRef.current.textContent).then(
-        () => setCopy("copy-success"),
-        () => setCopy("copy-error")
-      );
+      return navigator.clipboard
+        .writeText(childrenRef.current.textContent)
+        .then(
+          () => setCopy("copy-success"),
+          () => setCopy("copy-error"),
+        );
     }
   };
 
@@ -48,7 +50,7 @@ export const Preformatted: React.FC<PreformattedProps> = ({
     return () => timer && clearTimeout(timer);
   }, [copy]);
 
-  let color;
+  let color: string;
 
   switch (copy) {
     case "copy-success":
@@ -78,18 +80,21 @@ export const Preformatted: React.FC<PreformattedProps> = ({
         >
           {copy === "copy" && (
             <>
-              <span>{locales.copy}</span> <CopyIcon width={16} height={16} aria-hidden />{" "}
+              <span>{locales.copy}</span>{" "}
+              <CopyIcon width={16} height={16} aria-hidden />{" "}
             </>
           )}
           {copy === "copy-success" && (
             <>
-              <span>{locales.copied}</span> <CheckIcon width={16} height={16} aria-hidden />{" "}
+              <span>{locales.copied}</span>{" "}
+              <CheckIcon width={16} height={16} aria-hidden />{" "}
             </>
           )}
           {copy === "copy-error" && (
             <>
               {" "}
-              <span>{locales.error} </span> <XIcon width={16} height={16} aria-hidden />{" "}
+              <span>{locales.error} </span>{" "}
+              <XIcon width={16} height={16} aria-hidden />{" "}
             </>
           )}
         </button>

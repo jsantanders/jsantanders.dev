@@ -1,12 +1,19 @@
 "use client";
 
 import useHiddenNav from "./use-hidden-nav";
-import { Fragment, PropsWithChildren, useState } from "react";
+import { Fragment, type PropsWithChildren } from "react";
 import { ThemeToggle } from "./theme-toggle";
-import { Link, usePathname } from "@/navigation";
+import { Link, usePathname, useRouter } from "@/navigation";
 import { LangSwitcher } from "./lang-switcher";
 import { cn } from "@/lib/utils";
-import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetClose,
+} from "@/components/ui/sheet";
 import { Button } from "../ui/button";
 import { Menu } from "lucide-react";
 
@@ -34,8 +41,14 @@ export const Navbar = ({ locales }: NavbarProps) => {
     >
       <div className="mx-auto flex w-full items-center justify-between">
         <Fragment>
-          <MobileNav locales={locales} className="pointer-events-auto md:hidden" />
-          <DesktopNav locales={locales} className="pointer-events-auto hidden md:block" />
+          <MobileNav
+            locales={locales}
+            className="pointer-events-auto md:hidden"
+          />
+          <DesktopNav
+            locales={locales}
+            className="pointer-events-auto hidden md:block"
+          />
         </Fragment>
         <div className="flex flex-row gap-x-2">
           <ThemeToggle />
@@ -46,17 +59,23 @@ export const Navbar = ({ locales }: NavbarProps) => {
   );
 };
 
-const DesktopNav: React.FC<NavbarProps & { className: string }> = ({ className, locales }) => {
+const DesktopNav: React.FC<NavbarProps & { className: string }> = ({
+  className,
+  locales,
+}) => {
   return (
     <div className={cn("flex flex-row", className)}>
       <DesktopNavLink href="/">{locales.home}</DesktopNavLink>
-      <DesktopNavLink href="/posts">{locales.blog}</DesktopNavLink>
+      <DesktopNavLink href="/posts/pages/1">{locales.blog}</DesktopNavLink>
       <DesktopNavLink href="/about">{locales.about}</DesktopNavLink>
     </div>
   );
 };
 
-const DesktopNavLink: React.FC<PropsWithChildren<NavLinkProps>> = ({ children, href }) => {
+const DesktopNavLink: React.FC<PropsWithChildren<NavLinkProps>> = ({
+  children,
+  href,
+}) => {
   const pathname = usePathname();
   const isActive = pathname.replace(/\/$/, "") === href.replace(/\/$/, "");
 
@@ -66,7 +85,7 @@ const DesktopNavLink: React.FC<PropsWithChildren<NavLinkProps>> = ({ children, h
         isActive
           ? "font-semibold underline decoration-primary decoration-2 underline-offset-4"
           : "font-normal text-muted-foreground",
-        "mr-7 inline-block py-2 pr-1 text-lg transition-all hover:text-primary hover:underline hover:decoration-primary hover:decoration-2 hover:underline-offset-4 hover:ease-in"
+        "mr-7 inline-block py-2 pr-1 text-lg transition-all hover:text-primary hover:underline hover:decoration-primary hover:decoration-2 hover:underline-offset-4 hover:ease-in",
       )}
       href={href}
     >
@@ -75,7 +94,10 @@ const DesktopNavLink: React.FC<PropsWithChildren<NavLinkProps>> = ({ children, h
   );
 };
 
-const MobileNav: React.FC<NavbarProps & { className: string }> = ({ className, locales }) => {
+const MobileNav: React.FC<NavbarProps & { className: string }> = ({
+  className,
+  locales,
+}) => {
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -93,7 +115,7 @@ const MobileNav: React.FC<NavbarProps & { className: string }> = ({ className, l
         </SheetHeader>
         <ul className="-my-2 divide-y divide-border text-base text-primary">
           <MobileNavLink href="/">{locales.home}</MobileNavLink>
-          <MobileNavLink href="/blog">{locales.blog}</MobileNavLink>
+          <MobileNavLink href="/posts/pages/1">{locales.blog}</MobileNavLink>
           <MobileNavLink href="/about">{locales.about}</MobileNavLink>
         </ul>
       </SheetContent>
@@ -101,12 +123,22 @@ const MobileNav: React.FC<NavbarProps & { className: string }> = ({ className, l
   );
 };
 
-const MobileNavLink: React.FC<PropsWithChildren<{ href: string }>> = ({ href, children }) => {
+const MobileNavLink: React.FC<PropsWithChildren<{ href: string }>> = ({
+  href,
+  children,
+}) => {
+  const router = useRouter();
   return (
-    <li>
-      <Link href={href} className="block py-2">
-        {children}
-      </Link>
-    </li>
+    <SheetClose asChild>
+      <li>
+        <button
+          className="block w-full py-2 text-left"
+          onClick={() => router.push(href)}
+          type="button"
+        >
+          {children}
+        </button>
+      </li>
+    </SheetClose>
   );
 };

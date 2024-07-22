@@ -6,12 +6,17 @@ type ProsCardProps = {
 export const ProsCard: React.FC<ProsCardProps> = ({ title, pros }) => {
   return (
     <div className="my-4 w-full rounded-xl border border-green-200 bg-green-50 p-6 dark:border-green-900 dark:bg-green-900">
-      <span>{`You might use ${title} if...`}</span>
+      <span>{`${title}`}</span>
       <div className="mt-4">
         {pros.map((pro) => (
           <div key={pro} className="mb-2 flex items-baseline font-medium">
             <div className="mr-2 h-4 w-4">
-              <svg className="h-4 w-4 text-green-500" viewBox="0 0 24 24">
+              <svg
+                role="img"
+                aria-label="checkmark"
+                className="h-4 w-4 text-green-500"
+                viewBox="0 0 24 24"
+              >
                 <g
                   fill="none"
                   stroke="currentColor"

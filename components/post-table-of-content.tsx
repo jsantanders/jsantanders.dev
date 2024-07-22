@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Toc, TocEntry } from "@stefanprobst/rehype-extract-toc";
+import type { Toc, TocEntry } from "@stefanprobst/rehype-extract-toc";
 import { useHighlighted } from "@/hooks/use-highlighted";
 import { generateId } from "@/lib/generate-id";
 import { Link } from "@/navigation";
@@ -14,7 +13,10 @@ type PostTableOfContentProps = {
   };
 };
 
-export const PostTableOfContents: React.FC<PostTableOfContentProps> = ({ toc, locales }) => {
+export const PostTableOfContents: React.FC<PostTableOfContentProps> = ({
+  toc,
+  locales,
+}) => {
   if (!toc?.length) {
     return null;
   }
@@ -55,12 +57,16 @@ const TOCLink: React.FC<{ node: TocEntry; ch: string }> = ({ node, ch }) => {
       className={`block text-${fontSizes[node.depth]} ${
         padding[node.depth]
       } border-l py-1 pl-3 hover:border-primary hover:text-primary ${
-        highlighted ? "border-primary text-primary" : "border-muted text-muted-foreground"
+        highlighted
+          ? "border-primary text-primary"
+          : "border-muted text-muted-foreground"
       }`}
       onClick={(e) => {
         e.preventDefault();
         setHighlighted(id);
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+        document
+          .getElementById(id)
+          ?.scrollIntoView({ behavior: "smooth", block: "start" });
       }}
     >
       {ch} {node.value}

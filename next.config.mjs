@@ -58,7 +58,7 @@ const securityHeaders = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  headers: [
+  headers: async () => [
     {
       source: "/(.*)",
       headers: securityHeaders,

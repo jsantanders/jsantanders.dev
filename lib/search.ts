@@ -17,9 +17,9 @@ const createSearchOptions = <T extends Array<keyof Post>>(
 });
 
 const searchOptions = createSearchOptions(
-  "url",
+  "id",
   ["title", "summary", "content", "tags"],
-  ["url", "title", "summary", "date", "readingTime", "image"],
+  ["url", "title", "summary", "readingTime"],
   {
     title: 1.6,
     summary: 1.2,

@@ -1,5 +1,4 @@
 import { Link } from "lucide-react";
-import { useTranslations } from "next-intl";
 
 export type HeadingProps = React.PropsWithChildren<{
   level: string;
@@ -12,8 +11,11 @@ const createId = (str: string): string => {
     .replace(/[^a-zA-Z0-9-]/g, "");
 };
 
-export const Heading: React.FC<HeadingProps> = ({ level, children, ...props }) => {
-  const t = useTranslations("blog");
+export const Heading: React.FC<HeadingProps> = ({
+  level,
+  children,
+  ...props
+}) => {
   const id = createId(children as string);
 
   let size;
@@ -61,7 +63,7 @@ export const Heading: React.FC<HeadingProps> = ({ level, children, ...props }) =
         className={`align-text-middle inline-block transform md:absolute md:left-0 md:-translate-x-8 ${translate} ml-2 rounded opacity-0 hover:opacity-70 focus:opacity-70 focus:outline-none focus:ring-2 group-hover:opacity-70 group-focus:opacity-70 md:ml-0`}
       >
         <Link width={24} />
-        <span className="sr-only">{t("anchor")}</span>
+        <span className="sr-only">link</span>
       </a>
     </Component>
   );

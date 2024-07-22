@@ -5,7 +5,7 @@ import { Tweet } from "./tweet";
 import { Heading } from "./heading";
 import { List } from "./list";
 import { ListItem } from "./list-item";
-import { RoundedImage } from "./rounded-image";
+import { MarkdownImage } from "./markdown-image";
 import { TextLink } from "./text-link";
 import { Code } from "./code";
 import { Preformatted } from "./preformatted";
@@ -20,7 +20,7 @@ export {
   Heading,
   List,
   ListItem,
-  RoundedImage,
+  MarkdownImage,
   TextLink,
   Code,
   Preformatted,

@@ -15,6 +15,7 @@ import {
   getBlogPostStatistics,
   rateBlogPost,
 } from "./blog-post-card/fetch-post-statistics";
+import { cn } from "@/lib/utils";
 
 interface RatingSymbolProps {
   index: number;
@@ -22,7 +23,10 @@ interface RatingSymbolProps {
   activeIcon: string | object | React.ReactElement;
   percent: number;
   readonly?: boolean;
-  onClick?: (index: number, event: React.MouseEvent | React.TouchEvent) => void;
+  onClick?: (
+    index: number,
+    event: React.MouseEvent | React.TouchEvent | React.KeyboardEvent,
+  ) => void;
   onMouseMove?: (
     index: number,
     event: React.MouseEvent | React.TouchEvent,
@@ -39,11 +43,15 @@ type RatingProps = {
   style?: React.CSSProperties;
   tabIndex?: number;
   onHover?: (value?: number) => void;
-  onClick?: (value: number, event: React.MouseEvent | React.TouchEvent) => void;
+  onClick?: (
+    value: number,
+    event: React.MouseEvent | React.TouchEvent | React.KeyboardEvent,
+  ) => void;
 };
 
 type PostRatingProps = {
   slug: string;
+  className?: string;
   locales: {
     thanks: string;
     title: string;
@@ -51,7 +59,11 @@ type PostRatingProps = {
   };
 };
 
-export const PostRating: React.FC<PostRatingProps> = ({ slug, locales }) => {
+export const PostRating: React.FC<PostRatingProps> = ({
+  slug,
+  locales,
+  className,
+}) => {
   const { userId } = useContext(AnalyticsContext);
 
   const { data } = useQuery({
@@ -70,7 +82,7 @@ export const PostRating: React.FC<PostRatingProps> = ({ slug, locales }) => {
   if (data === undefined) return <></>;
 
   return (
-    <div className="flex flex-col items-center justify-center pt-6">
+    <div className={cn("flex flex-col items-center justify-center", className)}>
       <h3 className="pb-2 text-center text-xl font-bold lg:text-2xl">
         {data.userHasRated ? locales.thanks : locales.title}
       </h3>
