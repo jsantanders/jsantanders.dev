@@ -16,7 +16,7 @@ export const Layout = ({ children }: PropsWithChildren) => {
     <div className="mx-auto max-w-6xl">
       <div className="relative mx-auto w-full max-w-2xl px-8">
         <Navbar locales={locales} />
-        <main className="flex flex-col max-w-full items-center justify-center py-16">
+        <main className="flex flex-col max-w-full items-center justify-center py-8 md:py-16">
           {children}
         </main>
         <Footer />

@@ -18,8 +18,8 @@ export const Heading: React.FC<HeadingProps> = ({
 }) => {
   const id = createId(children as string);
 
-  let size;
-  let translate;
+  let size: string;
+  let translate: string;
   const Component = level as React.ElementType;
 
   switch (level) {
@@ -48,6 +48,8 @@ export const Heading: React.FC<HeadingProps> = ({
       translate = "translate-y-1.5 md:translate-y-0.5";
       break;
     default:
+      size = "";
+      translate = "";
       break;
   }
 

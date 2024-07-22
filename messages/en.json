@@ -71,8 +71,9 @@
   },
   "about": {
     "title": "About me",
-    "1": "A Fullstack software engineer from Venezuela 🇻🇪 who enjoys to blog about my experiences with the aim to help others and my future self. I’m currently pursuing a Msc. in applied mathematics at the University of Carabobo. Throughout my career, I’ve gained valuable experience in developing distributed high-load systems, cloud computing, and web applications. You can check more about my profesional profile here: ",
-    "2": "I have fundamental math skills in probability theory, random process, and statistics. I also have in-depth knowledge and understanding of the following languages:",
+    "description_1": "I'm a software engineer from Venezuela 🇻🇪. I enjoy building distributed systems and creating things with <rust>Rust</rust> and <go>Go</go>.",
+    "description_2": "Currently, I'm pursuing a Master's in Applied Mathematics at the University of Carabobo, diving into fascinating topics like statistics, probability theory, and stochastic processes.",
+    "description_3": "You can check more about my profesional profile here: <resume>resume</resume>",
     "seo": {
       "title": "About – Jesus Santander",
       "description": "My developer profile."
@@ -81,7 +82,9 @@
     "wed": "Wed",
     "fri": "Fri",
     "more": "More",
-    "less": "Less"
+    "less": "Less",
+    "codeFrec": "Github contributions",
+    "featuredRepos": "Featured repositories"
   },
   "404": {
     "title": "Sorry 🚧, this page can't be found",
