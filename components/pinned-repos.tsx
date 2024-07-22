@@ -3,7 +3,7 @@
 import { fetcher } from "@/lib/fetcher";
 import type { ReposData } from "@/types";
 import { useQuery } from "@tanstack/react-query";
-import { BookMarked, Circle, GitFork, Stars } from "lucide-react";
+import { BookMarked, Circle, GitFork, Star } from "lucide-react";
 
 const LoadingRepo: React.FC = () => (
   <li className="w-full">
@@ -32,7 +32,7 @@ const LoadingRepo: React.FC = () => (
           <div className="my-1 h-2 w-12 rounded bg-muted animate-pulse" />
         </span>
         <span className="flex flex-row items-center text-gray-400">
-          <Stars
+          <Star
             width={16}
             height={16}
             aria-hidden
@@ -110,7 +110,7 @@ export const Repos: React.FC = () => {
                 </span>
                 {repo.stargazerCount > 0 && (
                   <span className="flex flex-row items-center text-xs text-muted-foreground">
-                    <Stars
+                    <Star
                       width={16}
                       height={16}
                       aria-hidden
