@@ -1,7 +1,6 @@
 "use client";
 
 import { slugify } from "@/lib/utils";
-import type { IReadTimeResults } from "reading-time";
 import { Views } from "./blog-post-card/views";
 
 type PostMetadata = {

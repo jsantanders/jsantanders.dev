@@ -59,7 +59,7 @@ export default async function Blog({ params }: Props) {
 }
 
 export function generateStaticParams() {
-	return locales.map((locale) =>
+	return locales.flatMap((locale) =>
 		pagesByLocale(locale).map((_, page) => ({
 			page: String(page + 1),
 			locale: locale,

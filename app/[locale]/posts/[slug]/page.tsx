@@ -5,13 +5,13 @@ import { PostMetadata } from "@/components/post-metadata";
 import { PostRating } from "@/components/post-rating";
 import { PostTableOfContents } from "@/components/post-table-of-content";
 import { locales } from "@/config";
-import { getTableOfContents } from "@/lib/mdx";
 import {
 	HydrationBoundary,
 	QueryClient,
 	dehydrate,
 } from "@tanstack/react-query";
 import { allPosts } from "content-collections";
+import { getMDXExport } from "mdx-bundler/client";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
@@ -61,7 +61,8 @@ export default async function Post({
 	if (!post) {
 		notFound();
 	}
-	const toc = getTableOfContents(post.content.mdx);
+
+	const toc = getMDXExport(post.content.mdx).tableOfContents;
 
 	return (
 		<HydrationBoundary state={dehydrate(queryClient)}>
@@ -106,10 +107,10 @@ export const generateMetadata = ({ params }: Props) => {
 };
 
 export function generateStaticParams() {
-	return locales.map((locale) =>
+	return locales.flatMap((locale) =>
 		allPosts
 			.filter((p) => p.locale === locale)
-			.map((slug) => ({ locale, slug })),
+			.map((p) => ({ locale, slug: p.slug })),
 	);
 }
 

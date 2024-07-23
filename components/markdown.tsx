@@ -8,6 +8,7 @@ import {
 	Heading,
 	List,
 	ListItem,
+	Mafs,
 	MarkdownImage,
 	Paragraph,
 	Preformatted,
@@ -15,7 +16,8 @@ import {
 	TextLink,
 	Tweet,
 } from "@/components/mdx";
-import { MDXContent } from "@content-collections/mdx/react";
+import { getMDXComponent } from "mdx-bundler/client";
+import { useMemo } from "react";
 
 type Props = {
 	code: string;
@@ -69,7 +71,9 @@ export const Markdown = ({ code, markdownLocales }: Props) => {
 		Callout,
 		ProsCard,
 		ConsCard,
+		Mafs,
 	};
 
-	return <MDXContent code={code} components={MDXComponents} />;
+	const Component = useMemo(() => getMDXComponent(code), [code]);
+	return <Component components={MDXComponents} />;
 };

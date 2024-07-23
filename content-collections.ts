@@ -3,7 +3,6 @@ import fsp from "node:fs/promises";
 import path from "node:path";
 import { promisify } from "node:util";
 import { defineCollection, defineConfig } from "@content-collections/core";
-import { compileMDX } from "@content-collections/mdx";
 import rehypeToc from "@stefanprobst/rehype-extract-toc";
 import rehypeTocExport from "@stefanprobst/rehype-extract-toc/mdx";
 import readingTime from "reading-time";
@@ -15,6 +14,7 @@ import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import resolveImageBlurDataURL from "./lib/image-blur-data-url";
+import { compileMDX } from "./lib/mdx";
 import remarkConvertInlineFootnotes from "./lib/remark-convert-inline-footnote";
 import searchIndex from "./lib/search-index";
 import staticImages, { staticCoverImage } from "./lib/static-images";
@@ -155,6 +155,7 @@ const posts = defineCollection({
 
 		const { slug, date } = getSlugAndDateFromDir(post._meta.directory);
 		const id = await sha256(`/${locale}/posts/${slug}`);
+
 		return {
 			...post,
 			content: {
