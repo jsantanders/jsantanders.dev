@@ -75,7 +75,7 @@ export const Preformatted: React.FC<PreformattedProps> = ({
 				</span>
 				<button
 					onClick={copyToClipboard}
-					className={`absolute bottom-1 right-3 inline-flex gap-x-1 text-xs md:bottom-4 md:right-4 ${color} rounded p-0.5 font-medium uppercase hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 group-hover:opacity-100 group-focus:opacity-100 lg:opacity-0`}
+					className={`absolute hidden md:inline-flex bottom-1 right-3  gap-x-1 text-xs md:bottom-4 md:right-4 ${color} rounded p-0.5 font-medium uppercase hover:opacity-100 focus:opacity-100 focus:outline-none focus:ring-2 group-hover:opacity-100 group-focus:opacity-100 lg:opacity-0`}
 					type="button"
 				>
 					{copy === "copy" && (
