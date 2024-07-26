@@ -53,6 +53,10 @@ const config = {
 					foreground: "hsl(var(--card-foreground))",
 				},
 			},
+			fontSize: {
+				md: "calc(1.105rem)",
+				prose: "calc(1.1825rem)",
+			},
 			translate: {
 				h1: "12px",
 				h2: "8px",

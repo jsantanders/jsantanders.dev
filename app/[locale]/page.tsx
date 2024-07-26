@@ -23,7 +23,7 @@ export default async function Home({ params: { locale } }: Props) {
 	return (
 		<div className="mx-auto flex max-w-2xl flex-col items-start justify-center">
 			<div className="flex flex-col-reverse items-start sm:flex-row">
-				<div className="mb-10 flex flex-col">
+				<div className="flex flex-col">
 					<h1 className="mb-2 text-3xl font-bold tracking-tight md:text-5xl">
 						{t("welcome")}
 					</h1>
@@ -40,25 +40,25 @@ export default async function Home({ params: { locale } }: Props) {
 							</a>
 						</span>
 					</h2>
-					<p className="mb-8 text-muted-foreground">{t("about")}</p>
-					<div className="my-6 flex items-center justify-center gap-10 align-middle">
+					<p className="text-md  text-muted-foreground">{t("about")}</p>
+					<div className="my-10 flex items-center justify-center gap-10 align-middle">
 						<SocialLink
 							href={"https://twitter.com/jsantanders"}
 							ariaLabel={t("social.twitter")}
 						>
-							<TwitterLogoIcon width={24} height={24} />
+							<TwitterLogoIcon width={32} height={32} />
 						</SocialLink>
 						<SocialLink
 							href={"https://github.com/jsantanders"}
 							ariaLabel={t("social.github")}
 						>
-							<GitHubLogoIcon width={24} height={24} />
+							<GitHubLogoIcon width={32} height={32} />
 						</SocialLink>
 						<SocialLink
 							href={"https://linkedin.com/in/jsantanders"}
 							ariaLabel={t("social.linkedin")}
 						>
-							<LinkedInLogoIcon width={24} height={24} />
+							<LinkedInLogoIcon width={32} height={32} />
 						</SocialLink>
 					</div>
 				</div>
