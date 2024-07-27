@@ -16,9 +16,9 @@ import {
 	CardTitle,
 } from "../ui/card";
 import { getBlogPostStatistics } from "./fetch-post-statistics";
-import { Views } from "./views";
+import { PostViews } from "./post-views";
 
-export const BlogPostCard = async ({ data }: { data: PostOverview }) => {
+export const PostCard = async ({ data }: { data: PostOverview }) => {
 	const queryClient = new QueryClient();
 	const t = await getTranslations("blog");
 	await queryClient.prefetchQuery({
@@ -33,7 +33,7 @@ export const BlogPostCard = async ({ data }: { data: PostOverview }) => {
 					<CardHeader className="pb-1">
 						<CardDescription>
 							{data.readingTime} {t("read")} • <time>{data.date}</time> •{" "}
-							<Views slug={data.slug} label={t("views")} />
+							<PostViews slug={data.slug} label={t("views")} />
 						</CardDescription>
 						<CardTitle className="line-clamp-2 text-2xl font-bold tracking-tight lg:line-clamp-1">
 							{data.title}

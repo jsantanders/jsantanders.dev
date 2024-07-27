@@ -4,7 +4,6 @@ import { useHighlighted } from "@/hooks/use-highlighted";
 import { generateId } from "@/lib/generate-id";
 import { Link } from "@/navigation";
 import type { Toc, TocEntry } from "@stefanprobst/rehype-extract-toc";
-import { createPortal } from "react-dom";
 
 type PostTableOfContentProps = {
 	toc: Toc;

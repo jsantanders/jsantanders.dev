@@ -1,7 +1,7 @@
 "use client";
 
 import { slugify } from "@/lib/utils";
-import { Views } from "./blog-post-card/views";
+import { PostViews } from "./post-views";
 
 type PostMetadata = {
 	tags: string[];
@@ -34,7 +34,7 @@ export const PostMetadata: React.FC<PostMetadata> = ({
 			</div>
 			<div className="flex flex-row gap-x-1 text-sm">
 				{readingTime} {locales.read} • <time>{publishedAt} </time> •{" "}
-				<Views slug={slug} label={locales.views} />
+				<PostViews slug={slug} label={locales.views} />
 			</div>
 		</div>
 	);

@@ -3,7 +3,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getBlogPostStatistics } from "./fetch-post-statistics";
 
-export const Views = ({ slug, label }: { slug: string; label: string }) => {
+export const PostViews = ({ slug, label }: { slug: string; label: string }) => {
 	const { data } = useQuery({
 		queryKey: ["posts-statistics", slug],
 		queryFn: () => getBlogPostStatistics(slug),

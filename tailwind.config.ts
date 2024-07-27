@@ -54,7 +54,7 @@ const config = {
 				},
 			},
 			fontSize: {
-				md: "calc(1.105rem)",
+				md: "calc(1.035rem)",
 				prose: "calc(1.1825rem)",
 			},
 			translate: {

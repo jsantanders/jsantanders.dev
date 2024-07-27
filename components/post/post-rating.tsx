@@ -1,6 +1,7 @@
 "use client";
 
 import { getQueryClient } from "@/app/[locale]/providers";
+import { AnalyticsContext } from "@/components/analytics-context";
 import { cn } from "@/lib/utils";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Star } from "lucide-react";
@@ -11,11 +12,7 @@ import React, {
 	useEffect,
 	useState,
 } from "react";
-import { AnalyticsContext } from "./analytics-context";
-import {
-	getBlogPostStatistics,
-	rateBlogPost,
-} from "./blog-post-card/fetch-post-statistics";
+import { getBlogPostStatistics, rateBlogPost } from "./fetch-post-statistics";
 
 type RatingSymbolProps = {
 	index: number;

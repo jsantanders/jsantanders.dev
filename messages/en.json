@@ -51,6 +51,8 @@
 		"copy": "Copy",
 		"copy-success": "Copied",
 		"copy-error": "Error",
+		"page": "Page",
+		"of": "of",
 		"seo": {
 			"title": "Blog – Jesus Santander",
 			"description": "All blog posts"
@@ -65,6 +67,10 @@
 		},
 		"toc": {
 			"title": "Table of contents"
+		},
+		"search": {
+			"title": "Search Post",
+			"placeholder": "Search for a post"
 		}
 	},
 	"about": {

@@ -1,9 +1,9 @@
-import { getBlogPostStatistics } from "@/components/blog-post-card/fetch-post-statistics";
-import { BlogPostingSchema } from "@/components/json-l-d";
 import { Markdown } from "@/components/markdown";
-import { PostMetadata } from "@/components/post-metadata";
-import { PostRating } from "@/components/post-rating";
-import { PostTableOfContents } from "@/components/post-table-of-content";
+import { getBlogPostStatistics } from "@/components/post/fetch-post-statistics";
+import { BlogPostingSchema } from "@/components/post/json-l-d";
+import { PostMetadata } from "@/components/post/post-metadata";
+import { PostRating } from "@/components/post/post-rating";
+import { PostTableOfContents } from "@/components/post/post-table-of-content";
 import { locales } from "@/config";
 import {
 	HydrationBoundary,

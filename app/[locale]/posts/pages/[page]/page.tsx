@@ -1,4 +1,5 @@
-import { BlogPostCard } from "@/components/blog-post-card";
+import { PostCard } from "@/components/post/post-card";
+import { Search } from "@/components/search";
 import {
 	Pagination,
 	PaginationContent,
@@ -7,6 +8,7 @@ import {
 } from "@/components/ui/pagination";
 import { type Locales, locales } from "@/config";
 import { pages as pagesByLocale } from "@/lib/posts";
+import { SearchIcon } from "lucide-react";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
@@ -22,19 +24,27 @@ export default async function Blog({ params }: Props) {
 		notFound();
 	}
 
+	const searchLocales = {
+		title: t("search.title"),
+		placeholder: t("search.placeholder"),
+	};
+
 	return (
 		<div className="mx-auto flex flex-col items-start justify-center gap-y-4">
 			<div>
-				<h1 className="text-3xl md:text-5xl font-bold tracking-tight">
-					{t("title")}
-				</h1>
+				<div className="flex flex-row place-items-center space-x-4">
+					<h1 className="text-3xl items-center md:text-5xl font-bold tracking-tight">
+						{t("title")}
+					</h1>
+					<Search locales={searchLocales} />
+				</div>
 				<h2 className="text-lg tracking-tight text-muted-foreground">
-					Page {params.page} of {pages.length}
+					{t("page")} {params.page} {t("of")} {pages.length}
 				</h2>
 			</div>
 			<div className="flex w-full flex-row flex-wrap gap-y-4">
 				{page.map((post) => {
-					return <BlogPostCard key={post.url} data={post} />;
+					return <PostCard key={post.url} data={post} />;
 				})}
 			</div>
 			<div className="flex justify-center mx-auto">

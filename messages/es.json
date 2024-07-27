@@ -27,7 +27,7 @@
 	},
 	"home": {
 		"title": "Ingeniero de Software en",
-		"welcome": "Hola 👋, mi nombre es Jesús",
+		"welcome": "Hola 👋, me llamo Jesus",
 		"about": "Soy un ingeniero de software al que le gusta trabajar con sistemas escalables y distribuidos. En este espacio, planeo compartir algunas de mis reflexiones personales y experiencias como desarrollador. Espero que puedas encontrar algo útil aquí.",
 		"seo": {
 			"title": "Inicio – Jesus Santander",
@@ -51,6 +51,8 @@
 		"copy": "Copiar",
 		"copy-success": "Copiado",
 		"copy-error": "Error",
+		"page": "Página",
+		"of": "de",
 		"seo": {
 			"title": "Blog – Jesus Santander",
 			"description": "Todos los artículos del blog"
@@ -65,6 +67,10 @@
 		},
 		"toc": {
 			"title": "Tabla de contenidos"
+		},
+		"search": {
+			"title": "Buscar artículo",
+			"placeholder": "busca un artículo"
 		}
 	},
 	"about": {

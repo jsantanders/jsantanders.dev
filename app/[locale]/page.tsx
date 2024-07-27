@@ -1,4 +1,4 @@
-import { BlogPostCard } from "@/components/blog-post-card";
+import { PostCard } from "@/components/post/post-card";
 import { SocialLink } from "@/components/social-link";
 import { type Locales, locales } from "@/config";
 import { homePage } from "@/lib/posts";
@@ -40,25 +40,25 @@ export default async function Home({ params: { locale } }: Props) {
 							</a>
 						</span>
 					</h2>
-					<p className="text-md  text-muted-foreground">{t("about")}</p>
+					<p className="text-md text-muted-foreground">{t("about")}</p>
 					<div className="my-10 flex items-center justify-center gap-10 align-middle">
 						<SocialLink
 							href={"https://twitter.com/jsantanders"}
 							ariaLabel={t("social.twitter")}
 						>
-							<TwitterLogoIcon width={32} height={32} />
+							<TwitterLogoIcon width={28} height={28} />
 						</SocialLink>
 						<SocialLink
 							href={"https://github.com/jsantanders"}
 							ariaLabel={t("social.github")}
 						>
-							<GitHubLogoIcon width={32} height={32} />
+							<GitHubLogoIcon width={28} height={28} />
 						</SocialLink>
 						<SocialLink
 							href={"https://linkedin.com/in/jsantanders"}
 							ariaLabel={t("social.linkedin")}
 						>
-							<LinkedInLogoIcon width={32} height={32} />
+							<LinkedInLogoIcon width={28} height={28} />
 						</SocialLink>
 					</div>
 				</div>
@@ -77,7 +77,7 @@ export default async function Home({ params: { locale } }: Props) {
 			</div>
 			<div className="flex w-full flex-row flex-wrap gap-y-4">
 				{posts.map((post) => {
-					return <BlogPostCard key={post.url} data={post} />;
+					return <PostCard key={post.url} data={post} />;
 				})}
 			</div>
 		</div>
