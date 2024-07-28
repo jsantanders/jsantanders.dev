@@ -195,8 +195,6 @@
 
 [data-level="0"] {
     fill: var(--color-graph-L0);
-    border: 5px !important;
-    border-color: red !important;
 }
 
 @layer base {
