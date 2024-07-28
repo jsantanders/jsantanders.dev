@@ -28,7 +28,7 @@
 	"home": {
 		"title": "Ingeniero de Software en",
 		"welcome": "Hola 👋, me llamo Jesus",
-		"about": "Soy un ingeniero de software al que le gusta trabajar con sistemas escalables y distribuidos. En este espacio, planeo compartir algunas de mis reflexiones personales y experiencias como desarrollador. Espero que puedas encontrar algo útil aquí.",
+		"about": "Me gusta trabajar con sistemas escalables y distribuidos. En este espacio, planeo compartir algunas de mis reflexiones personales y experiencias como desarrollador. Espero que puedas encontrar algo útil aquí.",
 		"seo": {
 			"title": "Inicio – Jesus Santander",
 			"description": "Desarrollador"
@@ -41,10 +41,22 @@
 		"recentPosts": "Artículos recientes",
 		"readMore": "Leer más"
 	},
+	"tags": {
+		"seo": {
+			"title": "Etiquetas",
+			"description": "Etiquetas de los artículos"
+		},
+		"page": {
+			"seo": {
+				"title": "Etiquetas - Página {page}",
+				"description": "Etiquetas - Página ${page} de ${total}"
+			}
+		}
+	},
 	"blog": {
-		"title": "Todos los artículos del blog",
-		"none": "No se encontraron artículos de blog.",
-		"read": " min de lectura",
+		"title": "Todos los artículos",
+		"none": "No se encontraron artículos. 😔",
+		"read": "min",
 		"anchor": "Enlace a este encabezado",
 		"published": "Publicado el",
 		"modified": "Modificado el",
@@ -54,8 +66,8 @@
 		"page": "Página",
 		"of": "de",
 		"seo": {
-			"title": "Blog – Jesus Santander",
-			"description": "Todos los artículos del blog"
+			"title": "Artículos - Página {page}",
+			"description": "Artículos - Página ${page} de ${total}"
 		},
 		"views": "vistas",
 		"rating": {
@@ -71,23 +83,50 @@
 		"search": {
 			"title": "Buscar artículo",
 			"placeholder": "busca un artículo"
+		},
+		"tags": {
+			"title": "Todas las etiquetas",
+			"tagPage": "Artículos para la etiqueta #{tag}"
 		}
 	},
 	"about": {
 		"title": "Sobre mí",
-		"description_1": "Soy un ingeniero de software de Venezuela 🇻🇪. Disfruto construyendo sistemas distribuidos y creando cosas con <rust>Rust</rust> y <go>Go</go>.",
-		"description_2": "Actualmente, estoy cursando una Maestría en Matemáticas Aplicadas en la Universidad de Carabobo, profundizando en temas fascinantes como estadística, teoría de la probabilidad y procesos estocásticos.",
-		"description_3": "Puedes ver más sobre mi perfil profesional aquí: <resume>resume</resume>",
+		"description_1": "Soy ingeniero de software, actualmente en Venezuela 🇻🇪. Disfruto construyendo sistemas distribuidos y creando cosas con <rust>Rust</rust> y <go>Go</go>.",
+		"description_2": "Estoy cursando una Maestría en Matemáticas Aplicadas en la Universidad de Carabobo. Mis áreas de interés son: estadística, teoría de la probabilidad y procesos estocásticos.",
+		"description_3": "Puedes ver más sobre mi perfil profesional aquí: <resume>cv</resume>",
 		"seo": {
 			"title": "Sobre mí – Jesus Santander",
 			"description": "Desarrollador"
 		},
-		"mon": "Lun",
-		"wed": "Mié",
-		"fri": "Vie",
-		"more": "Más",
-		"less": "Menos",
-		"codeFrec": "Contribuciones a Github",
+		"months": {
+			"jan": "ene",
+			"feb": "feb",
+			"mar": "mar",
+			"apr": "abr",
+			"may": "may",
+			"jun": "jun",
+			"jul": "jul",
+			"aug": "ago",
+			"sep": "sep",
+			"oct": "oct",
+			"nov": "nov",
+			"dec": "dic"
+		},
+		"weekdays": {
+			"sun": "dom",
+			"mon": "lun",
+			"tue": "mar",
+			"wed": "mié",
+			"thu": "jue",
+			"fri": "vie",
+			"sat": "sáb"
+		},
+		"totalCount": "'{{count}}' actividades en '{{year}}'",
+		"legend": {
+			"less": "Menos",
+			"more": "Más"
+		},
+		"codeFrec": "Contribuciones en Github",
 		"featuredRepos": "Repositorios destacados"
 	},
 	"404": {

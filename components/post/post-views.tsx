@@ -8,11 +8,11 @@ export const PostViews = ({ slug, label }: { slug: string; label: string }) => {
 		queryKey: ["posts-statistics", slug],
 		queryFn: () => getBlogPostStatistics(slug),
 	});
-	const views = data?.views;
 
 	return (
 		<span>
-			{`${views ? new Number(views).toLocaleString() : "–––"}`} {label}
+			{`${data?.views ? new Number(data.views).toLocaleString() : "–––"}`}{" "}
+			{label}
 		</span>
 	);
 };

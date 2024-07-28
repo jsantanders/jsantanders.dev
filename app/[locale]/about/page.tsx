@@ -14,15 +14,34 @@ export default async function About({ params: { locale } }: Props) {
 	unstable_setRequestLocale(locale);
 	const t = await getTranslations("about");
 
-	const codeFrecuencyLocales = {
-		days: {
-			mon: t("mon"),
-			wed: t("wed"),
-			fri: t("fri"),
-		},
-		moreLess: {
-			more: t("more"),
-			less: t("less"),
+	const codeFrequencyLocales = {
+		months: [
+			t("months.jan"),
+			t("months.feb"),
+			t("months.mar"),
+			t("months.apr"),
+			t("months.may"),
+			t("months.jun"),
+			t("months.jul"),
+			t("months.aug"),
+			t("months.sep"),
+			t("months.oct"),
+			t("months.nov"),
+			t("months.dec"),
+		],
+		weekdays: [
+			t("weekdays.sun"),
+			t("weekdays.mon"),
+			t("weekdays.tue"),
+			t("weekdays.wed"),
+			t("weekdays.thu"),
+			t("weekdays.fri"),
+			t("weekdays.sat"),
+		],
+		totalCount: t("totalCount"),
+		legend: {
+			less: t("legend.less"),
+			more: t("legend.more"),
 		},
 	};
 
@@ -66,7 +85,7 @@ export default async function About({ params: { locale } }: Props) {
 				<h2 className="text-xl md:text-2xl font-bold tracking-tight">
 					{t("codeFrec")}
 				</h2>
-				<CodeFrencuencyCalendar />
+				<CodeFrencuencyCalendar labels={codeFrequencyLocales} />
 			</div>
 			<div className="min-w-full space-y-2">
 				<h2 className="text-xl md:text-2xl font-bold tracking-tight">
@@ -81,3 +100,12 @@ export default async function About({ params: { locale } }: Props) {
 export function generateStaticParams() {
 	return locales.map((locale) => ({ locale }));
 }
+
+export const generateMetadata = async ({ params }: Props) => {
+	const t = await getTranslations("about");
+
+	return {
+		title: t("seo.title"),
+		description: t("seo.description"),
+	};
+};

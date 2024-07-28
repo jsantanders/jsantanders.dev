@@ -3,9 +3,10 @@
 import useDebounce from "@/hooks/use-debounce";
 import { Link } from "@/navigation";
 import { useQuery } from "@tanstack/react-query";
-import { Loader2, SearchCode, SearchIcon } from "lucide-react";
+import { Calendar, Clock, Loader2, SearchCode, SearchIcon } from "lucide-react";
 import type { SearchResult } from "minisearch";
 import { useState } from "react";
+import { AutoTooltip } from "./auto-tooltip";
 import { Button } from "./ui/button";
 import {
 	Card,
@@ -29,6 +30,7 @@ type Props = {
 	locales: {
 		title: string;
 		placeholder: string;
+		notFound: string;
 	};
 };
 
@@ -55,6 +57,11 @@ export const Search = ({ locales, locale }: Props) => {
 		setSearch(event.target.value);
 	}
 
+	const noPostFound =
+		(data === undefined || data.length === 0) &&
+		!!debouncedSearch &&
+		!isLoading;
+
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
@@ -62,7 +69,7 @@ export const Search = ({ locales, locale }: Props) => {
 					<SearchIcon />
 				</Button>
 			</DialogTrigger>
-			<DialogContent className="fixed top-20 left-1/2 transform overflow-auto my-auto -translate-x-1/2 max-h-[90vh]">
+			<DialogContent className="top-[10%] translate-y-0">
 				<DialogHeader>
 					<DialogTitle>{locales.title}</DialogTitle>
 				</DialogHeader>
@@ -71,7 +78,7 @@ export const Search = ({ locales, locale }: Props) => {
 						<Label htmlFor="search" className="sr-only">
 							{locales.placeholder}
 						</Label>
-						<div>
+						<div className="relative w-full">
 							<Input
 								name="search"
 								value={search}
@@ -86,10 +93,16 @@ export const Search = ({ locales, locale }: Props) => {
 								)}
 							</span>
 						</div>
-						<div className="mt-4 grid space-y-4">
-							{data?.map((post: SearchResult) => (
-								<SearchResultCard key={post.url} {...post} />
-							))}
+						<div className="mt-4 grid space-y-4 overflow-y-auto max-h-[420px] md:max-h-[90vh]">
+							{data?.length > 0 &&
+								data.map((post: SearchResult) => (
+									<SearchResultCard key={post.url} {...post} />
+								))}
+							{noPostFound && (
+								<p className="text-center text-muted-foreground">
+									{locales.notFound}
+								</p>
+							)}
 						</div>
 					</div>
 				</div>
@@ -110,15 +123,20 @@ const SearchResultCard: React.FC<SearchResult> = ({
 			<Card className="transition-all hover:bg-accent">
 				<CardHeader className="pb-1">
 					<CardTitle className="line-clamp-2 text-2xl font-bold tracking-tight lg:line-clamp-1">
-						{title}
+						<AutoTooltip>{title}</AutoTooltip>
 					</CardTitle>
 				</CardHeader>
-				<CardContent className="line-clamp-2 pb-2 tracking-tight text-muted-foreground lg:line-clamp-2">
-					{summary}
+				<CardContent className=" tracking-tight text-muted-foreground">
+					<AutoTooltip className="line-clamp-2">{summary}</AutoTooltip>
 				</CardContent>
-				<CardFooter className="flex flex-row justify-between text-secondary-foreground">
-					<div>{readingTime} min</div>
-					<time>{date}</time>
+				<CardFooter className="flex flex-row justify-between text-muted-foreground">
+					<div className="flex flex-row place-items-center gap-x-2">
+						<Clock size={16} /> {readingTime} min
+					</div>
+					<div className="flex flex-row place-items-center gap-x-2">
+						<Calendar size={16} />
+						<time>{date}</time>
+					</div>
 				</CardFooter>
 			</Card>
 		</Link>

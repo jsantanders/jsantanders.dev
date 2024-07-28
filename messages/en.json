@@ -25,13 +25,25 @@
 		"license": "Author's content is licensed under",
 		"copyright": "Creative Commons 4.0"
 	},
+	"tags": {
+		"seo": {
+			"title": "Tags",
+			"description": "Post tags"
+		},
+		"page": {
+			"seo": {
+				"title": "Tags - Page {page}",
+				"description": "Tags - Page ${page} of ${total}"
+			}
+		}
+	},
 	"home": {
 		"title": "Software Engineer at",
 		"welcome": "Hi 👋, my name is Jesus",
-		"about": "I'm a software engineer who likes to work with scalable and distributed systems. In this space, I plan to share some of my personal reflections and experiences as a developer. Hopefully you'll find something useful here.",
+		"about": "I enjoy working with scalable and distributed systems. In this space, I plan to share some of my personal reflections and experiences as a developer. Hopefully you'll find something useful here.",
 		"seo": {
-			"title": "Home – Jesus Santander",
-			"description": "Developer"
+			"title": "Home",
+			"description": "jsantanders.dev"
 		},
 		"social": {
 			"twitter": "Twitter",
@@ -43,8 +55,8 @@
 	},
 	"blog": {
 		"title": "All blog posts",
-		"none": "No blog posts found",
-		"read": " min read",
+		"none": "No blog posts found. 😔",
+		"read": "min",
 		"anchor": "Link to this heading",
 		"published": "Published on",
 		"modified": "Modified on",
@@ -54,8 +66,8 @@
 		"page": "Page",
 		"of": "of",
 		"seo": {
-			"title": "Blog – Jesus Santander",
-			"description": "All blog posts"
+			"title": "Posts - Page {page}",
+			"description": "Posts - Page ${page} of ${total}"
 		},
 		"views": "views",
 		"rating": {
@@ -71,6 +83,10 @@
 		"search": {
 			"title": "Search Post",
 			"placeholder": "Search for a post"
+		},
+		"tags": {
+			"title": "All Tags",
+			"tagPage": "Posts for tag #{tag}"
 		}
 	},
 	"about": {
@@ -79,14 +95,37 @@
 		"description_2": "Currently, I'm pursuing a Master's in Applied Mathematics at the University of Carabobo, diving into fascinating topics like statistics, probability theory, and stochastic processes.",
 		"description_3": "You can check more about my profesional profile here: <resume>resume</resume>",
 		"seo": {
-			"title": "About – Jesus Santander",
-			"description": "Developer"
+			"title": "About",
+			"description": "jsantanders.dev"
 		},
-		"mon": "Mon",
-		"wed": "Wed",
-		"fri": "Fri",
-		"more": "More",
-		"less": "Less",
+		"months": {
+			"jan": "Jan",
+			"feb": "Feb",
+			"mar": "Mar",
+			"apr": "Apr",
+			"may": "May",
+			"jun": "Jun",
+			"jul": "Jul",
+			"aug": "Aug",
+			"sep": "Sep",
+			"oct": "Oct",
+			"nov": "Nov",
+			"dec": "Dec"
+		},
+		"weekdays": {
+			"sun": "Sun",
+			"mon": "Mon",
+			"tue": "Tue",
+			"wed": "Wed",
+			"thu": "Thu",
+			"fri": "Fri",
+			"sat": "Sat"
+		},
+		"totalCount": "'{{count}}' activities in '{{year}}'",
+		"legend": {
+			"less": "Less",
+			"more": "More"
+		},
 		"codeFrec": "Github contributions",
 		"featuredRepos": "Featured repositories"
 	},
@@ -95,17 +134,17 @@
 		"subtitle": "I'm sorry if the page you're looking for does not exist. It may have expired, there could be a typo, or I haven't write yet the post on the requested language.",
 		"button": "Go Back Home",
 		"seo": {
-			"title": "404 – Jesus Santander",
-			"description": "Developer"
+			"title": "404",
+			"description": "Not found page"
 		}
 	},
 	"500": {
-		"title": "Oh, the site just broke",
+		"title": "Oh 🔴, the site just broke",
 		"subtitle": "Please try again in a few minutes or just return to the homepage.",
 		"button": "Go Back Home",
 		"seo": {
-			"title": "500 – Jesus Santander",
-			"description": "Developer"
+			"title": "500",
+			"description": "Error page"
 		}
 	}
 }

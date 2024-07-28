@@ -1,5 +1,4 @@
 import { PostCard } from "@/components/post/post-card";
-import { Search } from "@/components/search";
 import {
 	Pagination,
 	PaginationContent,
@@ -7,17 +6,17 @@ import {
 	PaginationLink,
 } from "@/components/ui/pagination";
 import { type Locales, locales } from "@/config";
-import { pages, pages as pagesByLocale } from "@/lib/posts";
+import { allTags, tagPages } from "@/lib/posts";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
-type Props = { params: { locale: Locales; page: string } };
+type Props = { params: { locale: Locales; page: string; tag: string } };
 
 export default async function Blog({ params }: Props) {
 	unstable_setRequestLocale(params.locale);
 	const t = await getTranslations("blog");
 	const pageNumber = Number(params.page) - 1;
-	const pages = pagesByLocale(params.locale);
+	const pages = tagPages(params.locale, params.tag);
 	const page = pages[pageNumber];
 	if (!page) {
 		notFound();
@@ -26,18 +25,14 @@ export default async function Blog({ params }: Props) {
 	const searchLocales = {
 		title: t("search.title"),
 		placeholder: t("search.placeholder"),
-		notFound: t("none"),
 	};
 
 	return (
 		<div className="mx-auto flex flex-col items-start justify-center gap-y-4">
-			<div className="flex flex-col justify-start">
-				<div className="flex flex-row place-items-center space-x-4">
-					<h1 className="text-3xl text-left md:text-5xl font-bold tracking-tight">
-						{t("title")}
-					</h1>
-					<Search locales={searchLocales} locale={params.locale} />
-				</div>
+			<div>
+				<h1 className="text-3xl items-center md:text-5xl font-bold tracking-tight">
+					{t("tags.tagPage", { tag: params.tag })}
+				</h1>
 				<h2 className="text-lg tracking-tight text-muted-foreground">
 					{t("page")} {params.page} {t("of")} {pages.length}
 				</h2>
@@ -70,23 +65,12 @@ export default async function Blog({ params }: Props) {
 
 export function generateStaticParams() {
 	return locales.flatMap((locale) =>
-		pagesByLocale(locale).map((_, page) => ({
-			page: String(page + 1),
-			locale: locale,
-		})),
+		Object.keys(allTags).map((tag) =>
+			tagPages(locale, tag).map((_, page) => ({
+				page: String(page + 1),
+				locale: locale,
+				tag: tag,
+			})),
+		),
 	);
 }
-
-export const generateMetadata = async ({ params }: Props) => {
-	const t = await getTranslations("tags");
-
-	return {
-		title: t("page.seo.title", { page: params.page }),
-		description: t("page.seo.description", {
-			page: params.page,
-			total: pages(params.locale).length,
-		}),
-	};
-};
-
-export const dynamicParams = false;

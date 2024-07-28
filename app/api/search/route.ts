@@ -12,6 +12,7 @@ export async function GET(request: Request) {
 	const { searchParams } = new URL(request.url);
 
 	const query = searchParams.get("q");
+	const locale = searchParams.get("l") ?? "en";
 	if (!query) {
 		return new Response("Missing query parameter", {
 			status: 400,
@@ -20,6 +21,7 @@ export async function GET(request: Request) {
 
 	const result = miniSearch.search(query, {
 		prefix: true,
+		filter: (result) => result.locale === locale,
 	});
 
 	result.splice(5);

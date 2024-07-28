@@ -1,8 +1,8 @@
 "use client";
 
-import { getQueryClient } from "@/app/[locale]/providers";
 import { AnalyticsContext } from "@/components/analytics-context";
 import { cn } from "@/lib/utils";
+import { getQueryClient } from "@/query-client";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { Star } from "lucide-react";
 import React, {

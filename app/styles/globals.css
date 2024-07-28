@@ -35,12 +35,7 @@
         --chart-5: 27 87% 67%;
 
         /** github blocks **/
-        --color-graph-L: #cccccc;
-        --color-graph-L0: #ebedf0;
-        --color-graph-L1: #9be9a8;
-        --color-graph-L2: #40c463;
-        --color-graph-L3: #30a14e;
-        --color-graph-L4: #216e39;
+        --color-graph-L0: #e5e5e5;
 
         /* code highlight */
         --text-color: #111b27;
@@ -96,12 +91,7 @@
         --chart-5: 340 75% 55%;
 
         /** github blocks **/
-        --color-graph-L: #464d53;
-        --color-graph-L0: #1f2429;
-        --color-graph-L1: #003820;
-        --color-graph-L2: #00602d;
-        --color-graph-L3: #10983d;
-        --color-graph-L4: #27d545;
+        --color-graph-L0: #171717;
 
         /* code highlight */
         --text-color: #e3eaf2;
@@ -203,28 +193,10 @@
     }
 }
 
-[data-level="-1"] {
-    fill: var(--color-graph-L);
-}
-
 [data-level="0"] {
     fill: var(--color-graph-L0);
-}
-
-[data-level="1"] {
-    fill: var(--color-graph-L1);
-}
-
-[data-level="2"] {
-    fill: var(--color-graph-L2);
-}
-
-[data-level="3"] {
-    fill: var(--color-graph-L3);
-}
-
-[data-level="4"] {
-    fill: var(--color-graph-L4);
+    border: 5px !important;
+    border-color: red !important;
 }
 
 @layer base {

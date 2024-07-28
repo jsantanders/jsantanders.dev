@@ -12,6 +12,11 @@ export type PostOverview = Pick<
 	| "slug"
 >;
 
+export type Tag = {
+	slug: string;
+	articlesCnt: number;
+};
+
 export type ReposData = {
 	repos: {
 		viewer: {

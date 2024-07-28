@@ -9,6 +9,7 @@ import {
 	LinkedInLogoIcon,
 	TwitterLogoIcon,
 } from "@radix-ui/react-icons";
+import type { Metadata } from "next";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 
 type Props = {
@@ -86,4 +87,12 @@ export default async function Home({ params: { locale } }: Props) {
 
 export function generateStaticParams() {
 	return locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	const t = await getTranslations("home");
+	return {
+		title: t("seo.title"),
+		description: t("seo.description"),
+	};
 }
