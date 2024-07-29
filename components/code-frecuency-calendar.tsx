@@ -9,6 +9,8 @@ type Props = Omit<ComponentProps<typeof GitHubCalendar>, "username">;
 export const CodeFrencuencyCalendar = ({ labels }: Props) => {
 	const { theme } = useTheme();
 
+	//HACK: L0 color is defined also in the main css (global.css)
+	// because the calendar is not taking the color for  theloading state.
 	const colors: ThemeInput = {
 		light: ["#e5e5e5", "#a1a1aa", "#6b7280", "#374151", "#111827"],
 		dark: ["#171717", "#3f3f46", "#71717a", "#a1a1aa", "#d4d4d8"],

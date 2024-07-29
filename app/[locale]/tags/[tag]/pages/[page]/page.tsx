@@ -6,7 +6,7 @@ import {
 	PaginationLink,
 } from "@/components/ui/pagination";
 import { type Locales, locales } from "@/config";
-import { allTags, tagPages } from "@/lib/posts";
+import { allTags, pages, tagPages } from "@/lib/posts";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
@@ -65,8 +65,8 @@ export default async function Blog({ params }: Props) {
 
 export function generateStaticParams() {
 	return locales.flatMap((locale) =>
-		Object.keys(allTags).map((tag) =>
-			tagPages(locale, tag).map((_, page) => ({
+		Object.keys(allTags(locale)).flatMap((tag) =>
+			tagPages(locale, tag).flatMap((_, page) => ({
 				page: String(page + 1),
 				locale: locale,
 				tag: tag,
@@ -74,3 +74,18 @@ export function generateStaticParams() {
 		),
 	);
 }
+
+export const generateMetadata = async ({ params }: Props) => {
+	unstable_setRequestLocale(params.locale);
+	const t = await getTranslations("blog");
+
+	return {
+		title: t("tags.title", { page: params.page }),
+		description: t("seo.description", {
+			page: params.page,
+			total: pages(params.locale).length,
+		}),
+	};
+};
+
+export const dynamicParams = false;

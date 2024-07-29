@@ -1,4 +1,5 @@
 import { redirect } from "@/navigation";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 type Props = {
 	params: {
@@ -8,5 +9,6 @@ type Props = {
 };
 
 export default function TagPage({ params: { locale, tag } }: Props) {
+	unstable_setRequestLocale(locale);
 	redirect(`/tags/${tag}/pages/1`);
 }

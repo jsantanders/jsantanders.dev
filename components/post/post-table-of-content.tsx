@@ -12,6 +12,10 @@ type PostTableOfContentProps = {
 	};
 };
 
+//TODO: I don't want to include the footnotes section,
+// but still want to generate it. It could be a better way of handle this.
+const NON_TOC_ELEMENTS = ["Footnotes"];
+
 export const PostTableOfContents: React.FC<PostTableOfContentProps> = ({
 	toc,
 	locales,
@@ -33,20 +37,22 @@ export const PostTableOfContents: React.FC<PostTableOfContentProps> = ({
 function renderNodes(nodes: Toc, chapter = "") {
 	return (
 		<ul>
-			{nodes.map((node, idx) => (
-				<li key={node.id}>
-					<TOCLink node={node} ch={`${chapter}${idx + 1}.`} />
-					{node.children?.length &&
-						node.children?.length > 0 &&
-						renderNodes(node.children, `${chapter}${idx + 1}.`)}
-				</li>
-			))}
+			{nodes
+				.filter((n) => !NON_TOC_ELEMENTS.includes(n.value))
+				.map((node, idx) => (
+					<li key={node.id}>
+						<TOCLink node={node} ch={`${chapter}${idx + 1}.`} />
+						{node.children?.length &&
+							node.children?.length > 0 &&
+							renderNodes(node.children, `${chapter}${idx + 1}.`)}
+					</li>
+				))}
 		</ul>
 	);
 }
 
 const TOCLink: React.FC<{ node: TocEntry; ch: string }> = ({ node, ch }) => {
-	const fontSizes: Record<number, string> = { 2: "base", 3: "sm", 4: "xs" };
+	const fontSizes: Record<number, string> = { 2: "sm", 3: "sm", 4: "xs" };
 	const padding: Record<number, string> = { 2: "pl-0", 3: "pl-7", 4: "pl-10" };
 	const id = node.id || generateId(6);
 	const [highlighted, setHighlighted] = useHighlighted(id);

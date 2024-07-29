@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "./katex.css";
-@import "./prism.css";
-@import "./mafs.css";
-
 @layer base {
     :root {
         --background: 0 0% 100%;
@@ -140,34 +136,6 @@
     }
 }
 
-@keyframes slide-down {
-    0% {
-        opacity: 0;
-        transform: translateY(-10px);
-        -webkit-transform: translateY(-10px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-        -webkit-transform: translateY(0px);
-    }
-}
-
-@-webkit-keyframes slide-down {
-    0% {
-        opacity: 0;
-        transform: translateY(-10px);
-        -webkit-transform: translateY(-10px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-        -webkit-transform: translateY(0px);
-    }
-}
-
 .navbar {
     transition: transform 300ms ease;
     -o-transition: transform 300ms ease;
@@ -184,6 +152,44 @@
     display: flex;
     flex-direction: row;
     column-gap: 0.5rem;
+    @apply my-5;
+}
+
+.footnotes {
+    @apply mt-12 border-t border-muted text-sm;
+    p {
+        @apply text-sm my-0;
+    }
+}
+
+.data-footnote-backref {
+    @apply no-underline;
+}
+
+.unordered > li {
+    @apply my-2;
+}
+
+.ordered {
+    counter-reset: counts;
+}
+
+.ordered > li {
+    counter-increment: counts;
+
+    @apply my-2;
+}
+
+.ordered > li::before {
+    content: counters(counts, ".") ". ";
+    min-width: 20px;
+
+    @apply inline-block pr-3 font-medium;
+}
+
+/* this is inserted by rehype-citation, removing it because interfers with toc  */
+#footnote-label {
+    display: none;
 }
 
 @media (min-width: 768px) {

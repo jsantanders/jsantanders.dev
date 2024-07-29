@@ -39,6 +39,7 @@ export function generateStaticParams() {
 }
 
 export const generateMetadata = async ({ params }: Props) => {
+	unstable_setRequestLocale(params.locale);
 	const t = await getTranslations("tags");
 
 	return {

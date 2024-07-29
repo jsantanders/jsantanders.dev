@@ -13,20 +13,15 @@ export const List: React.FC<PropsWithChildren<ListProps>> = ({
 
 	switch (type) {
 		case "ol":
-			classes = "ordered list-decimal list-inside";
+			classes = "ordered";
 			break;
 		case "ul":
-			classes = "unordered list-disc list-inside";
+			classes = "unordered";
 			break;
 		default:
 			classes = "";
 			break;
 	}
 
-	return (
-		<Component
-			className={`${classes} space-y-1 text-base leading-relaxed lg:text-lg`}
-			{...props}
-		/>
-	);
+	return <Component className={`${classes} my-5`} {...props} />;
 };

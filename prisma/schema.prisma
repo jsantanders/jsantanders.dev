@@ -1,0 +1,23 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Views {
+userId        String   @unique
+slug      String
+createdAt DateTime @default(now())
+updatedAt DateTime @updatedAt
+}
+
+model Ratings {
+userId        String   @unique
+slug          String
+rate          Int
+createdAt     DateTime @default(now())
+updatedAt     DateTime @updatedAt
+}

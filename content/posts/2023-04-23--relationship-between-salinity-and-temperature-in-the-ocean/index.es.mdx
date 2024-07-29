@@ -32,12 +32,7 @@ $$
 
 En esta forma, estimar $f$ puede ser bastante desafiante, incluso asumiendo que
 es una función suave y continua. Existen infinitas funciones posibles que se
-pueden utilizar, y los datos por sí solos no nos dirán cuál es la mejor. Aquí es
-donde entra en juego la linealidad. Al asumir que la relación entre las
-variables predictoras y la respuesta es lineal, podemos simplificar en gran
-medida el proceso de modelado. En lugar de estimar la función completa $f`, solo
-necesitamos estimar los parámetros desconocidos en la ecuación de regresión
-lineal:
+pueden utilizar, y los datos por sí solos no nos dirán cuál es la mejor [@faraway2021linear]. Aquí es donde entra en juego la linealidad. Al asumir que la relación entre las variables predictoras y la respuesta es lineal, podemos simplificar en gran medida el proceso de modelado. En lugar de estimar la función completa $f`, solo necesitamos estimar los parámetros desconocidos en la ecuación de regresión lineal:
 
 $$
 Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_n X_n + \epsilon
@@ -61,10 +56,7 @@ $$
 no lo es. Aunque el nombre implica una línea recta, los modelos de regresión
 lineal pueden ser bastante flexibles y pueden manejar conjuntos de datos
 complejos. Para capturar relaciones no lineales entre las variables predictoras
-y la respuesta, se pueden incluir términos cuadráticos en el modelo. Además, los
-predictores no lineales se pueden transformar a una forma lineal mediante
-transformaciones adecuadas, como la transformación logarítmica, que puede
-linearizar relaciones exponenciales.
+y la respuesta, se pueden incluir términos cuadráticos en el modelo [@heumann2016introduction]. Además, los predictores no lineales se pueden transformar a una forma lineal mediante transformaciones adecuadas, como la transformación logarítmica, que puede linearizar relaciones exponenciales.
 
 En la práctica, casi todas las relaciones pueden ser representadas o reducidas a
 una forma lineal. Por eso la regresión lineal es tan ampliamente utilizada y
@@ -76,9 +68,9 @@ Para facilitar el trabajo, presentemos nuestro modelo de una respuesta $Y$ y $n$
 variables predictoras $X_1, X_2, \cdots, X_n$ en forma de tabla:
 
 $$
-y_1     \quad x_{11} \quad x_{12} \quad \cdots \quad x_{1n}
-y_2     \quad x_{21} \quad x_{22} \quad \cdots \quad x_{2n}
-\vdots
+y_1     \quad x_{11} \quad x_{12} \quad \cdots \quad x_{1n} \\
+y_2     \quad x_{21} \quad x_{22} \quad \cdots \quad x_{2n} \\
+\vdots   \\
 y_m     \quad x_{m1} \quad x_{m2} \quad \cdots \quad x_{mn}
 $$
 
@@ -101,14 +93,14 @@ donde $y = (y_1, y_2, \cdots, y_m)^T$ es el vector de respuesta, $\epsilon =
 (\beta_0, \beta_1, \cdots, \beta_n)^T$ es el vector de parámetros, y:
 
 $$
-X = \begin{bmatrix} 1 & x_{11} & x_{12} & \cdots & x_{1n}
-1 & x_{21} & x_{22} & \cdots & x_{2n}
-\vdots & \vdots & \vdots & \ddots & \vdots
+X = \begin{bmatrix} 1 & x_{11} & x_{12} & \cdots & x_{1n} \\
+1 & x_{21} & x_{22} & \cdots & x_{2n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
 1 & x_{m1} & x_{m2} & \cdots & x_{mn} \end{bmatrix}
 $$
 
 es la matriz de diseño. Observa que la primera columna de $X$ es toda de unos.
-Esto se hace para tener en cuenta el término de intercepción $\beta_0`.
+Esto se hace para tener en cuenta el término de intercepción $\beta_0$.
 
 ### Estimando los parámetros
 
@@ -240,7 +232,7 @@ Los valores atípicos son puntos de datos que están lejos de los demás puntos 
 datos. Pueden ser causados por errores experimentales, corrupción de datos u
 otras anomalías. Los valores atípicos pueden tener un gran efecto en el modelo
 de regresión lineal, ya que pueden influir desproporcionadamente en el ajuste
-del modelo. Podemos utilizar la función boxplot() para visualizar los valores
+del modelo. Podemos utilizar la función `boxplot()` para visualizar los valores
 atípicos.
 
 ```r
@@ -266,7 +258,7 @@ precisión en datos no vistos.
 
 Con este propósito, asignaremos el 80% de los datos al entrenamiento y
 reservaremos el 20% restante para la prueba. Para lograr esto, podemos utilizar
-la función sample(), que nos permite seleccionar aleatoriamente las filas que
+la función `sample()`, que nos permite seleccionar aleatoriamente las filas que
 constituirán el conjunto de entrenamiento. Esta selección aleatoria garantiza
 una muestra representativa y evita sesgos en el entrenamiento del modelo.
 
@@ -276,7 +268,7 @@ training_data <- data[training_rows, ]
 testing_data <- data[-training_rows, ]
 ```
 
-Ahora podemos crear el modelo lineal utilizando la función lm(). El primer
+Ahora podemos crear el modelo lineal utilizando la función `lm()`. El primer
 argumento es la fórmula, que es la variable de respuesta (energía de densidad
 potencial) seguida de la variable predictora (temperatura). El segundo argumento
 es el conjunto de datos que se utilizará para crear el modelo.
@@ -311,37 +303,21 @@ Multiple R-squared:  0.9297,	Adjusted R-squared:  0.9297
 F-statistic: 6.997e+06 on 1 and 529012 DF,  p-value: < 2.2e-16
 ```
 
-Primero, vamos a explicar la salida de la función summary():
-
-- La tabla Coefficients muestra los coeficientes estimados del modelo lineal.
-- La columna Estimate muestra la intersección y la pendiente del modelo lineal.
-- La columna Pr(>|t|) muestra el valor p de los coeficientes.
-- El valor p indica si el coeficiente es estadísticamente significativo.
-- El Residual standard error es la desviación estándar de los residuos.
-- El Multiple R-squared es la proporción de la varianza en la variable de
-  respuesta que se explica por los predictores.
-- El Adjusted R-squared es el R-cuadrado ajustado por el número de predictores
-  en el modelo.
-- El F-statistic es la relación entre la suma promedio de cuadrados de regresión
-  y la suma promedio de cuadrados de error.
-- El valor p del F-statistic indica si el modelo es estadísticamente
-  significativo.
-
 Según el valor p de los coeficientes, podemos concluir que la intersección y la
 pendiente son estadísticamente significativas.
 
 ## Haciendo predicciones
 
-odemos utilizar la función predict() para hacer predicciones en el conjunto de
+Podemos utilizar la función `predict()` para hacer predicciones en el conjunto de
 pruebas. El primer argumento es el modelo y el segundo argumento es el conjunto
-de datos que se utilizará para hacer las predicciones. La función predict()
+de datos que se utilizará para hacer las predicciones. La función `predict()`
 devuelve un vector de predicciones.
 
 ```r
 predictions <- predict(model, testing_data)
 ```
 
-Podemos utilizar la función plot() para graficar los valores reales vs los
+Podemos utilizar la función `plot()` para graficar los valores reales vs los
 valores predichos.
 
 ```r
@@ -358,7 +334,4 @@ reales. Podemos ver que los valores predichos están cerca de los valores reales
 ![variable plot](./actual-vs-predicted.png)
 
 ## Referencias
-
-1. Faraway, Julian J. Linear Models with Python. CRC Press, 2021.
-2. Heumann, Christian, and Micheal Schomaker Shalabh. Introduction to statistics
-   and data analysis. Springer, 2016.
+{/* autogenerated */}

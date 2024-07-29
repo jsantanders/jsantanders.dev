@@ -10,6 +10,10 @@ import { getMDXExport } from "mdx-bundler/client";
 import { getTranslations, unstable_setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
+import "@/app/styles/katex.css";
+import "@/app/styles/mafs.css";
+import "@/app/styles/prism.css";
+
 type Props = {
 	params: {
 		slug: string;
@@ -24,11 +28,6 @@ export default async function Post({
 }) {
 	unstable_setRequestLocale(locale);
 	const t = await getTranslations("blog");
-	const metadataLocales = {
-		published: t("published"),
-		views: t("views"),
-		read: t("read"),
-	};
 	const postRatingLocales = {
 		thanks: t("rating.thanks"),
 		title: t("rating.title"),

@@ -128,6 +128,10 @@ const posts = defineCollection({
 							? path.join(dir, "references.bib")
 							: undefined,
 						linkCitations: true,
+						lang:
+							locale === "es"
+								? "https://raw.githubusercontent.com/citation-style-language/locales/master/locales-es-MX.xml"
+								: undefined,
 						csl: "https://raw.githubusercontent.com/citation-style-language/styles/master/acm-sig-proceedings.csl",
 					},
 				],

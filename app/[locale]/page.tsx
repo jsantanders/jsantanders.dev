@@ -64,7 +64,7 @@ export default async function Home({ params: { locale } }: Props) {
 					</div>
 				</div>
 			</div>
-			<div className="mb-6 flex w-full flex-row items-center justify-between">
+			<div className="mb-6 flex flex-col md:flex-row w-full  items-center justify-between">
 				<h3 className="align-middle text-2xl font-bold tracking-tight md:text-4xl">
 					{t("recentPosts")}
 				</h3>
@@ -90,6 +90,7 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	unstable_setRequestLocale(params.locale);
 	const t = await getTranslations("home");
 	return {
 		title: t("seo.title"),
