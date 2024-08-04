@@ -34,16 +34,14 @@ export default async function Image({ params: { slug, locale } }: Props) {
 	}
 	const t = await getTranslations("blog");
 
-	const WorkSans = fetch(
-		new URL("content/fonts/work-sans.ttf", import.meta.url),
-	).then((res) => res.arrayBuffer());
-
-	const WorkSansBold = fetch(
+	const workSansBold = fetch(
 		new URL("content/fonts/work-sans-bold.ttf", import.meta.url),
 	).then((res) => res.arrayBuffer());
-
-	const WorkSansSemiBold = fetch(
+	const workSansSemiBold = fetch(
 		new URL("content/fonts/work-sans-semi-bold.ttf", import.meta.url),
+	).then((res) => res.arrayBuffer());
+	const workSansMedium = fetch(
+		new URL("content/fonts/work-sans.ttf", import.meta.url),
 	).then((res) => res.arrayBuffer());
 
 	return new ImageResponse(
@@ -108,19 +106,19 @@ export default async function Image({ params: { slug, locale } }: Props) {
 			fonts: [
 				{
 					name: "WorkSans",
-					data: await WorkSansBold,
+					data: await workSansBold,
 					style: "normal",
 					weight: 700,
 				},
 				{
 					name: "WorkSans",
-					data: await WorkSansSemiBold,
+					data: await workSansSemiBold,
 					style: "normal",
 					weight: 600,
 				},
 				{
 					name: "WorkSans",
-					data: await WorkSans,
+					data: await workSansMedium,
 					style: "normal",
 					weight: 400,
 				},
