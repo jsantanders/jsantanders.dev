@@ -35,13 +35,16 @@ export default async function Image({ params: { slug, locale } }: Props) {
 	const t = await getTranslations("blog");
 
 	const workSansBold = fetch(
-		new URL("content/fonts/work-sans-bold.ttf", import.meta.url),
+		new URL("../../../../content/fonts/work-sans-bold.ttf", import.meta.url),
 	).then((res) => res.arrayBuffer());
 	const workSansSemiBold = fetch(
-		new URL("content/fonts/work-sans-semi-bold.ttf", import.meta.url),
+		new URL(
+			"../../../../content/fonts/work-sans-semi-bold.ttf",
+			import.meta.url,
+		),
 	).then((res) => res.arrayBuffer());
 	const workSansMedium = fetch(
-		new URL("content/fonts/work-sans.ttf", import.meta.url),
+		new URL("../../../../content/fonts/work-sans.ttf", import.meta.url),
 	).then((res) => res.arrayBuffer());
 
 	return new ImageResponse(
