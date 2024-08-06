@@ -1,3 +1,6 @@
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { ImageResponse } from "@vercel/og";
 
 export const runtime = "edge";
@@ -6,15 +9,22 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function Image() {
-	const workSansBold = fetch(
-		new URL("content/fonts/work-sans-bold.ttf", import.meta.url),
-	).then((res) => res.arrayBuffer());
-	const workSansSemiBold = fetch(
-		new URL("content/fonts/work-sans-semi-bold.ttf", import.meta.url),
-	).then((res) => res.arrayBuffer());
-	const workSansMedium = fetch(
-		new URL("content/fonts/work-sans.ttf", import.meta.url),
-	).then((res) => res.arrayBuffer());
+	const workSansBold = fs.promises.readFile(
+		path.join(
+			fileURLToPath(import.meta.url),
+			"../content/fonts/work-sans-bold.ttf",
+		),
+	);
+
+	const workSansSemiBold = fs.promises.readFile(
+		path.join(
+			fileURLToPath(import.meta.url),
+			"../content/fonts/work-sans-semi-bold.ttf",
+		),
+	);
+	const workSansMedium = fs.promises.readFile(
+		path.join(fileURLToPath(import.meta.url), "../content/fonts/work-sans.ttf"),
+	);
 
 	return new ImageResponse(
 		<div
