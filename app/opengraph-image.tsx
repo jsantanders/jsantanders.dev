@@ -1,4 +1,4 @@
-import fs from "node:fs";
+import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { ImageResponse } from "@vercel/og";
@@ -9,20 +9,20 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function Image() {
-	const workSansBold = fs.promises.readFile(
+	const workSansBold = readFile(
 		path.join(
 			fileURLToPath(import.meta.url),
 			"../content/fonts/work-sans-bold.ttf",
 		),
 	);
 
-	const workSansSemiBold = fs.promises.readFile(
+	const workSansSemiBold = readFile(
 		path.join(
 			fileURLToPath(import.meta.url),
 			"../content/fonts/work-sans-semi-bold.ttf",
 		),
 	);
-	const workSansMedium = fs.promises.readFile(
+	const workSansMedium = readFile(
 		path.join(fileURLToPath(import.meta.url), "../content/fonts/work-sans.ttf"),
 	);
 
