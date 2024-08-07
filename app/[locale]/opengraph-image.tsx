@@ -1,8 +1,8 @@
+import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { ImageResponse } from "@vercel/og";
-// biome-ignore lint/style/useNodejsImportProtocol: <explanation>
-import { readFile } from "fs/promises";
+import { getTranslations } from "next-intl/server";
 
 export const runtime = "edge";
 
@@ -10,20 +10,22 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function Image() {
-	const workSansBold = readFile(
+	const t = await getTranslations("home");
+
+	const workSansBold = fs.promises.readFile(
 		path.join(
 			fileURLToPath(import.meta.url),
 			"../content/fonts/work-sans-bold.ttf",
 		),
 	);
 
-	const workSansSemiBold = readFile(
+	const workSansSemiBold = fs.promises.readFile(
 		path.join(
 			fileURLToPath(import.meta.url),
 			"../content/fonts/work-sans-semi-bold.ttf",
 		),
 	);
-	const workSansMedium = readFile(
+	const workSansMedium = fs.promises.readFile(
 		path.join(fileURLToPath(import.meta.url), "../content/fonts/work-sans.ttf"),
 	);
 
@@ -42,12 +44,11 @@ export default async function Image() {
 						fontFamily: '"WorkSans"',
 					}}
 				>
-					<span tw="text-stone-50">jsantanders</span>
-					<span tw="text-orange-400">.dev</span>
+					<span tw="text-stone-50">{t("seo.title")}</span>
 				</div>
 			</div>
 			<div tw="absolute bottom-8 flex flex-col items-center justify-center">
-				<p tw="text-xl text-stone-200">Personal website and blog by:</p>
+				<p tw="text-xl text-stone-200">{t("seo.description")}</p>
 				<div tw="flex items-center justify-center w-full">
 					<img
 						alt="avatar"
