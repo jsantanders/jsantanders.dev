@@ -40,20 +40,20 @@ export default async function Image({ params: { slug, locale } }: Props) {
 	const workSansBold = fs.promises.readFile(
 		path.join(
 			fileURLToPath(import.meta.url),
-			"../../../content/fonts/work-sans-bold.ttf",
+			"../../../../content/fonts/work-sans-bold.ttf",
 		),
 	);
 
 	const workSansSemiBold = fs.promises.readFile(
 		path.join(
 			fileURLToPath(import.meta.url),
-			"../../../content/fonts/work-sans-semi-bold.ttf",
+			"../../../../content/fonts/work-sans-semi-bold.ttf",
 		),
 	);
 	const workSansMedium = fs.promises.readFile(
 		path.join(
 			fileURLToPath(import.meta.url),
-			"../../../content/fonts/work-sans.ttf",
+			"../../../../content/fonts/work-sans.ttf",
 		),
 	);
 
