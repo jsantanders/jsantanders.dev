@@ -15,18 +15,21 @@ export default async function Image() {
 	const workSansBold = fs.promises.readFile(
 		path.join(
 			fileURLToPath(import.meta.url),
-			"../content/fonts/work-sans-bold.ttf",
+			"../../content/fonts/work-sans-bold.ttf",
 		),
 	);
 
 	const workSansSemiBold = fs.promises.readFile(
 		path.join(
 			fileURLToPath(import.meta.url),
-			"../content/fonts/work-sans-semi-bold.ttf",
+			"../../content/fonts/work-sans-semi-bold.ttf",
 		),
 	);
 	const workSansMedium = fs.promises.readFile(
-		path.join(fileURLToPath(import.meta.url), "../content/fonts/work-sans.ttf"),
+		path.join(
+			fileURLToPath(import.meta.url),
+			"../../content/fonts/work-sans.ttf",
+		),
 	);
 
 	return new ImageResponse(
