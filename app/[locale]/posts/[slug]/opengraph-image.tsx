@@ -111,19 +111,19 @@ export default async function Image({ params: { slug, locale } }: Props) {
 			fonts: [
 				{
 					name: "WorkSans",
-					data: await workSansBold,
+					data: workSansBold,
 					style: "normal",
 					weight: 700,
 				},
 				{
 					name: "WorkSans",
-					data: await workSansSemiBold,
+					data: workSansSemiBold,
 					style: "normal",
 					weight: 600,
 				},
 				{
 					name: "WorkSans",
-					data: await workSansMedium,
+					data: workSansMedium,
 					style: "normal",
 					weight: 400,
 				},

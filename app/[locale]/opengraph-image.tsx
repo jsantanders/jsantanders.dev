@@ -61,19 +61,19 @@ export default async function Image() {
 			fonts: [
 				{
 					name: "WorkSans",
-					data: await workSansBold,
+					data: workSansBold,
 					style: "normal",
 					weight: 700,
 				},
 				{
 					name: "workSans",
-					data: await workSansMedium,
+					data: workSansMedium,
 					style: "normal",
 					weight: 400,
 				},
 				{
 					name: "workSans",
-					data: await workSansSemiBold,
+					data: workSansSemiBold,
 					style: "normal",
 					weight: 600,
 				},
