@@ -1,6 +1,3 @@
-import fs from "node:fs";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
 import type { Locales } from "@/config";
 import { ImageResponse } from "@vercel/og";
 import clsx from "clsx";
@@ -37,25 +34,17 @@ export default async function Image({ params: { slug, locale } }: Props) {
 	}
 	const t = await getTranslations("blog");
 
-	const workSansBold = fs.promises.readFile(
-		path.join(
-			fileURLToPath(import.meta.url),
-			"../../../../content/fonts/work-sans-bold.ttf",
-		),
-	);
+	const workSansBold = await fetch(
+		new URL("../../../../content/work-sans-bold.ttf", import.meta.url),
+	).then((res) => res.arrayBuffer());
 
-	const workSansSemiBold = fs.promises.readFile(
-		path.join(
-			fileURLToPath(import.meta.url),
-			"../../../../content/fonts/work-sans-semi-bold.ttf",
-		),
-	);
-	const workSansMedium = fs.promises.readFile(
-		path.join(
-			fileURLToPath(import.meta.url),
-			"../../../../content/fonts/work-sans.ttf",
-		),
-	);
+	const workSansSemiBold = await fetch(
+		new URL("../../../../content/work-sans-semi-bold.ttf", import.meta.url),
+	).then((res) => res.arrayBuffer());
+
+	const workSansMedium = await fetch(
+		new URL("../../../../content/work-sans.ttf", import.meta.url),
+	).then((res) => res.arrayBuffer());
 
 	return new ImageResponse(
 		<div
