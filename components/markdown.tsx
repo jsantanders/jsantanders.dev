@@ -18,9 +18,11 @@ import {
 } from "@/components/mdx";
 import { getMDXComponent } from "mdx-bundler/client";
 import { useMemo } from "react";
+import { usePostView } from "./post/use-post-view";
 
 type Props = {
 	code: string;
+	slug: string;
 	markdownLocales: {
 		codeLocales: {
 			copy: string;
@@ -30,7 +32,7 @@ type Props = {
 	};
 };
 
-export const Markdown = ({ code, markdownLocales }: Props) => {
+export const Markdown = ({ code, markdownLocales, slug }: Props) => {
 	const MDXComponents = {
 		h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
 			<Heading level="h1" {...props} />
@@ -74,6 +76,7 @@ export const Markdown = ({ code, markdownLocales }: Props) => {
 		Mafs,
 	};
 
+	usePostView(slug);
 	const Component = useMemo(() => getMDXComponent(code), [code]);
 	return <Component components={MDXComponents} />;
 };

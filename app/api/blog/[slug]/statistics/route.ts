@@ -6,8 +6,10 @@ export async function GET(
 	{ params }: { params: { slug: string } },
 ) {
 	const { searchParams } = new URL(request.url);
-	const userId = searchParams.get("uniqueId") ?? generateId();
+	const userId = searchParams.get("userId");
 	const slug = params.slug;
+
+	if (!userId) return Response.json({}, { status: 400 });
 
 	const rattingsAggregations = await prisma.ratings.aggregate({
 		_avg: {
@@ -28,6 +30,7 @@ export async function GET(
 		},
 		where: {
 			userId: { equals: userId },
+			slug: { equals: slug },
 		},
 	});
 

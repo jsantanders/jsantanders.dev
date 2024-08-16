@@ -32,6 +32,7 @@ export default async function Post({
 		thanks: t("rating.thanks"),
 		title: t("rating.title"),
 		votes: t("rating.votes"),
+		rate: t("rating.submit"),
 	};
 	const tableOfContentsLocale = {
 		title: t("toc.title"),
@@ -61,7 +62,11 @@ export default async function Post({
 				/>
 				<h1 className="my-2 text-5xl font-bold">{post.title}</h1>
 				<PostTags tags={post.tags} as="link" />
-				<Markdown code={post.content.mdx} markdownLocales={markdownLocales} />
+				<Markdown
+					slug={slug}
+					code={post.content.mdx}
+					markdownLocales={markdownLocales}
+				/>
 				<PostRating className="mt-12" slug={slug} locales={postRatingLocales} />
 			</article>
 			<aside className="fixed hidden min-[1420px]:left-3/4 min-[1420px]:block min-[2000px]:left-[68%]">

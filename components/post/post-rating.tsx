@@ -4,7 +4,7 @@ import { AnalyticsContext } from "@/components/analytics-context";
 import { cn } from "@/lib/utils";
 import { getQueryClient } from "@/query-client";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { Star } from "lucide-react";
+import { Loader2, Star } from "lucide-react";
 import React, {
 	type CSSProperties,
 	useCallback,
@@ -12,6 +12,7 @@ import React, {
 	useEffect,
 	useState,
 } from "react";
+import { Button } from "../ui/button";
 import { getBlogPostStatistics, rateBlogPost } from "./fetch-post-statistics";
 
 type RatingSymbolProps = {
@@ -53,6 +54,7 @@ type PostRatingProps = {
 		thanks: string;
 		title: string;
 		votes: string;
+		rate: string;
 	};
 };
 
@@ -62,13 +64,14 @@ export const PostRating: React.FC<PostRatingProps> = ({
 	className,
 }) => {
 	const { userId } = useContext(AnalyticsContext);
+	const [rate, setRate] = useState(0);
 
 	const { data } = useQuery({
 		queryKey: ["posts-statistics", slug],
-		queryFn: () => getBlogPostStatistics(slug),
+		queryFn: () => getBlogPostStatistics(slug, userId),
 	});
 
-	const { mutate: ratePost } = useMutation({
+	const { mutate: ratePost, isPending } = useMutation({
 		mutationFn: (rating: number) => rateBlogPost(slug, userId, rating),
 		onSuccess: () =>
 			getQueryClient().invalidateQueries({
@@ -83,12 +86,23 @@ export const PostRating: React.FC<PostRatingProps> = ({
 			<h3 className="pb-2 text-center text-xl font-bold lg:text-2xl">
 				{data.userHasRated ? locales.thanks : locales.title}
 			</h3>
-			<Rating
-				readonly={data.userHasRated}
-				initialValue={data.userHasRated ? data.rating.average : 0}
-				fractions={2}
-				onClick={(rate) => ratePost(rate)}
-			/>
+			<div className="flex flex-col gap-y-2">
+				<Rating
+					readonly={data.userHasRated}
+					initialValue={data.userHasRated ? data.rating.average : rate}
+					fractions={2}
+					onClick={(rate) => setRate(rate)}
+				/>
+				{data.userHasRated === false && rate > 0 && (
+					<Button variant="outline" onClick={() => ratePost(rate)}>
+						{isPending ? (
+							<Loader2 className="mr-2 h-4 w-4 animate-spin" />
+						) : (
+							locales.rate
+						)}
+					</Button>
+				)}
+			</div>
 			{data.userHasRated && (
 				<div className="py-2">
 					<span className="text-2xl font-bold">

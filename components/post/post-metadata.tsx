@@ -18,32 +18,24 @@ export const PostMetadata: React.FC<PostMetadata> = async ({
 }) => {
 	const t = await getTranslations("blog");
 
-	const queryClient = getQueryClient();
-	await queryClient.prefetchQuery({
-		queryKey: ["post-statistics", slug],
-		queryFn: () => getBlogPostStatistics(slug),
-	});
-
 	return (
-		<HydrationBoundary state={dehydrate(queryClient)}>
-			<div className="flex flex-row gap-x-2 text-muted-foreground text-xs md:text-sm">
-				<div className="flex flex-row place-items-center gap-x-2">
-					<Calendar size={12} />
-					<time>{publishedAt}</time>
-				</div>
-				<div>•</div>
-				<div className="flex flex-row place-items-center gap-x-2">
-					<Clock size={12} />
-					<span>
-						{readingTime} {t("read")}
-					</span>
-				</div>
-				<div>•</div>
-				<div className="flex flex-row place-items-center gap-x-2">
-					<Eye size={12} />
-					<PostViews slug={slug} label={t("views")} />
-				</div>
+		<div className="flex flex-row gap-x-2 text-muted-foreground text-xs md:text-sm">
+			<div className="flex flex-row place-items-center gap-x-2">
+				<Calendar size={12} />
+				<time>{publishedAt}</time>
 			</div>
-		</HydrationBoundary>
+			<div>•</div>
+			<div className="flex flex-row place-items-center gap-x-2">
+				<Clock size={12} />
+				<span>
+					{readingTime} {t("read")}
+				</span>
+			</div>
+			<div>•</div>
+			<div className="flex flex-row place-items-center gap-x-2">
+				<Eye size={12} />
+				<PostViews slug={slug} label={t("views")} />
+			</div>
+		</div>
 	);
 };
