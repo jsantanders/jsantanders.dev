@@ -13,10 +13,6 @@ export default async function Image() {
 		new URL("../../content/fonts/work-sans-bold.ttf", import.meta.url),
 	).then((res) => res.arrayBuffer());
 
-	const workSansSemiBold = await fetch(
-		new URL("../../content/fonts/work-sans-semi-bold.ttf", import.meta.url),
-	).then((res) => res.arrayBuffer());
-
 	const workSansMedium = await fetch(
 		new URL("../../content/fonts/work-sans.ttf", import.meta.url),
 	).then((res) => res.arrayBuffer());
@@ -73,7 +69,7 @@ export default async function Image() {
 				},
 				{
 					name: "workSans",
-					data: workSansSemiBold,
+					data: workSansMedium,
 					style: "normal",
 					weight: 600,
 				},
