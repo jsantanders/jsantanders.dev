@@ -1,0 +1,6 @@
+@import "mafs/core.css";
+@import "mafs/font.css";
+
+.MafsView {
+    @apply inline-block w-full rounded-xl border border-solid border-muted;
+}

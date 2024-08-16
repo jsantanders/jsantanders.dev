@@ -1,5 +1,0 @@
-User-Agent: *
-
-Disallow:
-
-Sitemap: https://jsantanders.dev/sitemap.xml

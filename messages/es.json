@@ -1,0 +1,150 @@
+{
+	"a11y": {
+		"skipContent": "Saltar al contenido"
+	},
+	"seo": {
+		"image": {
+			"url": "https://jsantanders.dev/images/preview.png",
+			"alt": "Banner del sitio jsantanders.dev"
+		},
+		"rss": {
+			"en": "Canal RSS para angloparlantes",
+			"es": "Canal RSS para hispanohablantes"
+		}
+	},
+	"nav": {
+		"menu": "Menú",
+		"home": "Inicio",
+		"blog": "Artículos",
+		"about": "Sobre mí",
+		"language": "Cambiar idioma",
+		"theme": "Cambiar tema",
+		"navigation": "Navegación"
+	},
+	"footer": {
+		"license": "El contenido del autor está licenciado bajo",
+		"copyright": "Creative Commons 4.0"
+	},
+	"home": {
+		"title": "Ingeniero de Software en",
+		"welcome": "Hola 👋, me llamo Jesus",
+		"about": "Me gusta trabajar con sistemas escalables y distribuidos. En este espacio, planeo compartir algunas de mis reflexiones personales y experiencias como desarrollador. Espero que puedas encontrar algo útil aquí.",
+		"seo": {
+			"title": "Inicio – Jesus Santander",
+			"description": "Desarrollador"
+		},
+		"social": {
+			"twitter": "Twitter",
+			"github": "Github",
+			"linkedin": "LinkedIn"
+		},
+		"recentPosts": "Artículos recientes",
+		"readMore": "Leer más"
+	},
+	"tags": {
+		"seo": {
+			"title": "Etiquetas",
+			"description": "Etiquetas de los artículos"
+		},
+		"page": {
+			"seo": {
+				"title": "Etiquetas - Página {page}",
+				"description": "Etiquetas - Página ${page} de ${total}"
+			}
+		}
+	},
+	"blog": {
+		"title": "Todos los artículos",
+		"none": "No se encontraron artículos. 😔",
+		"read": "min",
+		"anchor": "Enlace a este encabezado",
+		"published": "Publicado el",
+		"modified": "Modificado el",
+		"copy": "Copiar",
+		"copy-success": "Copiado",
+		"copy-error": "Error",
+		"page": "Página",
+		"of": "de",
+		"seo": {
+			"title": "Artículos - Página {page}",
+			"description": "Artículos - Página ${page} de ${total}"
+		},
+		"views": "vistas",
+		"rating": {
+			"title": "Califica este artículo",
+			"submit": "Enviar",
+			"thanks": "¡Gracias por tu opinión!",
+			"error": "Algo salió mal, por favor intenta de nuevo más tarde.",
+			"votes": "votos"
+		},
+		"toc": {
+			"title": "Tabla de contenidos"
+		},
+		"search": {
+			"title": "Buscar artículo",
+			"placeholder": "busca un artículo"
+		},
+		"tags": {
+			"title": "Todas las etiquetas",
+			"tagPage": "Artículos para la etiqueta #{tag}"
+		}
+	},
+	"about": {
+		"title": "Sobre mí",
+		"description_1": "Soy ingeniero de software, actualmente en Venezuela 🇻🇪. Disfruto construyendo sistemas distribuidos y creando cosas con <rust>Rust</rust> y <go>Go</go>.",
+		"description_2": "Estoy cursando una Maestría en Matemáticas Aplicadas en la Universidad de Carabobo. Mis áreas de interés son: estadística, teoría de la probabilidad y procesos estocásticos.",
+		"description_3": "Puedes ver más sobre mi perfil profesional aquí: <resume>cv</resume>",
+		"seo": {
+			"title": "Sobre mí – Jesus Santander",
+			"description": "Desarrollador"
+		},
+		"months": {
+			"jan": "ene",
+			"feb": "feb",
+			"mar": "mar",
+			"apr": "abr",
+			"may": "may",
+			"jun": "jun",
+			"jul": "jul",
+			"aug": "ago",
+			"sep": "sep",
+			"oct": "oct",
+			"nov": "nov",
+			"dec": "dic"
+		},
+		"weekdays": {
+			"sun": "dom",
+			"mon": "lun",
+			"tue": "mar",
+			"wed": "mié",
+			"thu": "jue",
+			"fri": "vie",
+			"sat": "sáb"
+		},
+		"totalCount": "'{{count}}' actividades en '{{year}}'",
+		"legend": {
+			"less": "Menos",
+			"more": "Más"
+		},
+		"codeFrec": "Contribuciones en Github",
+		"featuredRepos": "Repositorios destacados"
+	},
+	"404": {
+		"title": "Lo siento 🚧, esta página no se puede encontrar",
+		"subtitle": "Lo siento si la página que estás buscando no existe. Puede haber caducado, puede haber un error tipográfico o aún no he escrito el artículo en el idioma solicitado.",
+		"button": "Volver al Inicio",
+		"seo": {
+			"title": "404 – Jesus Santander",
+			"description": "Desarrollador"
+		}
+	},
+	"500": {
+		"title": "Oh, el sitio se acaba de romper",
+		"subtitle": "Por favor, inténtalo de nuevo en unos minutos o simplemente vuelve a la página de inicio.",
+		"button": "Volver al Inicio",
+		"seo": {
+			"title": "500 – Jesus Santander",
+			"description": "Desarrollador"
+		}
+	}
+}
