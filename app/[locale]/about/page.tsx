@@ -50,7 +50,7 @@ export default async function About({ params: { locale } }: Props) {
 			<h1 className="text-3xl md:text-5xl font-bold tracking-tight">
 				{t("title")}
 			</h1>
-			<div className="space-y-3 text-md leading-6">
+			<div className="space-y-3 leading-6">
 				<p>
 					{t.rich("description_1", {
 						rust: (chunks) => (

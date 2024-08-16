@@ -25,7 +25,7 @@ export default async function Home({ params: { locale } }: Props) {
 		<div className="mx-auto flex max-w-2xl flex-col items-start justify-center">
 			<div className="flex flex-col-reverse items-start sm:flex-row">
 				<div className="flex flex-col">
-					<h1 className="mb-2 text-3xl font-bold tracking-tight md:text-5xl">
+					<h1 className="mb-1 text-3xl font-bold tracking-tight md:text-5xl">
 						{t("welcome")}
 					</h1>
 					<h2 className="mb-4">
@@ -41,7 +41,7 @@ export default async function Home({ params: { locale } }: Props) {
 							</a>
 						</span>
 					</h2>
-					<p className="text-md text-muted-foreground">{t("about")}</p>
+					<p className="text-muted-foreground">{t("about")}</p>
 					<div className="my-10 flex items-center justify-center gap-10 align-middle">
 						<SocialLink
 							href={"https://twitter.com/jsantanders"}
@@ -64,7 +64,7 @@ export default async function Home({ params: { locale } }: Props) {
 					</div>
 				</div>
 			</div>
-			<div className="mb-6 flex flex-col md:flex-row w-full  items-center justify-between">
+			<div className="mb-6 flex flex-row w-full  items-center justify-between">
 				<h3 className="align-middle text-2xl font-bold tracking-tight md:text-4xl">
 					{t("recentPosts")}
 				</h3>
