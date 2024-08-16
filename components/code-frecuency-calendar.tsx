@@ -5,8 +5,10 @@ import { useTheme } from "next-themes";
 import React, { forwardRef } from "react";
 import Calendar, {
 	type Props as ActivityCalendarProps,
+	type Activity,
 	Skeleton,
 } from "react-activity-calendar";
+import { Tooltip } from "react-tooltip";
 
 export interface Props extends Omit<ActivityCalendarProps, "data" | "theme"> {
 	errorMessage?: string;
@@ -15,6 +17,7 @@ export interface Props extends Omit<ActivityCalendarProps, "data" | "theme"> {
 	transformData?: (data: Array<Activity>) => Array<Activity>;
 	transformTotalCount?: boolean;
 	year?: Year;
+	labels: ActivityCalendarProps["labels"] & { activities?: string };
 }
 
 type Color = string;
@@ -29,12 +32,6 @@ export type ThemeInput =
 			light?: ColorScale | [from: Color, to: Color];
 			dark: ColorScale | [from: Color, to: Color];
 	  };
-
-export interface Activity {
-	date: string;
-	count: number;
-	level: 0 | 1 | 2 | 3 | 4;
-}
 
 export type Year = number | "last";
 
@@ -65,7 +62,7 @@ async function fetchCalendarData(): Promise<ApiResponse> {
 
 export const CodeFrencuencyCalendar = forwardRef<HTMLElement, Props>(
 	({ labels, ...props }, ref) => {
-		const { theme } = useTheme();
+		const { resolvedTheme } = useTheme();
 
 		//HACK: L0 color is defined also in the main css (global.css)
 		// because the calendar is not taking the color. idkw
@@ -83,28 +80,36 @@ export const CodeFrencuencyCalendar = forwardRef<HTMLElement, Props>(
 			return <div>{error.message}</div>;
 		}
 
-		if (isLoading) {
-			return <Skeleton {...props} loading />;
-		}
-
-		if (data === undefined) {
-			return <div>No response</div>;
-		}
-
 		return (
 			<div className="py-2 px-4 min-h-[192px] border rounded-lg border-muted max-w-full overflow-transparent">
-				<Calendar
-					ref={ref}
-					maxLevel={4}
-					style={{ width: "100%", overflow: "hidden" }}
-					labels={labels}
-					theme={colors}
-					//@ts-ignore
-					colorScheme={theme}
-					loading={isLoading}
-					data={data.contributions}
-					totalCount={data.total.lastYear}
-				/>
+				{isLoading || data === undefined ? (
+					<Skeleton
+						style={{ width: "100%", overflow: "hidden" }}
+						{...props}
+						loading
+					/>
+				) : (
+					<>
+						<Calendar
+							ref={ref}
+							maxLevel={4}
+							style={{ width: "100%", overflow: "hidden" }}
+							labels={labels}
+							theme={colors}
+							colorScheme={resolvedTheme as "dark" | "light"}
+							loading={isLoading}
+							data={data.contributions}
+							totalCount={data.total.lastYear}
+							renderBlock={(block, activity) =>
+								React.cloneElement(block, {
+									"data-tooltip-id": "activity-calendar",
+									"data-tooltip-html": `${activity.count} ${labels?.activities} ${activity.date}`,
+								})
+							}
+						/>
+						<Tooltip id="activity-calendar" />
+					</>
+				)}
 			</div>
 		);
 	},

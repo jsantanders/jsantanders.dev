@@ -122,6 +122,7 @@
 			"sat": "sáb"
 		},
 		"totalCount": "'{{count}}' actividades en '{{year}}'",
+		"activities": "actividades el",
 		"legend": {
 			"less": "Menos",
 			"more": "Más"
