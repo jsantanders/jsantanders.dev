@@ -39,6 +39,7 @@ export default async function About({ params: { locale } }: Props) {
 			t("weekdays.sat"),
 		],
 		totalCount: t("totalCount"),
+		activities: t("activities"),
 		legend: {
 			less: t("legend.less"),
 			more: t("legend.more"),
