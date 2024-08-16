@@ -16,7 +16,10 @@ This website was made possible with the help of various tools and resources. I w
 - [TypeScript](https://www.typescriptlang.org/) for adding static typing to JavaScript, making my code more robust and maintainable.
 - [Tailwind CSS](https://tailwindcss.com/) for providing a utility-first CSS framework that allowed me to quickly style my website.
 - [Vercel](https://vercel.com/) for providing a platform to deploy my website and make it accessible to the world.
--[]
+- [Content Cllections](https://www.content-collections.dev/) For parsing and rendering MDX
+- [sdorra.dev](https://github.com/sdorra/sdorra.dev) As inspiration for building my site.
+- [react-github-calendar](https://github.com/grubersjoe/react-github-calendar) As an inspiration for the Github Activity Calendar.
+- [react-rating](https://github.com/smastrom/react-rating) As inspiration for building post rating.
 
 ## Getting started
 

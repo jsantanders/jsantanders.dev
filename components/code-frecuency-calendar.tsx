@@ -1,31 +1,111 @@
 "use client";
 
+import { useQuery } from "@tanstack/react-query";
 import { useTheme } from "next-themes";
-import type { ComponentProps } from "react";
-import GitHubCalendar, { type ThemeInput } from "react-github-calendar";
+import React, { forwardRef } from "react";
+import Calendar, {
+	type Props as ActivityCalendarProps,
+	Skeleton,
+} from "react-activity-calendar";
 
-type Props = Omit<ComponentProps<typeof GitHubCalendar>, "username">;
+export interface Props extends Omit<ActivityCalendarProps, "data" | "theme"> {
+	errorMessage?: string;
+	theme?: ThemeInput;
+	throwOnError?: boolean;
+	transformData?: (data: Array<Activity>) => Array<Activity>;
+	transformTotalCount?: boolean;
+	year?: Year;
+}
 
-export const CodeFrencuencyCalendar = ({ labels }: Props) => {
-	const { theme } = useTheme();
+type Color = string;
+type ColorScale = [Color, Color, Color, Color, Color];
 
-	//HACK: L0 color is defined also in the main css (global.css)
-	// because the calendar is not taking the color. idkw
-	const colors: ThemeInput = {
-		light: ["#e5e5e5", "#a1a1aa", "#6b7280", "#374151", "#111827"],
-		dark: ["#171717", "#3f3f46", "#71717a", "#a1a1aa", "#d4d4d8"],
+export type ThemeInput =
+	| {
+			light: ColorScale | [from: Color, to: Color];
+			dark?: ColorScale | [from: Color, to: Color];
+	  }
+	| {
+			light?: ColorScale | [from: Color, to: Color];
+			dark: ColorScale | [from: Color, to: Color];
+	  };
+
+export interface Activity {
+	date: string;
+	count: number;
+	level: 0 | 1 | 2 | 3 | 4;
+}
+
+export type Year = number | "last";
+
+export interface ApiResponse {
+	total: {
+		[year: number]: number;
+		[year: string]: number; // lastYear;
 	};
+	contributions: Array<Activity>;
+}
 
-	return (
-		<div className="py-2 px-4 min-h-[192px] border rounded-lg border-muted max-w-full overflow-transparent">
-			<GitHubCalendar
-				style={{ width: "100%", overflow: "hidden" }}
-				username="jsantanders"
-				labels={labels}
-				theme={colors}
-				//@ts-ignore
-				colorScheme={theme}
-			/>
-		</div>
-	);
-};
+export interface ApiErrorResponse {
+	error: string;
+}
+
+async function fetchCalendarData(): Promise<ApiResponse> {
+	const response = await fetch("/api/github/contributions");
+	const data: ApiResponse | ApiErrorResponse = await response.json();
+
+	if (!response.ok) {
+		throw Error(
+			`Fetching GitHub contribution data failed: ${(data as ApiErrorResponse).error}`,
+		);
+	}
+
+	return data as ApiResponse;
+}
+
+export const CodeFrencuencyCalendar = forwardRef<HTMLElement, Props>(
+	({ labels, ...props }, ref) => {
+		const { theme } = useTheme();
+
+		//HACK: L0 color is defined also in the main css (global.css)
+		// because the calendar is not taking the color. idkw
+		const colors: ThemeInput = {
+			light: ["#e5e5e5", "#a1a1aa", "#6b7280", "#374151", "#111827"],
+			dark: ["#171717", "#3f3f46", "#71717a", "#a1a1aa", "#d4d4d8"],
+		};
+
+		const { data, isLoading, isError, error } = useQuery({
+			queryKey: ["github-contributions"],
+			queryFn: fetchCalendarData,
+		});
+
+		if (isError) {
+			return <div>{error.message}</div>;
+		}
+
+		if (isLoading) {
+			return <Skeleton {...props} loading />;
+		}
+
+		if (data === undefined) {
+			return <div>No response</div>;
+		}
+
+		return (
+			<div className="py-2 px-4 min-h-[192px] border rounded-lg border-muted max-w-full overflow-transparent">
+				<Calendar
+					ref={ref}
+					maxLevel={4}
+					style={{ width: "100%", overflow: "hidden" }}
+					labels={labels}
+					theme={colors}
+					//@ts-ignore
+					colorScheme={theme}
+					loading={isLoading}
+					data={data.contributions}
+					totalCount={data.total.lastYear}
+				/>
+			</div>
+		);
+	},
+);
