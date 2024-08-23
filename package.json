@@ -6,7 +6,7 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"analyze": "cross-env ANALYZE=true next build",
+		"analyze": "ANALYZE=true next build",
 		"lint": "biome check --write . --no-errors-on-unmatched",
 		"postinstall": "prisma generate"
 	},
