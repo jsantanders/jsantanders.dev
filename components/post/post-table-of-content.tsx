@@ -3,7 +3,7 @@
 import { Link } from "@/navigation";
 import type { Toc, TocEntry } from "@stefanprobst/rehype-extract-toc";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Button } from "../ui/button";
 import {
 	Collapsible,
@@ -22,29 +22,10 @@ type PostTableOfContentProps = {
 // but still want to generate it. It could be a better way of handle this.
 const NON_TOC_ELEMENTS = ["Footnotes"];
 
-const concatTocIds = (toc: Toc) => {
-	const result: string[] = [];
-
-	function traverse(entry: Toc[0]) {
-		if (entry.id) {
-			result.push(entry.id);
-		}
-
-		if (entry.children) {
-			entry.children.forEach(traverse);
-		}
-	}
-
-	toc.forEach(traverse);
-
-	return result;
-};
-
 export const PostTableOfContents: React.FC<PostTableOfContentProps> = ({
 	toc,
 	locales,
 }) => {
-	const [activeSection, setActiveSection] = useState(toc[0]?.id);
 	const [isOpen, setIsOpen] = useState(false);
 
 	if (!toc?.length && toc.length > 0) {
@@ -55,9 +36,7 @@ export const PostTableOfContents: React.FC<PostTableOfContentProps> = ({
 		<div className="w-full border rounded-lg bg-primary-foreground p-4 my-8">
 			<Collapsible open={isOpen} onOpenChange={setIsOpen} className="w-full">
 				<div className="flex items-center justify-between">
-					<h2 className="text-xl lg:text-2xl font-semibold">
-						Table of Contents
-					</h2>
+					<h2 className="text-xl lg:text-2xl font-semibold">{locales.title}</h2>
 					<CollapsibleTrigger asChild>
 						<Button variant="ghost" size="sm" className="w-9 p-0">
 							{isOpen ? (
