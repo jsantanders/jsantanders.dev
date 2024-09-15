@@ -68,7 +68,6 @@ const ListOfContent: React.FC<{
 			return (
 				<li key={node.id}>
 					<TOCLink node={node} ch={`${chapter}${idx + 1}.`} />
-
 					{node.children?.length && node.children?.length > 0 && (
 						<ListOfContent
 							nodes={node.children}
