@@ -28,7 +28,7 @@ export const PostTableOfContents: React.FC<PostTableOfContentProps> = ({
 }) => {
 	const [isOpen, setIsOpen] = useState(false);
 
-	if (!toc?.length && toc.length > 0) {
+	if (!toc?.length) {
 		return null;
 	}
 
