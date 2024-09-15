@@ -62,6 +62,7 @@ export default async function Post({
 				/>
 				<h1 className="my-2 text-5xl font-bold">{post.title}</h1>
 				<PostTags tags={post.tags} as="link" />
+				<PostTableOfContents locales={tableOfContentsLocale} toc={toc} />
 				<Markdown
 					slug={slug}
 					code={post.content.mdx}
@@ -69,9 +70,6 @@ export default async function Post({
 				/>
 				<PostRating className="mt-12" slug={slug} locales={postRatingLocales} />
 			</article>
-			<aside className="fixed hidden min-[1420px]:left-3/4 min-[1420px]:block min-[2000px]:left-[68%]">
-				<PostTableOfContents toc={toc} locales={tableOfContentsLocale} />
-			</aside>
 			<BlogPostingSchema post={post} />
 		</div>
 	);
