@@ -5,11 +5,16 @@ const query = `{
     contributionsCollection {
       contributionCalendar {
         totalContributions
+        months {
+          name
+          totalWeeks
+        }
         weeks {
           contributionDays {
               contributionCount
               contributionLevel
               date
+              weekday
           }
         }
       }
