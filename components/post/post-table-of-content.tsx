@@ -4,7 +4,6 @@ import { Link } from "@/navigation";
 import type { Toc, TocEntry } from "@stefanprobst/rehype-extract-toc";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { useInView } from "react-intersection-observer";
 import { Button } from "../ui/button";
 import {
 	Collapsible,
