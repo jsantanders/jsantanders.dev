@@ -55,6 +55,7 @@ const config = {
 			},
 			fontSize: {
 				md: "calc(1.035rem)",
+				post: "calc(1.125rem)",
 				prose: "calc(1.1825rem)",
 			},
 			translate: {
