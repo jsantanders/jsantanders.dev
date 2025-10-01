@@ -80,6 +80,20 @@ export const PostTableOfContents: React.FC<PostTableOfContentProps> = ({
     return () => window.removeEventListener("scroll", onScroll);
   }, [idsInOrder, mobileExpanded]);
 
+  // Prevent body scroll when mobile TOC is expanded
+  useEffect(() => {
+    if (mobileExpanded) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileExpanded]);
+
   if (!toc?.length) return null;
 
   return (
@@ -135,7 +149,7 @@ export const PostTableOfContents: React.FC<PostTableOfContentProps> = ({
 
         {/* Expanded overlay */}
         {mobileExpanded && (
-          <div className="fixed inset-x-0 bottom-0 z-50 flex items-end justify-center">
+          <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/20 backdrop-blur-sm">
             <div className="mb-4 w-[min(92vw,28rem)] max-h-[75vh] overflow-auto rounded-xl border bg-primary-foreground p-4 shadow-xl">
               <div className="flex items-center justify-between">
                 <h2 className="text-sm font-medium">{locales.title}</h2>
