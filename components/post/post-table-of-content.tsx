@@ -80,20 +80,34 @@ export const PostTableOfContents: React.FC<PostTableOfContentProps> = ({
     return () => window.removeEventListener("scroll", onScroll);
   }, [idsInOrder, mobileExpanded]);
 
+  // Prevent body scroll when mobile TOC is expanded
+  useEffect(() => {
+    if (mobileExpanded) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileExpanded]);
+
   if (!toc?.length) return null;
 
   return (
     <>
       {/* Desktop: fixed right, sticky-like, always visible and expanded by default */}
       <div className="hidden lg:block">
-        <div className="fixed right-6 top-[160px] z-30 w-72 max-h-[70vh] overflow-auto rounded-lg border bg-primary-foreground p-4 shadow-sm">
+        <div className="fixed right-6 top-[160px] z-30 w-56 max-h-[70vh] overflow-auto rounded-lg border bg-primary-foreground p-3 shadow-sm">
           <Collapsible
             open={desktopOpen}
             onOpenChange={setDesktopOpen}
             className="w-full"
           >
             <div className="flex items-center justify-between">
-              <h2 className="text-lg font-semibold">{locales.title}</h2>
+              <h2 className="text-sm font-medium">{locales.title}</h2>
               <CollapsibleTrigger asChild>
                 <Button
                   variant="ghost"
@@ -109,7 +123,7 @@ export const PostTableOfContents: React.FC<PostTableOfContentProps> = ({
                 </Button>
               </CollapsibleTrigger>
             </div>
-            <CollapsibleContent className="mt-4">
+            <CollapsibleContent className="mt-3">
               <nav aria-label="Table of contents">
                 <ListOfContent nodes={toc} activeId={activeId} />
               </nav>
@@ -130,15 +144,15 @@ export const PostTableOfContents: React.FC<PostTableOfContentProps> = ({
           }`}
           aria-label="Open table of contents"
         >
-          <span className="text-sm font-medium">{locales.title}</span>
+          <span className="text-xs font-medium">{locales.title}</span>
         </button>
 
         {/* Expanded overlay */}
         {mobileExpanded && (
-          <div className="fixed inset-x-0 bottom-0 z-50 flex items-end justify-center">
+          <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/20 backdrop-blur-sm">
             <div className="mb-4 w-[min(92vw,28rem)] max-h-[75vh] overflow-auto rounded-xl border bg-primary-foreground p-4 shadow-xl">
               <div className="flex items-center justify-between">
-                <h2 className="text-lg font-semibold">{locales.title}</h2>
+                <h2 className="text-sm font-medium">{locales.title}</h2>
                 <Button
                   variant="ghost"
                   size="sm"
@@ -202,7 +216,7 @@ const TOCLink: React.FC<{
   activeId?: string | null;
   onNavigate?: () => void;
 }> = ({ node, ch, activeId, onNavigate }) => {
-  const fontSizes: Record<number, string> = { 2: "base", 3: "sm", 4: "xs" };
+  const fontSizes: Record<number, string> = { 2: "sm", 3: "xs", 4: "xs" };
   const padding: Record<number, string> = { 2: "pl-0", 3: "pl-7", 4: "pl-10" };
   const id = node.id;
   const isActive = id && activeId === id;
