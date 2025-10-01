@@ -2,20 +2,20 @@
 
 import { Link } from "@/navigation";
 import type { Toc, TocEntry } from "@stefanprobst/rehype-extract-toc";
-import { ChevronDown, ChevronUp } from "lucide-react";
-import { useState } from "react";
+import { ChevronDown, ChevronUp, X } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "../ui/button";
 import {
-	Collapsible,
-	CollapsibleContent,
-	CollapsibleTrigger,
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
 } from "../ui/collapsible";
 
 type PostTableOfContentProps = {
-	toc: Toc;
-	locales: {
-		title: string;
-	};
+  toc: Toc;
+  locales: {
+    title: string;
+  };
 };
 
 //TODO: I don't want to include the footnotes section,
@@ -23,14 +23,36 @@ type PostTableOfContentProps = {
 const NON_TOC_ELEMENTS = ["Footnotes"];
 
 export const PostTableOfContents: React.FC<PostTableOfContentProps> = ({
-	toc,
-	locales,
+  toc,
+  locales,
 }) => {
-	const [isOpen, setIsOpen] = useState(false);
+  // Desktop: expanded by default; Mobile: collapsed pill by default
+  const [desktopOpen, setDesktopOpen] = useState(true);
+  const [mobileExpanded, setMobileExpanded] = useState(false);
+  const [showMobileControl, setShowMobileControl] = useState(true);
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const lastScrollY = useRef(0);
+  const idsInOrder = useMemo(() => flattenTocIds(toc), [toc]);
 
-	if (!toc?.length) {
-		return null;
-	}
+  useEffect(() => {
+    if (!idsInOrder.length) return;
+    let ticking = false;
+    const updateActiveHeading = () => {
+      const scrollY = window.scrollY;
+      // Offset so the active section updates a bit before reaching the very top
+      const offset = 96; // ~24px top nav + spacing
+      let current: string | null = null;
+      for (const id of idsInOrder) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        if (el.offsetTop - offset <= scrollY) {
+          current = id;
+        } else {
+          break;
+        }
+      }
+      setActiveId(current);
+    };
 
     const onScroll = () => {
       if (!ticking) {
@@ -143,26 +165,35 @@ export const PostTableOfContents: React.FC<PostTableOfContentProps> = ({
 };
 
 const ListOfContent: React.FC<{
-	nodes: Toc;
-	chapter?: string;
-}> = ({ nodes, chapter = "" }) => {
-	const headingElements = nodes
-		.filter((n) => !NON_TOC_ELEMENTS.includes(n.value))
-		.map((node, idx) => {
-			return (
-				<li key={node.id}>
-					<TOCLink node={node} ch={`${chapter}${idx + 1}.`} />
-					{node.children?.length && node.children?.length > 0 && (
-						<ListOfContent
-							nodes={node.children}
-							chapter={`${chapter}${idx + 1}.`}
-						/>
-					)}
-				</li>
-			);
-		});
+  nodes: Toc;
+  chapter?: string;
+  activeId?: string | null;
+  onNavigate?: () => void;
+}> = ({ nodes, chapter = "", activeId, onNavigate }) => {
+  const headingElements = nodes
+    .filter((n) => !NON_TOC_ELEMENTS.includes(n.value))
+    .map((node, idx) => {
+      return (
+        <li key={node.id}>
+          <TOCLink
+            node={node}
+            ch={`${chapter}${idx + 1}.`}
+            activeId={activeId}
+            onNavigate={onNavigate}
+          />
+          {node.children?.length && node.children?.length > 0 && (
+            <ListOfContent
+              nodes={node.children}
+              chapter={`${chapter}${idx + 1}.`}
+              activeId={activeId}
+              onNavigate={onNavigate}
+            />
+          )}
+        </li>
+      );
+    });
 
-	return <ul>{headingElements}</ul>;
+  return <ul>{headingElements}</ul>;
 };
 
 const TOCLink: React.FC<{
@@ -176,21 +207,37 @@ const TOCLink: React.FC<{
   const id = node.id;
   const isActive = id && activeId === id;
 
-	if (!id) return null;
+  if (!id) return null;
 
-	return (
-		<Link
-			href={`#${id}`}
-			className={`block text-${fontSizes[node.depth]} ${padding[node.depth]} py-1 text-muted-foreground hover:text-primary hover:underline
+  return (
+    <Link
+      href={`#${id}`}
+      className={`block py-1 ${padding[node.depth]} pl-2 border-l text-${
+        fontSizes[node.depth]
+      } ${
+        isActive
+          ? "text-foreground border-primary"
+          : "text-muted-foreground border-transparent hover:text-primary hover:underline"
       }`}
-			onClick={(e) => {
-				e.preventDefault();
-				document
-					.getElementById(id)
-					?.scrollIntoView({ behavior: "smooth", block: "start" });
-			}}
-		>
-			{ch} {node.value}
-		</Link>
-	);
+      aria-current={isActive ? "true" : undefined}
+      onClick={(e) => {
+        e.preventDefault();
+        document
+          .getElementById(id)
+          ?.scrollIntoView({ behavior: "smooth", block: "start" });
+        onNavigate?.();
+      }}
+    >
+      {ch} {node.value}
+    </Link>
+  );
 };
+
+function flattenTocIds(nodes: Toc, acc: string[] = []): string[] {
+  for (const n of nodes) {
+    if (NON_TOC_ELEMENTS.includes(n.value)) continue;
+    if (n.id) acc.push(n.id);
+    if (n.children?.length) flattenTocIds(n.children, acc);
+  }
+  return acc;
+}
