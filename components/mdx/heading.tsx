@@ -24,7 +24,7 @@ export const Heading: React.FC<HeadingProps> = ({
 
 	switch (level) {
 		case "h1":
-			size = "text-5xl";
+			size = "text-2xl md:text-4xl lg:text-5xl";
 			translate = "-translate-y-0.5 md:translate-y-h1";
 			break;
 		case "h2":
