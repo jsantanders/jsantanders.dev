@@ -24,27 +24,27 @@ export const Heading: React.FC<HeadingProps> = ({
 
 	switch (level) {
 		case "h1":
-			size = "text-5xl";
+			size = "text-2xl md:text-4xl lg:text-5xl";
 			translate = "-translate-y-0.5 md:translate-y-h1";
 			break;
 		case "h2":
-			size = "text-4xl";
+			size = "text-xl md:text-3xl lg:text-4xl";
 			translate = "md:translate-y-h2";
 			break;
 		case "h3":
-			size = "text-3xl";
+			size = "text-lg md:text-2xl lg:text-3xl";
 			translate = "translate-y-0.5 md:translate-y-h3";
 			break;
 		case "h4":
-			size = "text-2xl";
+			size = "text-lg md:text-xl lg:text-2xl";
 			translate = "translate-y-1 md:translate-y-h4";
 			break;
 		case "h5":
-			size = "text-xl";
+			size = "text-lg md:text-lg lg:text-xl";
 			translate = "translate-y-1 md:translate-y-h5";
 			break;
 		case "h6":
-			size = "text-lg";
+			size = "text-lg md:text-lg lg:text-lg";
 			translate = "translate-y-1.5 md:translate-y-h6";
 			break;
 		default:
