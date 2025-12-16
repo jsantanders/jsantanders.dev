@@ -1,6 +1,6 @@
-import type { LocalePrefix } from "next-intl/routing";
+import type { LocalePrefixMode } from "next-intl/routing";
 
-export const localePrefix = "as-needed" satisfies LocalePrefix;
+export const localePrefix = "as-needed" satisfies LocalePrefixMode;
 export const locales = ["en", "es"] as const;
 export type Locales = (typeof locales)[number];
 

@@ -1,3 +1,4 @@
+import { Blockquote } from "./blockqoute";
 import { Callout } from "./callout";
 import { Code } from "./code";
 import { ConsCard } from "./cons-card";
@@ -14,18 +15,19 @@ import { TextLink } from "./text-link";
 import { Tweet } from "./tweet";
 
 export {
-	ProsCard,
+	Blockquote,
+	Callout,
+	Code,
 	ConsCard,
-	Paragraph,
-	Tweet,
+	Division,
 	Heading,
 	List,
 	ListItem,
-	MarkdownImage,
-	TextLink,
-	Code,
-	Preformatted,
-	Division,
-	Callout,
 	Mafs,
+	MarkdownImage,
+	Paragraph,
+	Preformatted,
+	ProsCard,
+	TextLink,
+	Tweet,
 };
