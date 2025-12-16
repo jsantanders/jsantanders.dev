@@ -1,6 +1,7 @@
 "use client";
 
 import {
+	Blockquote,
 	Callout,
 	Code,
 	ConsCard,
@@ -69,6 +70,7 @@ export const Markdown = ({ code, markdownLocales, slug }: Props) => {
 			<Preformatted {...props} locales={markdownLocales.codeLocales} />
 		),
 		div: Division as React.FC,
+		blockquote: Blockquote as React.FC,
 		Tweet: (props: React.ComponentProps<typeof Tweet>) => <Tweet {...props} />,
 		Callout,
 		ProsCard,
