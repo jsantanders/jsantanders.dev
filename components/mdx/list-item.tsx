@@ -19,7 +19,11 @@ export const ListItem: React.FC<ListItemProps> = ({ children, ...props }) => {
 	}, [listRef]);
 
 	return (
-		<li ref={listRef} className="flex flex-row items-baseline" {...rest}>
+		<li
+			ref={listRef}
+			className="flex flex-row items-baseline text-post"
+			{...rest}
+		>
 			{type === "ul" && (
 				<span
 					className="translate-y-1 transform text-secondary pr-2"
