@@ -13,6 +13,7 @@ import rehypePrism from "rehype-prism-plus";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
+import { z } from "zod";
 import resolveImageBlurDataURL from "./lib/image-blur-data-url";
 import { compileMDX } from "./lib/mdx";
 import remarkConvertInlineFootnotes from "./lib/remark-convert-inline-footnote";
@@ -97,8 +98,8 @@ async function collectImageInformation({ image, directory }: ImageParams) {
 const posts = defineCollection({
 	name: "posts",
 	directory: POST_DIRECTORY,
-	include: "*/**.mdx",
-	schema: (z) => ({
+	include: "*/**.{md,mdx}",
+	schema: z.object({
 		title: z.string(),
 		summary: z.string(),
 		isPublished: z.boolean(),
@@ -124,9 +125,7 @@ const posts = defineCollection({
 					rehypeCitation,
 					{
 						path: dir,
-						bibliography: hasReferences
-							? path.join(dir, "references.bib")
-							: undefined,
+						bibliography: hasReferences ? "references.bib" : undefined,
 						linkCitations: true,
 						lang:
 							locale === "es"

@@ -1,6 +1,5 @@
 "use client";
 
-import { Link } from "@/navigation";
 import type { Toc, TocEntry } from "@stefanprobst/rehype-extract-toc";
 import { ChevronDown, ChevronUp, X } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -226,7 +225,7 @@ const TOCLink: React.FC<{
 	if (!id) return null;
 
 	return (
-		<Link
+		<a
 			href={`#${id}`}
 			className={`block py-1 ${padding[node.depth]} pl-2 border-l text-${
 				fontSizes[node.depth]
@@ -245,7 +244,7 @@ const TOCLink: React.FC<{
 			}}
 		>
 			{ch} {node.value}
-		</Link>
+		</a>
 	);
 };
 
